@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manager Alignment — VeriTech Group</title>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #F7F7F5;
+  color: #1C1C1E;
+  padding: 24px 16px;
+  min-height: 100vh;
+}
+
+.wrap { padding: 0 0 2rem; }
+.page-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid #E8E8E6; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
+.page-title { font-size: 20px; font-weight: 500; color: #1C1C1E; }
+.page-sub { font-size: 13px; color: #888; margin-top: 4px; line-height: 1.5; }
+
+.strategy-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.stab { font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 8px; border: 0.5px solid #D8D8D6; background: transparent; color: #888; cursor: pointer; transition: all 0.15s; }
+.stab.active { background: #fff; color: #1C1C1E; border-color: #ADADAB; }
+
+.panel { display: none; }
+.panel.visible { display: block; }
+
+.section-lbl { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: #888; margin-bottom: 10px; margin-top: 1.5rem; }
+
+.passport { background: #fff; border: 0.5px solid #E8E8E6; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; }
+.passport-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+.passport-body { padding: 14px 16px 16px; }
+.role-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
+
+.p-section { margin-bottom: 14px; }
+.p-section-lbl { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.p-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #666; line-height: 1.55; margin-bottom: 6px; }
+.p-item i { font-size: 14px; margin-top: 1px; flex-shrink: 0; }
+.p-question { background: #F7F7F5; border-radius: 8px; padding: 8px 12px; margin-bottom: 6px; font-size: 13px; color: #666; line-height: 1.5; }
+.q-num { font-size: 11px; font-weight: 500; margin-bottom: 2px; }
+
+.timeline { display: flex; flex-direction: column; gap: 0; margin-bottom: 1rem; }
+.tl-item { display: flex; gap: 16px; position: relative; }
+.tl-item:not(:last-child) .tl-line { position: absolute; left: 17px; top: 38px; bottom: 0; width: 1px; background: #E8E8E6; }
+.tl-left { display: flex; flex-direction: column; align-items: center; width: 36px; flex-shrink: 0; padding-top: 4px; }
+.tl-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid; background: #F7F7F5; margin-top: 4px; }
+.tl-week { font-size: 10px; color: #888; margin-top: 5px; white-space: nowrap; }
+.tl-body { flex: 1; padding-bottom: 24px; }
+.tl-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 4px; }
+.tl-title { font-size: 14px; font-weight: 500; color: #1C1C1E; margin-bottom: 6px; }
+.tl-desc { font-size: 13px; color: #666; line-height: 1.55; margin-bottom: 8px; }
+.tl-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-top: 4px; }
+.tl-pill i { font-size: 12px; }
+
+.resistance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.r-card { border-radius: 12px; padding: 1rem; }
+.r-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.r-text { font-size: 13px; line-height: 1.55; font-style: italic; margin-bottom: 8px; }
+.r-response { font-size: 12px; line-height: 1.55; display: flex; align-items: flex-start; gap: 6px; }
+.r-response i { font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+.design-note { background: #EFEFED; border-radius: 8px; padding: 12px 14px; margin-top: 4px; }
+
+@media (max-width: 520px) {
+  .resistance-grid { grid-template-columns: 1fr; }
+  .strategy-tabs { gap: 6px; }
+  .stab { font-size: 11px; padding: 5px 10px; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<div class="page-header">
+  <div class="eyebrow">Data governance programme · manager alignment</div>
+  <div class="page-title">Manager strategy</div>
+  <div class="page-sub">Role-specific passports, touchpoint sequence, and handling resistance — designed for a time-poor corporate environment.</div>
+</div>
+
+<div class="strategy-tabs">
+  <button class="stab active" onclick="showPanel('passport')">Manager passport</button>
+  <button class="stab" onclick="showPanel('timeline')">Touchpoint sequence</button>
+  <button class="stab" onclick="showPanel('resistance')">Handling resistance</button>
+</div>
+
+<!-- PASSPORT PANEL -->
+<div id="panel-passport" class="panel visible">
+  <div class="section-lbl">Role-specific manager passports — click a role to preview</div>
+  <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;">
+    <button class="stab active" id="pbtn-owner" onclick="showPassport('owner')">Data Owner</button>
+    <button class="stab" id="pbtn-steward" onclick="showPassport('steward')">Data Steward</button>
+    <button class="stab" id="pbtn-usecase" onclick="showPassport('usecase')">Use Case Owner</button>
+  </div>
+
+  <div id="passport-owner" class="passport">
+    <div class="passport-header" style="background:#E6F1FB;border-bottom:0.5px solid #B5D4F4;">
+      <div class="role-avatar" style="background:#185FA5;color:#fff;">DO</div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#0C447C;">Manager passport — Data Owner</div>
+        <div style="font-size:11px;color:#185FA5;">What you need to know before the programme starts</div>
+      </div>
+    </div>
+    <div class="passport-body">
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#185FA5;">What your team member's role means</div>
+        <div class="p-item"><i class="ti ti-shield" style="color:#185FA5;"></i>They are now accountable for how a specific set of data is defined, protected, and used across the organisation. They make decisions — not IT.</div>
+        <div class="p-item"><i class="ti ti-alert-circle" style="color:#888;"></i>They will need time to attend three workshops and one cross-role simulation across six weeks. This is part of their role, not extra work.</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#185FA5;">What to expect in the next 30 days</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will set one data quality target for their domain — they may ask for your input on priorities</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will make one data access decision without escalating to IT — support this even if it feels unfamiliar</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will establish a working relationship with their Data Steward — you may be asked to facilitate an introduction</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#185FA5;">Your three questions at day 30</div>
+        <div class="p-question"><div class="q-num" style="color:#185FA5;">Question 1</div>What data access or quality decision have you made this month that previously would have gone to IT?</div>
+        <div class="p-question"><div class="q-num" style="color:#185FA5;">Question 2</div>Have you met your Data Steward? What did you discuss?</div>
+        <div class="p-question"><div class="q-num" style="color:#185FA5;">Question 3</div>What is one thing you're still unsure about in this role — and what do you need from me to move forward?</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="passport-steward" class="passport" style="display:none;">
+    <div class="passport-header" style="background:#E1F5EE;border-bottom:0.5px solid #9FE1CB;">
+      <div class="role-avatar" style="background:#1D9E75;color:#fff;">DS</div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#085041;">Manager passport — Data Steward</div>
+        <div style="font-size:11px;color:#0F6E56;">What you need to know before the programme starts</div>
+      </div>
+    </div>
+    <div class="passport-body">
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#0F6E56;">What your team member's role means</div>
+        <div class="p-item"><i class="ti ti-database" style="color:#1D9E75;"></i>They are now responsible for ensuring that data in your domain is well-defined and consistently understood across departments. This requires cross-departmental conversations that may feel political.</div>
+        <div class="p-item"><i class="ti ti-alert-circle" style="color:#888;"></i>They will need political backing from you to have difficult conversations across departments. Without it, the role fails before it starts.</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#0F6E56;">What to expect in the next 30 days</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will document and publish at least one agreed data definition — this is visible output, not background work</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will facilitate a definition conflict between departments — they may need you to open a door to a senior contact in another team</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will escalate at least one data quality issue — make sure they know you back this escalation</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#0F6E56;">Your three questions at day 30</div>
+        <div class="p-question"><div class="q-num" style="color:#0F6E56;">Question 1</div>Can you show me a definition you documented this month and tell me why it mattered?</div>
+        <div class="p-question"><div class="q-num" style="color:#0F6E56;">Question 2</div>Tell me about a conflict you facilitated. How did it go — and what would you do differently?</div>
+        <div class="p-question"><div class="q-num" style="color:#0F6E56;">Question 3</div>Is there a conversation you need to have across departments that you don't have the authority to start alone? How can I help?</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="passport-usecase" class="passport" style="display:none;">
+    <div class="passport-header" style="background:#EEEDFE;border-bottom:0.5px solid #AFA9EC;">
+      <div class="role-avatar" style="background:#534AB7;color:#fff;">UC</div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:#26215C;">Manager passport — Data Use Case Owner</div>
+        <div style="font-size:11px;color:#3C3489;">What you need to know before the programme starts</div>
+      </div>
+    </div>
+    <div class="passport-body">
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#3C3489;">What your team member's role means</div>
+        <div class="p-item"><i class="ti ti-bulb" style="color:#534AB7;"></i>They are now responsible for identifying business problems that can be solved with data and translating those problems into structured briefs that technical teams can act on.</div>
+        <div class="p-item"><i class="ti ti-alert-circle" style="color:#888;"></i>They will need access to cross-departmental stakeholders and to the Data Engineering team. Please open these doors proactively rather than waiting to be asked.</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#3C3489;">What to expect in the next 30 days</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will submit one use case brief to the Data Governance team — ask to see it before it goes in</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will consult with their Data Steward on data availability — support time for this conversation</div>
+        <div class="p-item"><i class="ti ti-check" style="color:#1D9E75;"></i>They will agree one success criterion with the technical team — this is the most important skill from the programme</div>
+      </div>
+      <div class="p-section">
+        <div class="p-section-lbl" style="color:#3C3489;">Your three questions at day 30</div>
+        <div class="p-question"><div class="q-num" style="color:#3C3489;">Question 1</div>Can you show me the use case brief you submitted? Walk me through how you defined the business problem.</div>
+        <div class="p-question"><div class="q-num" style="color:#3C3489;">Question 2</div>What feedback did the technical team give you — and how did you respond to it?</div>
+        <div class="p-question"><div class="q-num" style="color:#3C3489;">Question 3</div>What is the agreed success criterion for your use case — and who signed off on it?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE PANEL -->
+<div id="panel-timeline" class="panel">
+  <div class="section-lbl">Manager touchpoint sequence — before, during and after the programme</div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left">
+        <div class="tl-dot" style="border-color:#BA7517;background:#FAEEDA;"></div>
+        <div class="tl-week">Week −2</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-tag" style="color:#854F0B;">Pre-launch</div>
+        <div class="tl-title">Manager Intelligence Briefing</div>
+        <div class="tl-desc">45-minute onsite session framed as a strategic briefing, not a training admin meeting. Managers learn what their team member's role means, what the programme will produce, and what they need to be ready for. Ends with the Manager Passport distributed — one page, role-specific, keep it.</div>
+        <div class="tl-pill" style="background:#FAEEDA;color:#633806;"><i class="ti ti-clock" style="font-size:12px;"></i>45 min · onsite · all managers together</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left">
+        <div class="tl-dot" style="border-color:#185FA5;background:#E6F1FB;"></div>
+        <div class="tl-week">Week 1</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-tag" style="color:#0C447C;">During programme</div>
+        <div class="tl-title">Early access preview</div>
+        <div class="tl-desc">After session 1, managers receive a one-paragraph summary of what their team member is working on — not a report card, a conversation starter. Framed as: "Here is what your team member identified as their biggest challenge in their new role. You may want to have a conversation before session 2."</div>
+        <div class="tl-pill" style="background:#E6F1FB;color:#0C447C;"><i class="ti ti-mail" style="font-size:12px;"></i>Email · 2 min read · no action required</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left">
+        <div class="tl-dot" style="border-color:#1D9E75;background:#E1F5EE;"></div>
+        <div class="tl-week">Week 3</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-tag" style="color:#085041;">During programme</div>
+        <div class="tl-title">Guest reviewer moment</div>
+        <div class="tl-desc">Managers are invited to attend the last 20 minutes of session 3 as a guest reviewer — not an evaluator, a curious senior colleague. They hear their team member practise a real governance conversation or use case pitch. They leave invested in the outcome. No preparation required.</div>
+        <div class="tl-pill" style="background:#E1F5EE;color:#085041;"><i class="ti ti-eye" style="font-size:12px;"></i>20 min · optional · high impact</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left">
+        <div class="tl-dot" style="border-color:#534AB7;background:#EEEDFE;"></div>
+        <div class="tl-week">Week 4</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-tag" style="color:#3C3489;">Cross-role simulation</div>
+        <div class="tl-title">Manager visibility at session 4</div>
+        <div class="tl-desc">Managers are notified that session 4 is the cross-role simulation — the culmination of the programme. They are not required to attend, but they receive a brief debrief note the same day summarising how their team member performed in the collaborative scenario.</div>
+        <div class="tl-pill" style="background:#EEEDFE;color:#3C3489;"><i class="ti ti-file" style="font-size:12px;"></i>Same-day debrief note · 1 page</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot" style="border-color:#888780;background:#F1EFE8;"></div>
+        <div class="tl-week">Day 30</div>
+      </div>
+      <div class="tl-body">
+        <div class="tl-tag" style="color:#5F5E5A;">Transfer</div>
+        <div class="tl-title">Structured day-30 check-in</div>
+        <div class="tl-desc">Not a casual catch-up. Managers use the three questions from their role-specific passport. 20 minutes. The conversation guide tells them what a good answer sounds like and what to do if their team member is stuck. L&D receives aggregate completion data — not individual scores.</div>
+        <div class="tl-pill" style="background:#F1EFE8;color:#5F5E5A;"><i class="ti ti-message" style="font-size:12px;"></i>20 min · structured · 3 questions</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESISTANCE PANEL -->
+<div id="panel-resistance" class="panel">
+  <div class="section-lbl">Four common resistance patterns and how to design around them</div>
+  <div class="resistance-grid">
+    <div class="r-card" style="background:#FCEBEB;">
+      <div class="r-label" style="color:#791F1F;">Resistance 1</div>
+      <div class="r-text" style="color:#A32D2D;">"My team member doesn't have time for this on top of their real job."</div>
+      <div class="r-response" style="color:#1D9E75;"><i class="ti ti-arrow-right"></i>Reframe: this is their real job now. The passport makes that explicit. The briefing reinforces it. If the manager still resists, escalate to the Data Governance lead — this is a role accountability issue, not a scheduling issue.</div>
+    </div>
+    <div class="r-card" style="background:#FCEBEB;">
+      <div class="r-label" style="color:#791F1F;">Resistance 2</div>
+      <div class="r-text" style="color:#A32D2D;">"I don't understand this role well enough to support them."</div>
+      <div class="r-response" style="color:#1D9E75;"><i class="ti ti-arrow-right"></i>This is the passport's job. Two sentences. No jargon. The manager doesn't need to understand Data Governance — they need to understand what their person is now accountable for and what to ask at day 30.</div>
+    </div>
+    <div class="r-card" style="background:#FAEEDA;">
+      <div class="r-label" style="color:#633806;">Resistance 3</div>
+      <div class="r-text" style="color:#854F0B;">"Why do I need to do a check-in? That's L&D's job."</div>
+      <div class="r-response" style="color:#1D9E75;"><i class="ti ti-arrow-right"></i>Because L&D can't create the conditions for transfer — only the manager can. The check-in is framed as a performance conversation, not a training follow-up. The questions are about what the person did, not what they learned.</div>
+    </div>
+    <div class="r-card" style="background:#FAEEDA;">
+      <div class="r-label" style="color:#633806;">Resistance 4</div>
+      <div class="r-text" style="color:#854F0B;">"My team member told me the training wasn't relevant to their actual work."</div>
+      <div class="r-response" style="color:#1D9E75;"><i class="ti ti-arrow-right"></i>This is a design signal, not a manager problem. If this comes up in the day-30 data, go back to the action map. The session that felt irrelevant is the one where the scenarios weren't close enough to real work. Fix the scenario bank, not the communication.</div>
+    </div>
+  </div>
+  <div class="design-note">
+    <div style="font-size:12px;font-weight:500;color:#1C1C1E;margin-bottom:4px;">The design principle behind all four responses</div>
+    <div style="font-size:13px;color:#666;line-height:1.6;">Manager resistance is almost always a symptom of unclear expectations, not bad intent. Design the manager experience with the same rigour as the learner experience — personas, touchpoints, failure states, and a transfer plan. If you've done that, resistance becomes a data point, not a problem.</div>
+  </div>
+</div>
+
+</div>
+<script>
+function showPanel(id) {
+  ['passport','timeline','resistance'].forEach(p => {
+    document.getElementById('panel-'+p).className = 'panel' + (p === id ? ' visible' : '');
+  });
+  document.querySelectorAll('.strategy-tabs .stab').forEach((btn, i) => {
+    btn.className = 'stab' + (['passport','timeline','resistance'][i] === id ? ' active' : '');
+  });
+}
+
+function showPassport(role) {
+  ['owner','steward','usecase'].forEach(r => {
+    document.getElementById('passport-'+r).style.display = r === role ? 'block' : 'none';
+  });
+  ['owner','steward','usecase'].forEach(r => {
+    document.getElementById('pbtn-'+r).className = 'stab' + (r === role ? ' active' : '');
+  });
+}
+</script>
+<!-- OFFLINE_ICONS -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+  <symbol id="ti-alert-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+  </symbol>
+  <symbol id="ti-alert-triangle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z M12 9v4 M12 17h.01"/>
+  </symbol>
+  <symbol id="ti-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </symbol>
+  <symbol id="ti-arrows-left-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 10l-4 4 4 4 M17 10l4 4-4 4 M3 14h18"/>
+  </symbol>
+  <symbol id="ti-arrows-shuffle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 4l3 3-3 3 M18 20l3-3-3-3 M3 7h3a5 5 0 015 5 5 5 0 005 5h5 M3 17h3a5 5 0 005-5 5 5 0 015-5h5"/>
+  </symbol>
+  <symbol id="ti-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 16h6m-5 4h4M12 3C9.239 3 7 5.239 7 8c0 1.845.98 3.458 2.45 4.347L9 16h6l-.45-3.653C16.02 11.458 17 9.845 17 8c0-2.761-2.239-5-5-5z"/>
+  </symbol>
+  <symbol id="ti-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 12l5 5L20 7"/>
+  </symbol>
+  <symbol id="ti-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9l6 6 6-6"/>
+  </symbol>
+  <symbol id="ti-clipboard-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+  </symbol>
+  <symbol id="ti-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+  </symbol>
+  <symbol id="ti-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3C7.029 3 3 4.343 3 6v12c0 1.657 4.029 3 9 3s9-1.343 9-3V6c0-1.657-4.029-3-9-3z M3 6c0 1.657 4.029 3 9 3s9-1.343 9-3 M3 12c0 1.657 4.029 3 9 3s9-1.343 9-3"/>
+  </symbol>
+  <symbol id="ti-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7 M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+  </symbol>
+  <symbol id="ti-external-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 7H6a2 2 0 00-2 2v9a2 2 0 002 2h9a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+  </symbol>
+  <symbol id="ti-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z M12 9a3 3 0 100 6 3 3 0 000-6z"/>
+  </symbol>
+  <symbol id="ti-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z M13 2v7h7"/>
+  </symbol>
+  <symbol id="ti-help-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3 M12 17h.01"/>
+  </symbol>
+  <symbol id="ti-info-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z M12 16v-4 M12 8h.01"/>
+  </symbol>
+  <symbol id="ti-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 11H7a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2z M12 3a4 4 0 014 4v4H8V7a4 4 0 014-4z"/>
+  </symbol>
+  <symbol id="ti-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6"/>
+  </symbol>
+  <symbol id="ti-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+  </symbol>
+  <symbol id="ti-message-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+  </symbol>
+  <symbol id="ti-player-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 3l14 9-14 9V3z"/>
+  </symbol>
+  <symbol id="ti-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M23 4v6h-6 M1 20v-6h6 M3.51 9a9 9 0 0114.85-3.36L23 10 M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+  </symbol>
+  <symbol id="ti-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 19a8 8 0 100-16 8 8 0 000 16z M21 21l-4.35-4.35"/>
+  </symbol>
+  <symbol id="ti-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 15a3 3 0 100-6 3 3 0 000 6z M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+  </symbol>
+  <symbol id="ti-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+  </symbol>
+  <symbol id="ti-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+  </symbol>
+  <symbol id="ti-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M9 11a4 4 0 100-8 4 4 0 000 8z M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75"/>
+  </symbol>
+  <symbol id="ti-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 6L6 18M6 6l12 12"/>
+  </symbol>
+</svg>
+
+
+<script>
+(function(){
+  function replaceIcons(){
+    document.querySelectorAll('i[class]').forEach(function(el){
+      var classes = el.className.split(' ');
+      var iconClass = classes.find(function(c){ return c.startsWith('ti-') && c !== 'ti'; });
+      if(!iconClass) return;
+      var id = iconClass;
+      var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 24 24');
+      svg.setAttribute('fill','none');
+      svg.setAttribute('stroke','currentColor');
+      svg.setAttribute('stroke-width','2');
+      svg.setAttribute('stroke-linecap','round');
+      svg.setAttribute('stroke-linejoin','round');
+      svg.style.cssText = 'display:inline-block;width:1em;height:1em;vertical-align:-0.125em;flex-shrink:0;';
+      var use = document.createElementNS('http://www.w3.org/2000/svg','use');
+      use.setAttribute('href','#'+id);
+      svg.appendChild(use);
+      // Copy aria attributes
+      var ariaLabel = el.getAttribute('aria-label');
+      var ariaHidden = el.getAttribute('aria-hidden');
+      if(ariaHidden) svg.setAttribute('aria-hidden','true');
+      if(ariaLabel) svg.setAttribute('aria-label',ariaLabel);
+      // Copy color from parent computed style
+      el.parentNode.replaceChild(svg,el);
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', replaceIcons);
+  } else {
+    replaceIcons();
+  }
+})();
+</script>
+
+<!-- /OFFLINE_ICONS -->
+</body>
+</html>

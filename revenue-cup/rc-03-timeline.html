@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Cup — 4-Week Timeline</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;padding:24px 16px;min-height:100vh;}
+.container{max-width:720px;margin:0 auto;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:4px;}
+.page-title{font-size:22px;font-weight:500;color:#1C1C1E;margin-bottom:4px;}
+.page-sub{font-size:13px;color:#888;margin-bottom:24px;line-height:1.5;}
+.week-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.wtab{font-size:12px;font-weight:500;padding:6px 16px;border-radius:8px;border:1px solid #D8D8D6;background:transparent;color:#888;cursor:pointer;transition:all 0.15s;}
+.wtab.active{background:#fff;color:#1C1C1E;border-color:#ADADAB;}
+.week-panel{display:none;}
+.week-panel.visible{display:block;}
+.week-header{border-radius:12px;padding:16px 20px;margin-bottom:16px;}
+.wh-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.wh-title{font-size:17px;font-weight:500;margin-bottom:4px;}
+.wh-sub{font-size:13px;opacity:0.8;}
+.timeline-list{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:14px;position:relative;}
+.tl-item:not(:last-child) .tl-line{position:absolute;left:17px;top:36px;bottom:0;width:1px;background:#E8E8E6;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:36px;flex-shrink:0;padding-top:2px;}
+.tl-dot{width:12px;height:12px;border-radius:50%;border:2px solid;background:#F7F7F5;margin-top:4px;}
+.tl-time{font-size:10px;color:#888;margin-top:4px;white-space:nowrap;}
+.tl-body{flex:1;background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:12px 14px;margin-bottom:10px;}
+.tl-title{font-size:13px;font-weight:500;color:#1C1C1E;margin-bottom:4px;}
+.tl-desc{font-size:12px;color:#666;line-height:1.5;margin-bottom:8px;}
+.tl-who{display:flex;gap:6px;flex-wrap:wrap;}
+.who-badge{font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;}
+.anchor-note{background:#E6F1FB;border-radius:8px;padding:10px 14px;font-size:13px;color:#0C447C;line-height:1.5;margin-bottom:16px;display:flex;gap:8px;align-items:flex-start;}
+.anchor-note b{font-weight:500;}
+.design-note{background:#F7F7F5;border-radius:8px;padding:10px 14px;font-size:12px;color:#888;line-height:1.55;margin-top:16px;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="eyebrow">Revenue Cup · Design</div>
+<div class="page-title">4-week challenge structure</div>
+<div class="page-sub">Each week builds on the last. Power BI is introduced in week 3 — after ideas are formed and motivation is high, not before.</div>
+
+<div class="week-tabs">
+  <button class="wtab active" onclick="showWeek('w1')">Week 1</button>
+  <button class="wtab" onclick="showWeek('w2')">Week 2</button>
+  <button class="wtab" onclick="showWeek('w3')">Week 3</button>
+  <button class="wtab" onclick="showWeek('w4')">Week 4</button>
+</div>
+
+<div id="week-w1" class="week-panel visible">
+  <div class="week-header" style="background:#E6F1FB;">
+    <div class="wh-badge" style="background:#185FA5;color:#fff;">Week 1</div>
+    <div class="wh-title" style="color:#0C447C;">Anchor your idea to live work</div>
+    <div class="wh-sub" style="color:#185FA5;">No data required. No analysis required. Just name the work anchor.</div>
+  </div>
+  <div class="anchor-note">
+    <div><b>Work anchor:</b> Every team must name a live client engagement, active project, or real business situation they're already working on. The idea must connect to it. This single constraint prevents abstract thinking and ensures every idea is immediately evaluable.</div>
+  </div>
+  <div class="timeline-list">
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#185FA5;background:#E6F1FB;"></div><div class="tl-time">Mon</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Leadership kickoff</div>
+        <div class="tl-desc">Senior sponsor launches the Revenue Cup. Names the incubation prize. Signals this is real, not symbolic.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E6F1FB;color:#0C447C;">Leadership</span><span class="who-badge" style="background:#EFEFED;color:#444441;">All teams</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#1D9E75;background:#E1F5EE;"></div><div class="tl-time">Wed</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Work anchor nomination</div>
+        <div class="tl-desc">Each team submits their work anchor — the live engagement their idea connects to. One sentence. No idea yet required.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E1F5EE;color:#085041;">Team leads</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot" style="border-color:#BA7517;background:#FAEEDA;"></div><div class="tl-time">Fri</div></div>
+      <div class="tl-body">
+        <div class="tl-title">First idea submission</div>
+        <div class="tl-desc">Teams submit a rough idea connected to their anchor. No data required. Scoreboard goes live with participation shown — not scores yet.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#FAEEDA;color:#633806;">All teams</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="design-note">Design principle: the work anchor is the most important design decision in week 1. It removes the biggest barrier to participation — "I don't know what to submit" — by giving teams something concrete to connect to before they've developed an idea.</div>
+</div>
+
+<div id="week-w2" class="week-panel">
+  <div class="week-header" style="background:#E1F5EE;">
+    <div class="wh-badge" style="background:#1D9E75;color:#fff;">Week 2</div>
+    <div class="wh-title" style="color:#085041;">Scoreboard goes live — effort becomes visible</div>
+    <div class="wh-sub" style="color:#0F6E56;">Peer voting opens. Teams see where they stand. The competition begins.</div>
+  </div>
+  <div class="timeline-list">
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#1D9E75;background:#E1F5EE;"></div><div class="tl-time">Mon</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Scoreboard published with initial scores</div>
+        <div class="tl-desc">All submitted ideas appear on the live scoreboard. Initial scores based on work anchor quality and idea clarity — not data yet.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E1F5EE;color:#085041;">L&D / facilitator</span><span class="who-badge" style="background:#EFEFED;color:#444441;">All teams</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#534AB7;background:#EEEDFE;"></div><div class="tl-time">Tue–Thu</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Peer voting open</div>
+        <div class="tl-desc">All participants can vote on ideas from other teams. Votes contribute to the Revenue Potential and Customer Impact scores. Maximum 3 votes per person.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#EEEDFE;color:#3C3489;">All participants</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot" style="border-color:#BA7517;background:#FAEEDA;"></div><div class="tl-time">Fri</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Mid-point nudge</div>
+        <div class="tl-desc">Teams not yet on the scoreboard receive a one-line re-engagement message: "Scores update Friday — it's not too late to submit." No chase, no pressure.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#FAEEDA;color:#633806;">Facilitator</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="design-note">Design principle: making effort visible through the scoreboard is the motivation mechanism. Teams don't compete for the prize in week 2 — they compete for visibility. That's enough to re-engage dormant teams without a direct chase.</div>
+</div>
+
+<div id="week-w3" class="week-panel">
+  <div class="week-header" style="background:#FAEEDA;">
+    <div class="wh-badge" style="background:#EF9F27;color:#fff;">Week 3</div>
+    <div class="wh-title" style="color:#633806;">Power BI job aid released — data strengthens ideas</div>
+    <div class="wh-sub" style="color:#854F0B;">The tool arrives when motivation is highest and the task is clear.</div>
+  </div>
+  <div class="timeline-list">
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#EF9F27;background:#FAEEDA;"></div><div class="tl-time">Mon</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Power BI job aid released</div>
+        <div class="tl-desc">A single one-page guide: three Power BI views that turn client data into a revenue argument. Available on demand — not pushed in week 1 when no one has a question yet.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#FAEEDA;color:#633806;">All teams</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#185FA5;background:#E6F1FB;"></div><div class="tl-time">Wed</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Optional Power BI office hours</div>
+        <div class="tl-desc">30-minute drop-in session. Teams can bring their idea and get help finding the right data view. Not mandatory — removes the barrier without creating an obligation.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E6F1FB;color:#0C447C;">Data team</span><span class="who-badge" style="background:#EFEFED;color:#444441;">Optional</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot" style="border-color:#1D9E75;background:#E1F5EE;"></div><div class="tl-time">Fri</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Updated submission with data</div>
+        <div class="tl-desc">Teams resubmit their idea with at least one data point from Power BI. Scores update on the scoreboard. Innovation Index and Future Readiness scores now visible.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E1F5EE;color:#085041;">All teams</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="design-note">Design principle: Power BI is introduced in week 3 — not week 1. By now teams have an idea worth supporting with data. The job aid takes 8 minutes to read. The office hours are optional. The skill gap closes at the exact moment it needs to.</div>
+</div>
+
+<div id="week-w4" class="week-panel">
+  <div class="week-header" style="background:#EEEDFE;">
+    <div class="wh-badge" style="background:#534AB7;color:#fff;">Week 4</div>
+    <div class="wh-title" style="color:#3C3489;">Pitch day — winner enters incubation</div>
+    <div class="wh-sub" style="color:#534AB7;">The programme ends with real stakes and a real outcome.</div>
+  </div>
+  <div class="timeline-list">
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#534AB7;background:#EEEDFE;"></div><div class="tl-time">Mon–Wed</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Final submissions locked</div>
+        <div class="tl-desc">Scoreboard freezes. Top 3 teams confirmed. Pitch preparation time — facilitator available for coaching sessions on request.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#EEEDFE;color:#3C3489;">Top 3 teams</span><span class="who-badge" style="background:#EFEFED;color:#444441;">Facilitator</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-line"></div>
+      <div class="tl-left"><div class="tl-dot" style="border-color:#D85A30;background:#FAECE7;"></div><div class="tl-time">Thu</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Pitch day — top 3 present to leadership</div>
+        <div class="tl-desc">Each team presents their idea in 8 minutes to the senior leadership panel. Q&A follows. Winner announced same day.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#FAECE7;color:#712B13;">Top 3 teams</span><span class="who-badge" style="background:#E6F1FB;color:#0C447C;">Leadership panel</span></div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot" style="border-color:#1D9E75;background:#E1F5EE;"></div><div class="tl-time">Fri</div></div>
+      <div class="tl-body">
+        <div class="tl-title">Winner enters incubation programme</div>
+        <div class="tl-desc">Winning team receives 6 weeks of structured coaching to develop their idea into a business case. Named incubation support — not a trophy.</div>
+        <div class="tl-who"><span class="who-badge" style="background:#E1F5EE;color:#085041;">Winning team</span><span class="who-badge" style="background:#E6F1FB;color:#0C447C;">Incubation lead</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="design-note">Design principle: the prize is incubation, not recognition. A real pathway from idea to business case is what makes the Revenue Cup worth four weeks of effort. Without this, the challenge is an event. With it, it's a system.</div>
+</div>
+
+</div>
+<script>
+function showWeek(id){
+  ['w1','w2','w3','w4'].forEach(w=>{
+    document.getElementById('week-'+w).className='week-panel'+(w===id?' visible':'');
+  });
+  document.querySelectorAll('.wtab').forEach((btn,i)=>{
+    btn.className='wtab'+(['w1','w2','w3','w4'][i]===id?' active':'');
+  });
+}
+</script>
+</body>
+</html>

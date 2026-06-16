@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Cup — Live Scoreboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;padding:24px 16px;min-height:100vh;}
+.container{max-width:740px;margin:0 auto;}
+.header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;}
+.header-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:4px;}
+.header-title{font-size:22px;font-weight:500;color:#1C1C1E;}
+.week-badge{font-size:12px;font-weight:500;color:#185FA5;background:#E6F1FB;padding:5px 14px;border-radius:8px;}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px;}
+.metric{background:#EFEFED;border-radius:8px;padding:14px;}
+.metric-label{font-size:12px;color:#888;margin-bottom:6px;}
+.metric-value{font-size:22px;font-weight:500;color:#1C1C1E;}
+.metric-delta{font-size:12px;color:#1D9E75;margin-top:3px;}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#888;}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+.section-label{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#888;margin-bottom:12px;}
+.team-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+.team-card{background:#fff;border:1px solid #E8E8E6;border-radius:12px;padding:14px 18px;cursor:pointer;transition:border-color 0.15s;}
+.team-card:hover{border-color:#C8C8C6;}
+.team-card.expanded{border-color:#ADADAB;}
+.team-row{display:flex;align-items:center;gap:12px;}
+.rank{font-size:13px;font-weight:500;color:#888;min-width:28px;}
+.rank.gold{color:#B87D00;}.rank.silver{color:#707070;}.rank.bronze{color:#8B4C1A;}
+.avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;}
+.team-name{font-size:14px;font-weight:500;color:#1C1C1E;}
+.team-dept{font-size:12px;color:#888;}
+.score-total{font-size:18px;font-weight:500;color:#1C1C1E;min-width:36px;text-align:right;}
+.badge{font-size:11px;font-weight:500;padding:3px 9px;border-radius:6px;}
+.bar-wrap{flex:1;height:6px;background:#EFEFED;border-radius:3px;min-width:60px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease;}
+.sub-scores{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid #EFEFED;}
+.sub-item{display:flex;flex-direction:column;gap:5px;}
+.sub-label{font-size:11px;color:#888;}
+.sub-row{display:flex;align-items:center;gap:8px;}
+.sub-val{font-size:13px;font-weight:500;color:#1C1C1E;min-width:28px;}
+.vote-row{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid #EFEFED;}
+.idea-text{font-size:12px;color:#888;flex:1;font-style:italic;}
+.vote-btn{font-size:12px;color:#888;background:#F7F7F5;border:1px solid #E8E8E6;border-radius:7px;padding:5px 12px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s;}
+.vote-btn.voted{color:#185FA5;background:#E6F1FB;border-color:#B5D4F4;}
+.vote-count{font-size:12px;color:#888;white-space:nowrap;}
+.footer{font-size:12px;color:#888;text-align:center;padding-top:16px;border-top:1px solid #E8E8E6;margin-top:8px;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <div>
+    <div class="header-eyebrow">Revenue Cup</div>
+    <div class="header-title">Revenue potential scoreboard</div>
+  </div>
+  <div class="week-badge">Week 3 of 4</div>
+</div>
+<div class="metrics">
+  <div class="metric"><div class="metric-label">Teams participating</div><div class="metric-value">6</div><div class="metric-delta">↑ 2 from week 1</div></div>
+  <div class="metric"><div class="metric-label">Ideas submitted</div><div class="metric-value">14</div><div class="metric-delta">↑ 8 from week 1</div></div>
+  <div class="metric"><div class="metric-label">Power BI reports used</div><div class="metric-value">9</div><div class="metric-delta">↑ 7 from week 1</div></div>
+  <div class="metric"><div class="metric-label">Peer votes cast</div><div class="metric-value">47</div><div class="metric-delta">↑ 32 from week 1</div></div>
+</div>
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#378ADD"></div>Innovation index</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>Revenue potential</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#D4537E"></div>Customer impact</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#BA7517"></div>Future readiness</div>
+</div>
+<div class="section-label">Team rankings</div>
+<div class="team-list" id="teamList"></div>
+<div class="footer">Click any team to see score breakdown and cast your vote &nbsp;·&nbsp; Scores update daily</div>
+</div>
+<script>
+const teams=[
+  {name:"Digital Services",dept:"Service Innovation",initials:"DS",bg:"#E6F1FB",fg:"#0C447C",scores:{innovation:88,revenue:91,customer:76,future:83},idea:"Predictive maintenance SaaS bundle for SME clients",votes:18,badge:"Top revenue pick",badgeBg:"#E6F1FB",badgeFg:"#0C447C"},
+  {name:"Mobility & ADAS",dept:"Automotive Testing",initials:"MA",bg:"#EAF3DE",fg:"#3B6D11",scores:{innovation:82,revenue:78,customer:85,future:90},idea:"AI-assisted ADAS validation — reduces test cycles by 30%",votes:14,badge:"Future leader",badgeBg:"#EAF3DE",badgeFg:"#27500A"},
+  {name:"Industrial Safety",dept:"Hazard Assessment",initials:"IS",bg:"#FAEEDA",fg:"#854F0B",scores:{innovation:74,revenue:80,customer:79,future:72},idea:"Risk scoring API for insurance underwriters",votes:9,badge:null},
+  {name:"Certification Lab",dept:"Product Testing",initials:"CL",bg:"#EEEDFE",fg:"#3C3489",scores:{innovation:70,revenue:68,customer:82,future:74},idea:"Unified cert dashboard across all active engagements",votes:5,badge:null},
+  {name:"Training Academy",dept:"L&D",initials:"TA",bg:"#FBEAF0",fg:"#72243E",scores:{innovation:65,revenue:60,customer:72,future:68},idea:"Revenue literacy micro-credential for client-facing engineers",votes:1,badge:null},
+  {name:"ESG & Compliance",dept:"Sustainability",initials:"EC",bg:"#E1F5EE",fg:"#085041",scores:{innovation:58,revenue:55,customer:63,future:77},idea:"ESG readiness scorecard — monetise advisory services",votes:0,badge:null},
+];
+const subKeys=["innovation","revenue","customer","future"];
+const subColors={innovation:"#378ADD",revenue:"#1D9E75",customer:"#D4537E",future:"#BA7517"};
+const subLabels={innovation:"Innovation index",revenue:"Revenue potential",customer:"Customer impact",future:"Future readiness"};
+const rankSymbols=["1st","2nd","3rd"];
+const rankClasses=["gold","silver","bronze"];
+const voted={};
+function avg(t){return Math.round((t.scores.innovation+t.scores.revenue+t.scores.customer+t.scores.future)/4);}
+teams.sort((a,b)=>avg(b)-avg(a));
+function render(){
+  const list=document.getElementById("teamList");
+  list.innerHTML="";
+  teams.forEach((team,i)=>{
+    const score=avg(team);
+    const card=document.createElement("div");
+    card.className="team-card"+(team._open?" expanded":"");
+    let subHTML="";
+    if(team._open){
+      subHTML+='<div class="sub-scores">'+subKeys.map(k=>`<div class="sub-item"><div class="sub-label">${subLabels[k]}</div><div class="sub-row"><div class="sub-val">${team.scores[k]}</div><div class="bar-wrap"><div class="bar-fill" style="width:${team.scores[k]}%;background:${subColors[k]};"></div></div></div></div>`).join("")+'</div>';
+      subHTML+=`<div class="vote-row"><span class="idea-text">"${team.idea}"</span><button class="vote-btn${voted[i]?" voted":""}" onclick="castVote(event,${i})">👍 ${voted[i]?"Voted":"Vote"}</button><span class="vote-count">${team.votes} vote${team.votes!==1?"s":""}</span></div>`;
+    }
+    card.innerHTML=`<div class="team-row"><div class="rank ${i<3?rankClasses[i]:""}">${i<3?rankSymbols[i]:(i+1)+"th"}</div><div class="avatar" style="background:${team.bg};color:${team.fg};">${team.initials}</div><div style="flex:1;min-width:0;"><div class="team-name">${team.name}</div><div class="team-dept">${team.dept}</div></div>${team.badge?`<span class="badge" style="background:${team.badgeBg};color:${team.badgeFg};">${team.badge}</span>`:""}<div style="display:flex;align-items:center;gap:10px;"><div class="bar-wrap" style="width:80px;"><div class="bar-fill" id="bar-${i}" style="width:0%;background:#378ADD;"></div></div><div class="score-total">${score}</div></div></div>${subHTML}`;
+    card.addEventListener("click",e=>{if(e.target.closest(".vote-btn"))return;team._open=!team._open;render();});
+    list.appendChild(card);
+  });
+  setTimeout(()=>{teams.forEach((_,i)=>{const b=document.getElementById("bar-"+i);if(b)b.style.width=avg(teams[i])+"%";});},50);
+}
+window.castVote=function(e,i){e.stopPropagation();if(!voted[i]){voted[i]=true;teams[i].votes++;render();}};
+render();
+</script>
+</body>
+</html>

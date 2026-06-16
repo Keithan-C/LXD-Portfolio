@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Cup — Gap Analysis & Community Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;padding:24px 16px;min-height:100vh;}
+.container{max-width:720px;margin:0 auto;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:4px;}
+.page-title{font-size:22px;font-weight:500;color:#1C1C1E;margin-bottom:4px;}
+.page-sub{font-size:13px;color:#888;margin-bottom:1.5rem;line-height:1.5;padding-bottom:1rem;border-bottom:0.5px solid #E8E8E6;}
+.main-tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap;}
+.tab{font-size:12px;font-weight:500;padding:6px 14px;border-radius:8px;border:0.5px solid #D8D8D6;background:transparent;color:#888;cursor:pointer;transition:all 0.15s;}
+.tab.active{background:#fff;color:#1C1C1E;border-color:#ADADAB;}
+.panel{display:none;}
+.panel.visible{display:block;}
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.5rem;}
+.gap-card{border-radius:12px;padding:1rem 1.25rem;cursor:pointer;border:1px solid transparent;transition:all 0.15s;}
+.gap-card:hover{border-color:rgba(0,0,0,0.12);}
+.gap-card.active{border-width:2px;}
+.gap-name{font-size:13px;font-weight:500;margin-bottom:4px;}
+.gap-badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.gap-desc{font-size:12px;line-height:1.55;}
+.gap-detail{border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;border:1px solid #E8E8E6;background:#fff;display:none;}
+.gap-detail.visible{display:block;}
+.gap-detail-title{font-size:14px;font-weight:500;color:#1C1C1E;margin-bottom:6px;}
+.gap-detail-body{font-size:13px;color:#666;line-height:1.6;margin-bottom:10px;}
+.design-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;font-size:13px;color:#666;}
+.design-row-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;margin-bottom:1.5rem;}
+.stat-card{background:#EFEFED;border-radius:8px;padding:12px;text-align:center;}
+.stat-num{font-size:22px;font-weight:500;color:#1C1C1E;}
+.stat-lbl{font-size:11px;color:#888;margin-top:2px;}
+.fb-tabs{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;}
+.fb-tab{font-size:12px;font-weight:500;padding:5px 12px;border-radius:8px;border:0.5px solid #D8D8D6;background:transparent;color:#888;cursor:pointer;}
+.fb-tab.active{background:#fff;color:#1C1C1E;border-color:#ADADAB;}
+.fb-form{display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem;}
+.fb-row{display:flex;gap:8px;}
+.fb-select{flex:1;padding:8px 10px;border:0.5px solid #D8D8D6;border-radius:8px;font-family:inherit;font-size:13px;background:#fff;color:#1C1C1E;}
+.fb-input{flex:2;padding:8px 12px;border:0.5px solid #D8D8D6;border-radius:8px;font-family:inherit;font-size:13px;color:#1C1C1E;background:#fff;}
+.fb-textarea{width:100%;padding:8px 12px;border:0.5px solid #D8D8D6;border-radius:8px;font-family:inherit;font-size:13px;color:#1C1C1E;background:#fff;resize:vertical;}
+.fb-submit{font-size:13px;font-weight:500;padding:8px 20px;border-radius:8px;background:#1C1C1E;border:none;color:#fff;cursor:pointer;align-self:flex-end;}
+.fb-submit:hover{background:#3C3C3C;}
+.fb-feed{display:flex;flex-direction:column;gap:10px;}
+.fb-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:12px;padding:12px 14px;}
+.fb-card-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.fb-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;}
+.fb-name{font-size:12px;font-weight:500;color:#1C1C1E;}
+.fb-meta{font-size:11px;color:#888;}
+.fb-text{font-size:13px;color:#1C1C1E;line-height:1.5;margin-bottom:8px;}
+.fb-tag{font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;display:inline-block;}
+.fb-like{font-size:12px;color:#888;background:none;border:0.5px solid #E8E8E6;border-radius:7px;padding:4px 10px;cursor:pointer;margin-top:6px;}
+.fb-like.liked{color:#185FA5;border-color:#B5D4F4;background:#E6F1FB;}
+.empty-state{font-size:13px;color:#888;padding:1rem 0;font-style:italic;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="eyebrow">Revenue Cup · Design thinking</div>
+<div class="page-title">Gap analysis & community dashboard</div>
+<div class="page-sub">Why ideas stay invisible — and how we designed to change that. Plus a live community dashboard for tips, hidden Power BI features, and feedback.</div>
+
+<div class="main-tabs">
+  <button class="tab active" onclick="showMain('gaps')">Gap analysis</button>
+  <button class="tab" onclick="showMain('community')">Community dashboard</button>
+</div>
+
+<div id="panel-gaps" class="panel visible">
+  <div class="gap-grid" id="gapGrid">
+    <div class="gap-card" id="gc-skill" onclick="selectGap('skill')" style="background:#FAEEDA;">
+      <div class="gap-name" style="color:#633806;">Skill gap</div>
+      <div class="gap-badge" style="background:#EF9F27;color:#412402;">Primary</div>
+      <div class="gap-desc" style="color:#854F0B;">Teams can't build a data-backed business case. Power BI sits open but unused — not because they don't want to, but because nobody showed them which three views actually matter.</div>
+    </div>
+    <div class="gap-card" id="gc-motivation" onclick="selectGap('motivation')" style="background:#EEEDFE;">
+      <div class="gap-name" style="color:#3C3489;">Motivation gap</div>
+      <div class="gap-badge" style="background:#7F77DD;color:#EEEDFE;">Primary</div>
+      <div class="gap-desc" style="color:#534AB7;">No channel existed from idea to incubation. If trying leads nowhere, people stop trying. The gap isn't apathy — it's the absence of a reason to act.</div>
+    </div>
+    <div class="gap-card" id="gc-habit" onclick="selectGap('habit')" style="background:#E1F5EE;">
+      <div class="gap-name" style="color:#085041;">Habit gap</div>
+      <div class="gap-badge" style="background:#5DCAA5;color:#04342C;">Secondary</div>
+      <div class="gap-desc" style="color:#0F6E56;">Opening Power BI isn't a habit for non-technical teams. One exposure isn't enough. The Revenue Cup creates four weeks of repeated, low-stakes practice with real stakes at the end.</div>
+    </div>
+    <div class="gap-card" id="gc-environment" onclick="selectGap('environment')" style="background:#FAECE7;">
+      <div class="gap-name" style="color:#712B13;">Environment gap</div>
+      <div class="gap-badge" style="background:#D85A30;color:#FAECE7;">Root cause</div>
+      <div class="gap-desc" style="color:#993C1D;">No structured pathway from insight to incubation existed. Fix the environment first — motivation, habit, and skill follow naturally.</div>
+    </div>
+  </div>
+  <div class="gap-detail" id="gapDetail"></div>
+</div>
+
+<div id="panel-community" class="panel">
+  <div class="stat-row">
+    <div class="stat-card"><div class="stat-num" id="s-tips">4</div><div class="stat-lbl">Tips shared</div></div>
+    <div class="stat-card"><div class="stat-num" id="s-features">3</div><div class="stat-lbl">Hidden features</div></div>
+    <div class="stat-card"><div class="stat-num" id="s-votes">12</div><div class="stat-lbl">Helpful votes</div></div>
+    <div class="stat-card"><div class="stat-num" id="s-members">7</div><div class="stat-lbl">Contributors</div></div>
+  </div>
+  <div class="fb-tabs">
+    <button class="fb-tab active" id="ftab-all" onclick="setFTab('all')">All</button>
+    <button class="fb-tab" id="ftab-tip" onclick="setFTab('tip')">Tips</button>
+    <button class="fb-tab" id="ftab-feature" onclick="setFTab('feature')">Hidden features</button>
+    <button class="fb-tab" id="ftab-feedback" onclick="setFTab('feedback')">Feedback</button>
+  </div>
+  <div class="fb-form">
+    <div class="fb-row">
+      <select class="fb-select" id="fb-type"><option value="tip">Tip</option><option value="feature">Hidden feature</option><option value="feedback">Feedback</option></select>
+      <input class="fb-input" id="fb-name" placeholder="Your name (optional)" type="text">
+    </div>
+    <textarea class="fb-textarea" id="fb-text" rows="3" placeholder="Share a tip, a hidden Power BI feature, or feedback about the Revenue Cup..."></textarea>
+    <button class="fb-submit" onclick="submitPost()">Submit</button>
+  </div>
+  <div class="fb-feed" id="feedList"></div>
+</div>
+</div>
+
+<script>
+const gapDetails={
+  skill:{title:'Skill gap — limited Power BI usage',body:"The skill gap is specific: teams don't lack intelligence or domain knowledge. They lack the two or three Power BI views that turn client data into a revenue argument. The Revenue Cup delivers a single job aid — 3 views, one page — in week 3, when motivation is highest and the task is clear.",designs:['3-view Power BI job aid — available on demand in week 3, not pushed in week 1','Timed to moment of need — when the idea is formed and data would strengthen it','Optional office hours — removes the barrier without creating an obligation'],color:'#633806',accent:'#EF9F27'},
+  motivation:{title:'Motivation gap — no channel, no reason to try',body:"People aren't unmotivated. They're rational. When effort has no visible path to outcome, effort stops. The Revenue Cup creates a clear line from idea to incubation — a named programme with real coaching support for the winner. The scoreboard makes effort visible. Peer voting makes recognition social.",designs:['Named incubation programme — the reward is real and explicit, not symbolic','Live scoreboard from day 1 — effort is visible, progress is trackable','Peer voting — recognition is social, not just top-down'],color:'#3C3489',accent:'#7F77DD'},
+  habit:{title:'Habit gap — one exposure isn\'t enough',body:"The Revenue Cup creates a four-week arc of repeated, low-stakes practice. Week 1 you submit a rough idea. Week 2 you see the scoreboard. Week 3 you open Power BI. Week 4 you pitch. Each week builds on the last. By week 4, opening Power BI to check a client metric feels normal.",designs:['4-week arc — spaced repetition built into the challenge structure','Progressive complexity — no data required in week 1, data essential by week 3','Mid-point nudge — re-activates dormant teams without a direct chase'],color:'#085041',accent:'#5DCAA5'},
+  environment:{title:'Environment gap — the root cause',body:"This is where most L&D programmes fail: they treat skill or motivation as the problem when the environment is the actual blocker. No submission channel. No incubation pathway. No leadership signal that ideas matter. The Revenue Cup is fundamentally an environment redesign. The learning is a side effect of fixing the system.",designs:['Work anchor — connects every idea to live client work, not a hypothetical','Leadership launch — sends the signal that the environment now supports ideas','Scoreboard as infrastructure — the channel that didn\'t exist before'],color:'#712B13',accent:'#D85A30'},
+};
+
+function selectGap(key){
+  ['skill','motivation','habit','environment'].forEach(k=>{
+    document.getElementById('gc-'+k).style.opacity=k===key?'1':'0.45';
+  });
+  const d=gapDetails[key];
+  const el=document.getElementById('gapDetail');
+  el.className='gap-detail visible';
+  el.style.borderColor=d.accent;
+  el.innerHTML=`<div class="gap-detail-title" style="color:${d.color};">${d.title}</div><div class="gap-detail-body">${d.body}</div><div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:${d.color};margin-bottom:8px;">Design responses</div>${d.designs.map(r=>`<div class="design-row"><div class="design-row-dot" style="background:${d.accent};"></div><span>${r}</span></div>`).join('')}`;
+}
+
+function showMain(id){
+  ['gaps','community'].forEach(p=>{document.getElementById('panel-'+p).className='panel'+(p===id?' visible':'');});
+  document.querySelectorAll('.main-tabs .tab').forEach((btn,i)=>{btn.className='tab'+(['gaps','community'][i]===id?' active':'');});
+}
+
+const tagStyles={tip:{bg:'#E6F1FB',color:'#0C447C',label:'Tip'},feature:{bg:'#E1F5EE',color:'#085041',label:'Hidden feature'},feedback:{bg:'#EEEDFE',color:'#3C3489',label:'Feedback'}};
+const avatarColors=[{bg:'#E6F1FB',color:'#0C447C'},{bg:'#E1F5EE',color:'#085041'},{bg:'#EEEDFE',color:'#3C3489'},{bg:'#FAEEDA',color:'#633806'},{bg:'#FAECE7',color:'#712B13'}];
+let posts=[
+  {id:1,type:'feature',name:'Andreea M.',initials:'AM',avatar:0,text:'The "Decomposition tree" visual in Power BI lets you drill into revenue by region, team, and client in one click. Almost nobody uses it — but it makes your pitch slide write itself.',likes:5,liked:false,time:'2 days ago'},
+  {id:2,type:'tip',name:'Lars B.',initials:'LB',avatar:3,text:"Don't start with the data. Start with the question: 'What would I need to show a CFO in 60 seconds?' Then work backwards. Took me from 2 hours to 20 minutes.",likes:4,liked:false,time:'1 day ago'},
+  {id:3,type:'feedback',name:'Anonymous',initials:'?',avatar:2,text:'The work anchor step is the most underrated part of this. Picking a real project first made everything else feel much less like extra work.',likes:2,liked:false,time:'3 hours ago'},
+  {id:4,type:'feature',name:'Tina K.',initials:'TK',avatar:1,text:'"Smart narrative" in Power BI auto-generates a plain-language summary of your data. Great for people who aren\'t confident interpreting charts.',likes:1,liked:false,time:'1 hour ago'},
+];
+let nextId=5;
+let currentFTab='all';
+
+function setFTab(tab){
+  currentFTab=tab;
+  ['all','tip','feature','feedback'].forEach(t=>{document.getElementById('ftab-'+t).className='fb-tab'+(t===tab?' active':'');});
+  renderFeed();
+}
+
+function renderFeed(){
+  const filtered=currentFTab==='all'?posts:posts.filter(p=>p.type===currentFTab);
+  const list=document.getElementById('feedList');
+  if(!filtered.length){list.innerHTML='<div class="empty-state">No posts yet in this category.</div>';return;}
+  list.innerHTML=filtered.slice().reverse().map(p=>{
+    const av=avatarColors[p.avatar];const tag=tagStyles[p.type];
+    return `<div class="fb-card"><div class="fb-card-header"><div class="fb-avatar" style="background:${av.bg};color:${av.color};">${p.initials}</div><div><div class="fb-name">${p.name}</div><div class="fb-meta">${p.time}</div></div><span class="fb-tag" style="background:${tag.bg};color:${tag.color};margin-left:auto;">${tag.label}</span></div><div class="fb-text">${p.text}</div><button class="fb-like${p.liked?' liked':''}" onclick="toggleLike(${p.id})">👍 ${p.likes}</button></div>`;
+  }).join('');
+}
+
+function toggleLike(id){
+  const p=posts.find(x=>x.id===id);if(!p)return;
+  p.liked=!p.liked;p.likes+=p.liked?1:-1;
+  document.getElementById('s-votes').textContent=posts.reduce((a,b)=>a+b.likes,0);
+  renderFeed();
+}
+
+function submitPost(){
+  const type=document.getElementById('fb-type').value;
+  const name=document.getElementById('fb-name').value.trim()||'Anonymous';
+  const text=document.getElementById('fb-text').value.trim();
+  if(!text)return;
+  const initials=name==='Anonymous'?'?':name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  posts.push({id:nextId++,type,name,initials,avatar:Math.floor(Math.random()*avatarColors.length),text,likes:0,liked:false,time:'just now'});
+  document.getElementById('fb-name').value='';
+  document.getElementById('fb-text').value='';
+  const counts={tip:0,feature:0,feedback:0};
+  posts.forEach(p=>{if(counts[p.type]!==undefined)counts[p.type]++;});
+  document.getElementById('s-tips').textContent=counts.tip;
+  document.getElementById('s-features').textContent=counts.feature;
+  document.getElementById('s-members').textContent=new Set(posts.map(p=>p.name)).size;
+  if(currentFTab!=='all'&&currentFTab!==type)setFTab(type);else renderFeed();
+}
+
+renderFeed();
+</script>
+</body>
+</html>

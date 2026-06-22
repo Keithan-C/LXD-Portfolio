@@ -3,580 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Intelligence Challenge — Commercial Track</title>
+<title>The Revenue Cup — Learning Design Case Study</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --ink: #0F0F0D;
-  --ink-mid: #3A3A36;
-  --ink-light: #6B6A64;
-  --rule: #E2E0D8;
-  --bg: #F8F7F3;
-  --surface: #FFFFFF;
-  --accent: #1A5C38;
-  --accent-lt: #E6EFE9;
-  --accent-rule: #9FD4B8;
-  --warn: #7A4500;
-  --warn-lt: #FDF5E6;
-  --blue: #0E2D6B;
-  --blue-lt: #E8EDF8;
-  --gold: #7A5200;
-  --gold-lt: #FDF6E3;
-}
-
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  min-height: 100vh;
-}
-
-.page {
-  max-width: 800px;
-  margin: 0 auto;
-  background: var(--surface);
-  min-height: 100vh;
-  padding: 52px 48px 72px;
-}
-
-/* ── MASTHEAD ── */
-.masthead {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: start;
-  padding-bottom: 20px;
-  margin-bottom: 28px;
-  border-bottom: 3px solid var(--ink);
-}
-
-.eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-h1 {
-  font-size: 38px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: var(--ink);
-}
-
-h1 em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.tagline {
-  font-size: 13px;
-  color: var(--ink-light);
-  margin-top: 8px;
-  line-height: 1.5;
-}
-
-.contact {
-  text-align: right;
-  font-size: 12px;
-  color: var(--ink-mid);
-  line-height: 1.8;
-  padding-top: 4px;
-}
-
-.contact strong { display: block; font-weight: 700; color: var(--ink); font-size: 13px; }
-.contact a { color: var(--accent); text-decoration: none; }
-
-/* ── HONEST FRAMING ── */
-.honest-bar {
-  background: var(--warn-lt);
-  border-left: 4px solid var(--warn);
-  padding: 14px 18px;
-  margin-bottom: 28px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-.honest-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--warn);
-  white-space: nowrap;
-  padding-top: 2px;
-  flex-shrink: 0;
-}
-
-.honest-text {
-  font-size: 13px;
-  color: var(--ink);
-  line-height: 1.6;
-}
-
-/* ── PROBLEM ── */
-.problem {
-  background: var(--ink);
-  color: rgba(255,255,255,0.9);
-  padding: 18px 22px;
-  margin-bottom: 28px;
-}
-
-.problem-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 8px;
-}
-
-.problem-text {
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-/* ── SECTION HEADER ── */
-.sh {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 8px;
-  margin-bottom: 18px;
-}
-
-/* ── OPENING SENTENCE BOX ── */
-.opening-box {
-  background: var(--accent-lt);
-  border-left: 3px solid var(--accent);
-  padding: 14px 18px;
-  margin-bottom: 28px;
-}
-
-.opening-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-.opening-text {
-  font-size: 14px;
-  color: var(--ink);
-  line-height: 1.6;
-  font-style: italic;
-}
-
-/* ── WEEKS ── */
-.weeks {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 0;
-  border: 1px solid var(--rule);
-  margin-bottom: 28px;
-}
-
-.week {
-  padding: 14px;
-  border-right: 1px solid var(--rule);
-}
-
-.week:last-child { border-right: none; }
-
-.week.hl {
-  background: var(--accent-lt);
-  border-top: 3px solid var(--accent);
-}
-
-.wnum {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 5px;
-}
-
-.wtitle {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 5px;
-  line-height: 1.3;
-}
-
-.wdesc {
-  font-size: 11px;
-  color: var(--ink-light);
-  line-height: 1.5;
-}
-
-.wtag {
-  display: inline-block;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--accent);
-  color: #fff;
-  padding: 2px 6px;
-  margin-top: 6px;
-}
-
-/* ── TWO COL ── */
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 28px;
-}
-
-.col {
-  border: 1px solid var(--rule);
-  padding: 16px;
-}
-
-.col.dark {
-  background: var(--ink);
-  border-color: var(--ink);
-}
-
-.col-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 12px;
-}
-
-.col.dark .col-label { color: rgba(255,255,255,0.3); }
-
-.col-item {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-  font-size: 12px;
-  color: var(--ink-mid);
-  line-height: 1.5;
-  align-items: flex-start;
-}
-
-.col-item:last-child { margin-bottom: 0; }
-
-.col-item-marker {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: #fff;
-  flex-shrink: 0;
-  background: var(--accent);
-  margin-top: 1px;
-}
-
-.col.dark .col-item { color: rgba(255,255,255,0.6); }
-
-/* ── PRICING ── */
-.pricing {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.price-card {
-  border: 1px solid var(--rule);
-  padding: 16px;
-}
-
-.price-card.pilot {
-  border: 2px solid var(--accent);
-  background: var(--accent-lt);
-}
-
-.price-tier {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 5px;
-}
-
-.price-card.pilot .price-tier { color: var(--accent); }
-
-.price-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.price-amount {
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.price-note {
-  font-size: 11px;
-  color: var(--ink-light);
-  line-height: 1.5;
-  margin-bottom: 10px;
-}
-
-.price-item {
-  font-size: 11px;
-  color: var(--ink-mid);
-  padding: 4px 0;
-  border-bottom: 1px solid var(--rule);
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-  line-height: 1.4;
-}
-
-.price-item:last-child { border-bottom: none; }
-.price-item::before { content: '→'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
-
-/* ── DIAGNOSTIC OFFER ── */
-.diagnostic {
-  background: var(--blue-lt);
-  border-left: 4px solid var(--blue);
-  padding: 16px 20px;
-  margin-bottom: 28px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 20px;
-  align-items: center;
-}
-
-.diag-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 5px;
-}
-
-.diag-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.diag-text {
-  font-size: 13px;
-  color: var(--ink-mid);
-  line-height: 1.55;
-}
-
-.diag-cta {
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  background: var(--blue);
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-/* ── FOOTER ── */
-.brief-footer {
-  border-top: 3px solid var(--ink);
-  padding-top: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 20px;
-}
-
-.footer-quote {
-  font-size: 15px;
-  font-style: italic;
-  color: var(--ink);
-  max-width: 380px;
-  line-height: 1.5;
-  font-weight: 300;
-}
-
-.footer-contact {
-  text-align: right;
-  font-size: 12px;
-  color: var(--ink-mid);
-  line-height: 1.8;
-  flex-shrink: 0;
-}
-
-.footer-contact a { color: var(--accent); text-decoration: none; font-weight: 600; }
-
-@media(max-width:640px){
-  .page { padding: 32px 20px 48px; }
-  .masthead { grid-template-columns: 1fr; }
-  .weeks { grid-template-columns: 1fr 1fr; }
-  .two-col { grid-template-columns: 1fr; }
-  .pricing { grid-template-columns: 1fr; }
-  .diagnostic { grid-template-columns: 1fr; }
-  .brief-footer { flex-direction: column; gap: 16px; }
-}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;min-height:100vh;}
+.page{max-width:860px;margin:0 auto;padding:48px 32px;}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.page-title{font-size:28px;font-weight:500;color:#1C1C1E;margin-bottom:4px;}
+.byline{font-size:13px;color:#888;margin-bottom:2rem;padding-bottom:2rem;border-bottom:0.5px solid #E8E8E6;}
+.callout{background:#F1EFE8;border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
+.callout p{font-size:14px;line-height:1.7;color:#444441;margin-bottom:0.75rem;}
+.callout p:last-child{margin-bottom:0;}
+.callout-dark{background:#1C1C1E;border-radius:12px;padding:1.5rem 1.75rem;margin:2.5rem 0;}
+.callout-dark p{color:#ADADAB;font-size:14px;line-height:1.7;margin-bottom:0.75rem;}
+.callout-dark p:last-child{margin-bottom:0;}
+.callout-dark p:first-child{font-size:18px;font-weight:500;color:#fff;font-style:italic;}
+.honest-bar{background:#FDF5E6;border-left:3px solid #7A4500;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:2rem;display:flex;gap:10px;align-items:flex-start;}
+.honest-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7A4500;white-space:nowrap;padding-top:2px;flex-shrink:0;}
+.honest-text{font-size:13px;color:#3A3A38;line-height:1.6;}
+.section{margin-bottom:3rem;}
+.section-num{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
+.section-title{font-size:18px;font-weight:500;color:#1C1C1E;margin-bottom:8px;}
+.section-desc{font-size:14px;color:#666;line-height:1.6;margin-bottom:1.25rem;}
+.open-btn{display:inline-flex;align-items:center;gap:8px;background:#1C1C1E;color:#fff;font-size:13px;font-weight:500;padding:10px 20px;border-radius:8px;text-decoration:none;transition:background 0.15s;}
+.open-btn:hover{background:#1A5C38;}
+.divider{border:none;border-top:0.5px solid #E8E8E6;margin:2.5rem 0;}
+.context-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.5rem;}
+.context-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:14px;}
+.cc-label{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#888;margin-bottom:5px;}
+.cc-value{font-size:13px;font-weight:500;color:#1C1C1E;line-height:1.4;}
+.persona-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;}
+.p-avatar{width:44px;height:44px;border-radius:50%;background:#EEEDFE;color:#3C3489;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0;}
+.p-name{font-size:15px;font-weight:500;color:#1C1C1E;margin-bottom:2px;}
+.p-role{font-size:12px;color:#888;margin-bottom:8px;}
+.p-quote{font-size:13px;color:#666;line-height:1.6;font-style:italic;border-left:2px solid #E8E8E6;padding-left:10px;}
+.lxd-gap-card{background:#E6EFE9;border:0.5px solid #9FD4B8;border-radius:10px;padding:14px 16px;margin-bottom:1.25rem;}
+.lxd-gap-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A5C38;margin-bottom:5px;}
+.lxd-gap-text{font-size:13px;color:#1A5C38;line-height:1.55;}
+.footer{font-size:12px;color:#888;text-align:center;padding:2rem 0;border-top:0.5px solid #E8E8E6;margin-top:1rem;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#888;text-decoration:none;margin-bottom:2rem;}
+.back-link:hover{color:#1C1C1E;}
+.back-link::before{content:'←';}
+@media(max-width:600px){.persona-card{grid-template-columns:1fr;}.page{padding:32px 20px;}}
 </style>
 </head>
 <body>
 <div class="page">
 
-<!-- MASTHEAD -->
-<div class="masthead">
-  <div>
-    <div class="eyebrow">Intelligence Challenge · Commercial Track · Pilot Programme</div>
-    <h1>The <em>Revenue</em> Cup</h1>
-    <div class="tagline">A 4-week pilot that surfaces commercial intelligence from procurement and innovation teams — and turns the best insights into briefs leadership can act on.</div>
-  </div>
-  <div class="contact">
-    <strong>Keithan Cokbilir</strong>
-    LXD Advisory<br>
-    hello@keithan.eu<br>
-    <a href="https://keithan-c.github.io/Keithan-s_lxd_portfolio">Portfolio</a>
-  </div>
+<a class="back-link" href="../index.html">Back to portfolio</a>
+
+<div class="eyebrow">Learning design case study</div>
+<h1 class="page-title">The Revenue Cup</h1>
+<div class="byline">Performance-centred innovation challenge · Keithan Cokbilir</div>
+
+<div class="callout">
+  <p>Ideas don't stay invisible because people lack creativity. They stay invisible because there's no structured pathway from idea to incubation — and no reason to believe that trying leads anywhere.</p>
+  <p>The Revenue Cup is not a training programme. It's an environment redesign. Four weeks, a live scoreboard, peer voting, a 6-week incubation arc, and baseline measurement built in from day one — designed to surface revenue ideas from teams who already have them but no channel to share them.</p>
 </div>
 
-<!-- HONEST FRAMING -->
 <div class="honest-bar">
-  <div class="honest-label">A word first</div>
-  <div class="honest-text">This is a pilot programme. It has been designed from the ground up — the brief, the scoreboard, the facilitation, and the measurement framework are all built and ready. What it hasn't done yet is run inside a real organisation. That's what this pilot is for. You get a full facilitated programme at a significant discount. I get a real case study with your team's data. That's the deal, stated plainly.</div>
+  <div class="honest-label">Design note</div>
+  <div class="honest-text">This is a pilot programme — designed in full, not yet run. The artefacts below show the complete design: what participants experience, how measurement works, and what happens to the winning idea across the incubation arc. The case study framework is built and ready. What comes next is a real team, real data, and a real outcome.</div>
 </div>
 
-<!-- OPENING SENTENCE -->
-<div class="opening-box">
-  <div class="opening-label">Why I'm reaching out to your team specifically</div>
-  <div class="opening-text">"Teams in your function know things about supplier performance and process efficiency that never make it into the decisions leadership is making. This programme changes that — and I think your team is the right place to prove it."</div>
+<div class="context-grid">
+  <div class="context-card"><div class="cc-label">Duration</div><div class="cc-value">4-week challenge + 6-week incubation</div></div>
+  <div class="context-card"><div class="cc-label">Format</div><div class="cc-value">Live challenge + scoreboard</div></div>
+  <div class="context-card"><div class="cc-label">Primary gap</div><div class="cc-value">Environment + motivation</div></div>
+  <div class="context-card"><div class="cc-label">Skill introduced</div><div class="cc-value">Power BI — week 3 only</div></div>
+  <div class="context-card"><div class="cc-label">Prize</div><div class="cc-value">6-week incubation → leadership investment decision</div></div>
+  <div class="context-card"><div class="cc-label">Measurement</div><div class="cc-value">3 baseline questions · day-30 delta</div></div>
 </div>
 
-<!-- PROBLEM -->
-<div class="problem">
-  <div class="problem-label">The problem</div>
-  <div class="problem-text">Your teams have commercially valuable intelligence — supplier insights, process innovations, cost reduction ideas. Right now there is no structured pathway from that intelligence to the people who need to act on it. It stays buried in day-to-day execution. The people closest to the work never get the pathway to make it visible.</div>
-</div>
-
-<!-- HOW IT WORKS -->
-<div class="sh">How the pilot works — 4 weeks</div>
-<div class="weeks">
-  <div class="week">
-    <div class="wnum">Week 1</div>
-    <div class="wtitle">Anchor to live work</div>
-    <div class="wdesc">Each team names a real supplier relationship, active project, or live process their idea connects to. No data required yet.</div>
-  </div>
-  <div class="week">
-    <div class="wnum">Week 2</div>
-    <div class="wtitle">Scoreboard goes live</div>
-    <div class="wdesc">Ideas appear on a live scoreboard. Peer voting opens. Effort becomes visible across the function.</div>
-  </div>
-  <div class="week hl">
-    <div class="wnum">Week 3</div>
-    <div class="wtitle">Data strengthens ideas</div>
-    <div class="wdesc">A one-page job aid releases — 3 views that turn operational data into a commercial argument. Released when motivation is highest.</div>
-    <div class="wtag">Design decision</div>
-  </div>
-  <div class="week">
-    <div class="wnum">Week 4</div>
-    <div class="wtitle">Pitch day</div>
-    <div class="wdesc">Top 3 ideas presented to leadership. Winner enters 6-week structured incubation with a named owner.</div>
-  </div>
-</div>
-
-<!-- TWO COL -->
-<div class="two-col">
-  <div class="col">
-    <div class="col-label">What the pilot produces</div>
-    <div class="col-item"><div class="col-item-marker">1</div>3–5 data-backed commercial briefs ready for leadership review</div>
-    <div class="col-item"><div class="col-item-marker">2</div>One winning idea entering a 6-week incubation pathway</div>
-    <div class="col-item"><div class="col-item-marker">3</div>A documented case study with your team's real outcome data — owned by you</div>
-    <div class="col-item"><div class="col-item-marker">4</div>A before-and-after measurement — baseline and day-30 behaviour change scores</div>
-  </div>
-  <div class="col dark">
-    <div class="col-label">What I need from you</div>
-    <div class="col-item" style="color:rgba(255,255,255,0.7);">A team of 8–30 people with a live commercial or procurement mandate</div>
-    <div class="col-item" style="color:rgba(255,255,255,0.7);">A sponsor — someone at director level who signals this matters</div>
-    <div class="col-item" style="color:rgba(255,255,255,0.7);">Access to one data tool your team already uses — Power BI, Tableau, or equivalent</div>
-    <div class="col-item" style="color:rgba(255,255,255,0.7);">Permission to document the outcome as a named case study</div>
-  </div>
-</div>
-
-<!-- PRICING -->
-<div class="sh">Investment — three options, one honest conversation</div>
-<div class="pricing">
-  <div class="price-card pilot">
-    <div class="price-tier">Pilot — one slot open</div>
-    <div class="price-title">Full facilitation</div>
-    <div class="price-amount">€2,500</div>
-    <div class="price-note">Pilot price. Full programme. One organisation per track. In exchange for a documented case study with real outcome data.</div>
-    <div class="price-item">Design tailored to your context</div>
-    <div class="price-item">Live scoreboard built and managed</div>
-    <div class="price-item">4-week facilitation by Keithan</div>
-    <div class="price-item">Pitch day facilitation with leadership</div>
-    <div class="price-item">6-week incubation for winning team</div>
-    <div class="price-item">Full case study documented</div>
-  </div>
-  <div class="price-card">
-    <div class="price-tier">Standard — after pilot</div>
-    <div class="price-title">Full facilitation</div>
-    <div class="price-amount">€6,500</div>
-    <div class="price-note">For subsequent organisations once one case study exists per track.</div>
-    <div class="price-item">Everything in pilot tier</div>
-    <div class="price-item">Post-programme report</div>
-    <div class="price-item">Full outcome data shared</div>
-  </div>
-  <div class="price-card">
-    <div class="price-tier">Design only</div>
-    <div class="price-title">Handover</div>
-    <div class="price-amount">€3,500</div>
-    <div class="price-note">You deliver internally. Available at any stage — pilot or standard.</div>
-    <div class="price-item">Full programme design</div>
-    <div class="price-item">Scoreboard built</div>
-    <div class="price-item">Facilitator guide</div>
-    <div class="price-item">Data job aid</div>
-  </div>
-</div>
-
-<!-- DIAGNOSTIC OFFER -->
-<div class="diagnostic">
+<div class="eyebrow" style="margin-bottom:8px;">Persona</div>
+<div class="persona-card">
+  <div class="p-avatar">MB</div>
   <div>
-    <div class="diag-label">Start here — free, no obligation</div>
-    <div class="diag-title">60-minute diagnostic conversation</div>
-    <div class="diag-text">Before anything else — a structured 60-minute conversation about your team's commercial intelligence challenge. I'll ask five questions. You'll leave with three specific design recommendations, regardless of whether we work together.</div>
+    <div class="p-name">Marcus Bauer, 34</div>
+    <div class="p-role">Senior Hazard Assessment Engineer · Industrial Safety</div>
+    <div class="p-quote">"We know things about our clients that nobody else does. I just don't know how to make that visible."</div>
   </div>
-  <a class="diag-cta" href="mailto:hello@keithan.eu?subject=60-minute diagnostic — Revenue Cup">Book the call →</a>
 </div>
 
-<!-- FOOTER -->
-<div class="brief-footer">
-  <div class="footer-quote">"The first conversation is always free. The pilot is always honest. The case study belongs to you."</div>
-  <div class="footer-contact">
-    Keithan Cokbilir · LXD Advisory<br>
-    <a href="mailto:hello@keithan.eu">hello@keithan.eu</a><br>
-    Ingolstadt, Germany<br>
-    <a href="https://keithan-c.github.io/Keithan-s_lxd_portfolio">Portfolio</a>
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-num">01</div>
+  <h2 class="section-title">Live scoreboard</h2>
+  <div class="section-desc">The scoreboard makes effort visible from day one — four dimensions, peer voting, and expandable team cards showing the idea behind each score. The motivation mechanism is visibility, not gamification.</div>
+  <a class="open-btn" href="rc-01-scoreboard.html" target="_blank">Open scoreboard →</a>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-num">02</div>
+  <h2 class="section-title">Before & after — what a good submission looks like</h2>
+  <div class="section-desc">Week 1 versus week 3. The same idea, before and after the work anchor and Power BI data are added. Shows exactly what the job aid in week 3 is designed to produce — and why the anchor is the most important design decision in week 1.</div>
+  <a class="open-btn" href="rc-02-beforeafter.html" target="_blank">Open before & after →</a>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-num">03</div>
+  <h2 class="section-title">4-week challenge structure</h2>
+  <div class="section-desc">Each week builds on the last. Power BI arrives in week 3 — after ideas are formed and motivation is high, not before. The work anchor nomination happens in week 1 before any idea is required. Week 2 is the highest-risk dropout moment — the mid-point nudge is a designed intervention, not an afterthought.</div>
+  <a class="open-btn" href="rc-03-timeline.html" target="_blank">Open timeline →</a>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-num">04</div>
+  <h2 class="section-title">Gap analysis & community dashboard</h2>
+  <div class="section-desc">The four performance gaps behind the design — skill, motivation, habit, and environment — with designed responses to each. Plus a live community space for tips, hidden Power BI features, and participant feedback that feeds the next cohort.</div>
+  <a class="open-btn" href="rc-04-gapdashboard.html" target="_blank">Open gap analysis →</a>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-num">05</div>
+  <h2 class="section-title">LXD completion pack — measurement, incubation & manager brief</h2>
+  <div class="lxd-gap-card">
+    <div class="lxd-gap-label">Three LXD gaps addressed</div>
+    <div class="lxd-gap-text">Baseline questions before week 1 and repeated after week 4. A 6-week incubation arc from pitch day to leadership investment decision. A manager brief with three touchpoints, specific language for each, and designed responses to the four most common team objections.</div>
   </div>
+  <div class="section-desc">The artefacts most likely to determine whether the programme actually changes behaviour — not what participants experience during four weeks, but what was measured before it started, what happens to the winning idea afterwards, and whether managers created the conditions for participation to be real.</div>
+  <a class="open-btn" href="rc-05-lxd-completion.html" target="_blank">Open completion pack →</a>
+</div>
+
+<div class="divider"></div>
+
+<div class="callout-dark">
+  <p>If they don't use it — I've failed.</p>
+  <p>The Revenue Cup is not designed to produce completion rates or participation numbers. It is designed to produce one data-backed idea that reaches a leadership investment decision — and a team that knows how to surface commercial intelligence in a way they didn't before. If those two things don't happen, the design goes back to the action map.</p>
+</div>
+
+<div class="footer">
+  Keithan Cokbilir · Learning Experience Designer · hello@keithan.eu
 </div>
 
 </div>

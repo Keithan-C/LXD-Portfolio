@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Revenue Cup — Sales Enablement Brief</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0D0D0D;
+    --ink-mid: #333330;
+    --ink-light: #888880;
+    --rule: #E0DED8;
+    --bg: #FAFAF8;
+    --surface: #FFFFFF;
+    --signal: #1A6B3C;
+    --signal-mid: #2A8A52;
+    --signal-light: #E8F5EE;
+    --accent: #C4410C;
+    --accent-light: #FDF1EC;
+    --dark: #0D1F13;
+    --gold: #7A5200;
+    --gold-light: #FDF6E3;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--surface);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark);
+    padding: 48px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 300px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(42,138,82,0.15) 100%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--signal-mid);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+
+  .hero h1 span {
+    color: var(--signal-mid);
+  }
+
+  .hero-tagline {
+    font-size: 15px;
+    color: #8A9A90;
+    margin-top: 12px;
+    line-height: 1.5;
+    max-width: 480px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+  }
+
+  .hero-stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--signal-mid);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    color: #6A7A70;
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  .hero-contact {
+    text-align: right;
+    font-size: 12px;
+    color: #6A7A70;
+    line-height: 1.8;
+  }
+
+  .hero-contact strong {
+    color: #FFFFFF;
+    display: block;
+    font-size: 13px;
+  }
+
+  .hero-contact a {
+    color: var(--signal-mid);
+    text-decoration: none;
+  }
+
+  /* ── BODY ── */
+  .body { padding: 36px 48px 56px; }
+
+  /* ── PROBLEM ── */
+  .problem {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+
+  .problem-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .problem-text {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+
+  /* ── THREE COL ── */
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+
+  .three-cell {
+    background: var(--surface);
+    padding: 16px;
+  }
+
+  .three-cell-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .three-cell-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .three-cell-text {
+    font-size: 11px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  /* ── WEEKS ── */
+  .weeks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+
+  .week {
+    padding: 14px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .week:last-child { border-right: none; }
+
+  .week.highlight {
+    background: var(--signal-light);
+    border-top: 3px solid var(--signal-mid);
+  }
+
+  .week-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--signal-mid);
+    margin-bottom: 5px;
+  }
+
+  .week-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+
+  .week-desc {
+    font-size: 11px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  .week-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--signal);
+    color: #fff;
+    padding: 2px 6px;
+    margin-top: 6px;
+  }
+
+  /* ── TWO COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .col-card {
+    border: 1px solid var(--rule);
+    padding: 16px;
+  }
+
+  .col-card.dark {
+    background: var(--dark);
+    border-color: var(--dark);
+  }
+
+  .col-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+  }
+
+  .col-card.dark .col-card-label { color: #4A7A58; }
+
+  .col-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+
+  .col-item:last-child { margin-bottom: 0; }
+
+  .col-check {
+    color: var(--signal-mid);
+    font-weight: 700;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .col-card.dark .col-check { color: var(--signal-mid); }
+
+  .col-item-body {
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  .col-item-body strong {
+    display: block;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
+
+  .col-card.dark .col-item-body { color: #6A8A74; }
+  .col-card.dark .col-item-body strong { color: #C8E8D4; }
+
+  /* ── OUTCOMES ── */
+  .outcomes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+
+  .outcome {
+    background: var(--bg);
+    padding: 14px;
+    text-align: center;
+  }
+
+  .outcome-num {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--signal);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .outcome-label {
+    font-size: 11px;
+    color: var(--ink-mid);
+    line-height: 1.4;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .price-card {
+    border: 1px solid var(--rule);
+    padding: 18px;
+  }
+
+  .price-card.featured {
+    border: 2px solid var(--signal-mid);
+    background: var(--signal-light);
+  }
+
+  .price-tier {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 5px;
+  }
+
+  .price-card.featured .price-tier { color: var(--signal-mid); }
+
+  .price-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .price-amount {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--signal);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .price-item {
+    font-size: 12px;
+    color: var(--ink-mid);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .price-item:last-child { border-bottom: none; }
+
+  .price-item::before {
+    content: '→';
+    color: var(--signal-mid);
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  /* ── PILOT ── */
+  .pilot {
+    background: var(--gold-light);
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .pilot-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+  .pilot-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 5px;
+  }
+
+  .pilot-text {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .pilot-text strong { font-weight: 700; }
+
+  /* ── FOOTER ── */
+  .brief-footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+  }
+
+  .footer-quote {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink-mid);
+    max-width: 380px;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .footer-contact {
+    text-align: right;
+    font-size: 12px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    flex-shrink: 0;
+  }
+
+  .footer-contact a {
+    color: var(--signal-mid);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 32px 24px 28px; }
+    .hero h1 { font-size: 34px; }
+    .hero-stats { gap: 20px; }
+    .body { padding: 28px 24px 40px; }
+    .three-col { grid-template-columns: 1fr; }
+    .weeks { grid-template-columns: 1fr 1fr; }
+    .week { border-bottom: 1px solid var(--rule); }
+    .two-col { grid-template-columns: 1fr; }
+    .outcomes { grid-template-columns: 1fr 1fr; }
+    .pricing { grid-template-columns: 1fr; }
+    .brief-footer { flex-direction: column; gap: 16px; }
+    .footer-contact { text-align: left; }
+    .hero-meta { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .hero-contact { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Sales Enablement · Commercial Intelligence · Revenue Acceleration</div>
+    <h1>The Revenue <span>Cup</span></h1>
+    <div class="hero-tagline">A 4-week structured challenge that surfaces commercial intelligence from your sales team — and turns it into pipeline-ready insights your leadership can act on.</div>
+    <div class="hero-meta">
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">4</div>
+          <div class="hero-stat-label">weeks from<br>launch to insight</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">1</div>
+          <div class="hero-stat-label">winning insight<br>enters pipeline</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4×</div>
+          <div class="hero-stat-label">increase in CRM<br>and data tool usage</div>
+        </div>
+      </div>
+      <div class="hero-contact">
+        <strong>Keithan Cokbilir</strong>
+        Learning Experience Designer<br>
+        hello@keithan.eu · Ingolstadt<br>
+        <a href="https://keithan-c.github.io/Keithan-s_lxd_portfolio">Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- PROBLEM -->
+    <div class="problem">
+      <div class="problem-label">The problem</div>
+      <div class="problem-text">Your sales team is talking to customers every day. They know which objections are hardest to handle, which product gaps are losing deals, and which market signals your product team hasn't seen yet. Right now that intelligence lives in call notes, Slack threads, and individual reps' heads — and it never reaches the people who could act on it.</div>
+    </div>
+
+    <!-- THREE COL -->
+    <div class="section-header">Where commercial intelligence gets lost in sales organisations</div>
+    <div class="three-col">
+      <div class="three-cell">
+        <div class="three-cell-icon">📉</div>
+        <div class="three-cell-title">Deal intelligence stays in the deal</div>
+        <div class="three-cell-text">Win/loss patterns, pricing objections, and competitive intelligence from individual deals never surface as patterns that revenue or product leadership can act on systematically.</div>
+      </div>
+      <div class="three-cell">
+        <div class="three-cell-icon">🔇</div>
+        <div class="three-cell-title">Reps with insight but no channel</div>
+        <div class="three-cell-text">Experienced reps know what's working and what isn't. But there's no structured way to surface that knowledge — it surfaces in 1:1s with managers, not in a form that scales.</div>
+      </div>
+      <div class="three-cell">
+        <div class="three-cell-icon">📊</div>
+        <div class="three-cell-title">CRM data used for reporting not insight</div>
+        <div class="three-cell-text">CRM and sales analytics tools are used to report on pipeline, not to surface the commercial patterns inside it. The data exists. The question is never asked of it.</div>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="section-header">How the Revenue Cup works — 4 weeks</div>
+    <div class="weeks">
+      <div class="week">
+        <div class="week-num">Week 1</div>
+        <div class="week-title">Anchor to a live deal or account</div>
+        <div class="week-desc">Each rep or team anchors their insight to a real account, deal, or market situation they're actively working. No hypotheticals — real commercial context only.</div>
+      </div>
+      <div class="week">
+        <div class="week-num">Week 2</div>
+        <div class="week-title">Insight brief submitted</div>
+        <div class="week-desc">Teams submit a structured commercial insight — what they're seeing, why it matters, and what leadership could do with it. A live scoreboard goes live. Peer review opens.</div>
+      </div>
+      <div class="week highlight">
+        <div class="week-num">Week 3</div>
+        <div class="week-title">Data strengthens the brief</div>
+        <div class="week-desc">A one-page CRM and sales analytics job aid releases — three views that turn pipeline data into a commercial argument. Released when reps have a real question to answer.</div>
+        <div class="week-tag">Design decision</div>
+      </div>
+      <div class="week">
+        <div class="week-num">Week 4</div>
+        <div class="week-title">Revenue review</div>
+        <div class="week-desc">Top 3 insights presented to revenue leadership. Winning insight enters a structured development pathway — handed to product, marketing, or sales leadership with a brief attached.</div>
+      </div>
+    </div>
+
+    <!-- TWO COL -->
+    <div class="two-col">
+      <div class="col-card">
+        <div class="col-card-label">What changes after the Revenue Cup</div>
+        <div class="col-item">
+          <div class="col-check">✓</div>
+          <div class="col-item-body"><strong>Pipeline intelligence reaches leadership</strong>Commercial patterns from deals surface as structured briefs — not anecdotes in a QBR.</div>
+        </div>
+        <div class="col-item">
+          <div class="col-check">✓</div>
+          <div class="col-item-body"><strong>Reps who think commercially, not just executionally</strong>The Revenue Cup trains reps to see deals as intelligence sources — not in a classroom but in the context of a live account.</div>
+        </div>
+        <div class="col-item">
+          <div class="col-check">✓</div>
+          <div class="col-item-body"><strong>One insight enters a development pathway</strong>The winning team gets a structured handoff to product, marketing, or revenue leadership — with a brief that can be acted on immediately.</div>
+        </div>
+      </div>
+      <div class="col-card dark">
+        <div class="col-card-label">Who this is designed for</div>
+        <div class="col-item">
+          <div class="col-check">→</div>
+          <div class="col-item-body"><strong>B2B sales teams of 10–50 reps</strong>Large enough to have meaningful pattern variation across deals. Small enough that every insight is visible.</div>
+        </div>
+        <div class="col-item">
+          <div class="col-check">→</div>
+          <div class="col-item-body"><strong>Revenue or commercial excellence leads</strong>People who own the gap between what reps know and what leadership can act on.</div>
+        </div>
+        <div class="col-item">
+          <div class="col-check">→</div>
+          <div class="col-item-body"><strong>Sales enablement managers</strong>Teams responsible for turning field intelligence into scalable programmes — and tired of QBRs that produce dashboards instead of decisions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OUTCOMES -->
+    <div class="section-header">What a successful pilot produces</div>
+    <div class="outcomes">
+      <div class="outcome">
+        <div class="outcome-num">3–5</div>
+        <div class="outcome-label">Structured commercial briefs ready for leadership review</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-num">1</div>
+        <div class="outcome-label">Winning insight with a named owner and action plan</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-num">4×</div>
+        <div class="outcome-label">Increase in active CRM and sales analytics usage</div>
+      </div>
+      <div class="outcome">
+        <div class="outcome-num">↑</div>
+        <div class="outcome-label">Rep engagement and ownership of commercial outcomes</div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="section-header">Investment</div>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="price-tier">Tier 1</div>
+        <div class="price-title">Design & handover</div>
+        <div class="price-amount">€4,500</div>
+        <div class="price-item">Full programme design tailored to your sales context</div>
+        <div class="price-item">Live commercial insight scoreboard</div>
+        <div class="price-item">CRM and sales analytics job aid — 3 views</div>
+        <div class="price-item">Insight brief template for all participating reps</div>
+        <div class="price-item">Facilitation guide for internal delivery</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">Tier 2 — Recommended</div>
+        <div class="price-title">Design plus facilitation</div>
+        <div class="price-amount">€8,500</div>
+        <div class="price-item">Everything in Tier 1</div>
+        <div class="price-item">Launch session facilitation with sales leadership</div>
+        <div class="price-item">Weekly sprint management across 4 weeks</div>
+        <div class="price-item">Revenue review facilitation with leadership panel</div>
+        <div class="price-item">Structured handoff to product or marketing</div>
+        <div class="price-item">Post-programme report with commercial intelligence data</div>
+      </div>
+    </div>
+
+    <!-- PILOT -->
+    <div class="pilot">
+      <div class="pilot-icon">🏆</div>
+      <div>
+        <div class="pilot-label">Pilot offer — one organisation, limited availability</div>
+        <div class="pilot-text">The first sales team to run the Revenue Cup receives <strong>Tier 2 at Tier 1 pricing — €4,500 for the full facilitated programme</strong>, in exchange for a documented case study with real outcome data. This offer is open to one organisation and closes once a pilot is confirmed.</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="brief-footer">
+      <div class="footer-quote">"Your reps already know what's next. The Revenue Cup builds the system to surface it."</div>
+      <div class="footer-contact">
+        Keithan Cokbilir<br>
+        <a href="mailto:hello@keithan.eu">hello@keithan.eu</a><br>
+        Ingolstadt, Germany<br>
+        <a href="https://keithan-c.github.io/Keithan-s_lxd_portfolio">Portfolio</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

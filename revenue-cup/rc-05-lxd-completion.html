@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revenue Cup — LXD Completion Pack</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #F5F4F0;
+  --surface: #FFFFFF;
+  --ink: #111110;
+  --ink-mid: #3A3A38;
+  --muted: #78776F;
+  --light: #ADADAB;
+  --rule: #E2E0D8;
+  --green: #1A5C38;
+  --green-lt: #E6EFE9;
+  --green-rule: #9FD4B8;
+  --blue: #0E2D6B;
+  --blue-lt: #E8EDF8;
+  --amber: #7A5200;
+  --amber-lt: #FDF6E3;
+  --amber-rule: #D4A85C;
+  --red: #7C2D12;
+  --red-lt: #FDF0EC;
+  --purple: #4A2D8A;
+  --purple-lt: #F0EAFB;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--ink);
+  padding: 0 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ── TABS ── */
+.tabs {
+  display: flex;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: 0 32px;
+  overflow-x: auto;
+}
+
+.tab {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 14px 20px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+  font-weight: 600;
+}
+
+.tab:hover:not(.active) { color: var(--ink-mid); }
+
+.tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── PANELS ── */
+.panel { display: none; }
+.panel.visible { display: block; }
+
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 32px 64px;
+}
+
+/* ── SHARED COMPONENTS ── */
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.section-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 560px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 28px 0;
+}
+
+.info-card {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.info-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── BASELINE QUESTIONS ── */
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.q-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.q-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.q-meta { flex: 1; }
+
+.q-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.q-when {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.q-body {
+  padding: 16px 18px;
+}
+
+.q-text {
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.55;
+  font-style: italic;
+  margin-bottom: 14px;
+  padding-left: 12px;
+  border-left: 3px solid var(--rule);
+}
+
+.q-scale {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.scale-opt {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.scale-opt:hover, .scale-opt.sel {
+  background: var(--green-lt);
+  border-color: var(--green-rule);
+  color: var(--green);
+  font-weight: 600;
+}
+
+.q-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 6px;
+}
+
+.q-note strong { color: var(--ink); }
+
+.baseline-summary {
+  background: var(--green-lt);
+  border: 1px solid var(--green-rule);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+
+.bs-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.bs-scores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.bs-score {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+}
+
+.bs-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--green);
+  line-height: 1;
+}
+
+.bs-label {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* ── INCUBATION ── */
+.week-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.iweek {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+}
+
+.iweek-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 14px;
+}
+
+.iweek-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.iweek-line {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  margin-top: 6px;
+  background: var(--rule);
+}
+
+.iweek:last-child .iweek-line { display: none; }
+
+.iweek-right {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.iweek-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.iweek-who {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.who-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.iweek-desc {
+  font-size: 12px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.iweek-output {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.iweek-output-label {
+  font-weight: 700;
+  color: var(--green);
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  padding-top: 1px;
+}
+
+.incubation-outcome {
+  background: var(--ink);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-top: 20px;
+}
+
+.io-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 8px;
+}
+
+.io-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.io-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+/* ── MANAGER BRIEF ── */
+.manager-intro {
+  background: var(--amber-lt);
+  border-left: 4px solid var(--amber);
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.manager-intro strong { color: var(--amber); }
+
+.passport-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.passport-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.passport-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.passport-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.passport-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pp-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.pp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.pp-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.touchpoint-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.touchpoint {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.tp-when {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tp-body {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.tp-action {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.tp-how {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.objection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.objection {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.obj-q {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--red);
+  background: var(--red-lt);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.obj-a {
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.obj-a strong { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 600px) {
+  .content { padding: 24px 20px 48px; }
+  .tabs { padding: 0 16px; }
+  .bs-scores { grid-template-columns: 1fr; }
+  .iweek { grid-template-columns: 60px 1fr; }
+  .touchpoint { grid-template-columns: 1fr; }
+  .header { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">
+    Revenue Cup
+    <span class="header-tag">LXD Completion Pack</span>
+  </div>
+  <div style="font-size:11px;color:rgba(255,255,255,0.3);">3 gaps fixed</div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="show('baseline')">
+    <div class="tab-dot" style="background:var(--green);"></div>
+    Baseline measurement
+  </button>
+  <button class="tab" onclick="show('incubation')">
+    <div class="tab-dot" style="background:var(--blue);"></div>
+    Incubation arc
+  </button>
+  <button class="tab" onclick="show('manager')">
+    <div class="tab-dot" style="background:var(--amber);"></div>
+    Manager brief
+  </button>
+</div>
+
+<!-- ── BASELINE ── -->
+<div id="panel-baseline" class="panel visible">
+  <div class="content">
+    <div class="section-eyebrow">Gap 3 — fixed</div>
+    <div class="section-title">Pre-programme baseline questions</div>
+    <div class="section-sub">Three questions administered before week 1 begins. Repeated after week 4. The delta is your proof that the programme worked — and the testimonial data your case study needs.</div>
+
+    <div class="info-card" style="background:var(--green-lt);border:1px solid var(--green-rule);">
+      <div class="info-label" style="color:var(--green);">How to use</div>
+      <div style="color:var(--ink);font-size:13px;line-height:1.6;">Add these three questions to the end of the week 1 kick-off email. Same questions repeated in the week 4 pitch day follow-up email. Record the scores — baseline and final — in your case study framework. The delta is your outcome data.</div>
+    </div>
+
+    <!-- Q1 -->
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num" style="background:var(--green);">1</div>
+        <div class="q-meta">
+          <div class="q-title">Data confidence</div>
+          <div class="q-when">Asked: Before week 1 · Repeated: After week 4</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">On a scale of 1–5, how confident are you that you could use a data tool — Power BI, a dashboard, or a report — to build a commercial argument for an idea you have right now?</div>
+        <div class="q-scale">
+          <div class="scale-opt" onclick="selectOpt(this)">1 — Not at all</div>
+          <div class="scale-opt" onclick="selectOpt(this)">2 — Slightly</div>
+          <div class="scale-opt" onclick="selectOpt(this)">3 — Somewhat</div>
+          <div class="scale-opt" onclick="selectOpt(this)">4 — Quite confident</div>
+          <div class="scale-opt" onclick="selectOpt(this)">5 — Very confident</div>
+        </div>
+        <div class="q-note"><strong>What this measures:</strong> Power BI and data tool adoption — the primary skill gap the programme addresses. A delta of +1.5 or more is a strong outcome signal. Below +0.5 suggests the job aid in week 3 needs redesigning.</div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num" style="background:var(--green);">2</div>
+        <div class="q-meta">
+          <div class="q-title">Idea surface belief</div>
+          <div class="q-when">Asked: Before week 1 · Repeated: After week 4</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">On a scale of 1–5, how much do you believe that a good commercial idea from your team could realistically reach leadership and be acted on?</div>
+        <div class="q-scale">
+          <div class="scale-opt" onclick="selectOpt(this)">1 — Not at all</div>
+          <div class="scale-opt" onclick="selectOpt(this)">2 — Unlikely</div>
+          <div class="scale-opt" onclick="selectOpt(this)">3 — Possibly</div>
+          <div class="scale-opt" onclick="selectOpt(this)">4 — Probably</div>
+          <div class="scale-opt" onclick="selectOpt(this)">5 — Definitely</div>
+        </div>
+        <div class="q-note"><strong>What this measures:</strong> Environment and motivation gap — whether people believe the channel now exists. This is the most important baseline question. If it doesn't shift, the programme changed knowledge but not belief. That means the sponsor's signal in week 1 wasn't strong enough.</div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card">
+      <div class="q-header">
+        <div class="q-num" style="background:var(--green);">3</div>
+        <div class="q-meta">
+          <div class="q-title">Engagement motivation</div>
+          <div class="q-when">Asked: Before week 1 only</div>
+        </div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is the main reason you want to participate in the Revenue Cup? Choose the one that feels most honest.</div>
+        <div class="q-scale" style="flex-direction:column;align-items:flex-start;">
+          <div class="scale-opt" onclick="selectOpt(this)" style="width:100%;text-align:left;">I have an idea I've been sitting on and this is the chance to surface it</div>
+          <div class="scale-opt" onclick="selectOpt(this)" style="width:100%;text-align:left;">I want to learn how to use data tools better</div>
+          <div class="scale-opt" onclick="selectOpt(this)" style="width:100%;text-align:left;">My manager suggested I participate</div>
+          <div class="scale-opt" onclick="selectOpt(this)" style="width:100%;text-align:left;">I'm curious about the incubation prize</div>
+          <div class="scale-opt" onclick="selectOpt(this)" style="width:100%;text-align:left;">I'm not sure yet — I'm keeping an open mind</div>
+        </div>
+        <div class="q-note"><strong>What this measures:</strong> Motivation profile of the cohort. If more than 30% select "my manager suggested I participate" — the sponsor brief needs strengthening before week 1. If most select "I have an idea I've been sitting on" — the environment design is working before the programme even starts.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="baseline-summary">
+      <div class="bs-title">Day-30 measurement — what to compare</div>
+      <div class="bs-scores">
+        <div class="bs-score">
+          <div class="bs-num" style="color:var(--green);">Q1</div>
+          <div class="bs-label">Data confidence score — baseline vs. week 4. Target delta: +1.5</div>
+        </div>
+        <div class="bs-score">
+          <div class="bs-num" style="color:var(--green);">Q2</div>
+          <div class="bs-label">Idea surface belief — baseline vs. week 4. Target delta: +1.0</div>
+        </div>
+        <div class="bs-score">
+          <div class="bs-num" style="color:var(--green);">Q3</div>
+          <div class="bs-label">Motivation profile — used for cohort design, not delta measurement</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── INCUBATION ── -->
+<div id="panel-incubation" class="panel">
+  <div class="content">
+    <div class="section-eyebrow">Gap 6 — fixed</div>
+    <div class="section-title">6-week incubation arc</div>
+    <div class="section-sub">What happens to the winning team after pitch day. Six weeks. One business case ready for leadership investment decision. The incubation is the prize — not a trophy, not a certificate. A real pathway from idea to decision.</div>
+
+    <div class="info-card" style="background:var(--blue-lt);border:1px solid #B5C8F4;">
+      <div class="info-label" style="color:var(--blue);">What to say on the call</div>
+      <div style="color:var(--ink);font-size:13px;line-height:1.6;">"The winning team gets six weeks of structured support to develop their idea into a business case ready for a leadership investment decision. Week by week they go from a rough brief to a fully documented case — with a named sponsor and a named Keithan facilitating. At week 6 they present to whoever holds the budget."</div>
+    </div>
+
+    <div class="week-list">
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--blue-lt);color:var(--blue);">Week 5</div>
+          <div class="iweek-line"></div>
+        </div>
+        <div class="iweek-right">
+          <div class="iweek-title">Insight to opportunity framing</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--blue-lt);color:var(--blue);">Winning team + Keithan</span>
+            <span style="color:var(--muted);">90 min session</span>
+          </div>
+          <div class="iweek-desc">Structured facilitated session to reframe the pitch day idea as a commercial opportunity. Move from "here's an idea" to "here's a problem worth solving, here's who it affects, and here's how we know." Uses the same Cathy Moore action-map approach — what do we want people to do differently, not just know.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Output</div>
+            A one-page opportunity brief — problem, audience, hypothesis, success criteria. Shared with sponsor before week 6.
+          </div>
+        </div>
+      </div>
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--blue-lt);color:var(--blue);">Week 6</div>
+          <div class="iweek-line"></div>
+        </div>
+        <div class="iweek-right">
+          <div class="iweek-title">Data deep dive</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--blue-lt);color:var(--blue);">Winning team</span>
+            <span style="color:var(--muted);">Self-directed + Keithan async support</span>
+          </div>
+          <div class="iweek-desc">The winning team goes back into their data tool and builds the quantitative case for their opportunity. Using the same Power BI job aid from week 3 — now with a specific brief to answer rather than an open-ended challenge. Keithan reviews drafts asynchronously and gives one round of feedback.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Output</div>
+            A data slide or dashboard showing the size of the opportunity — revenue potential, cost saving, or risk reduction — with a source for every number.
+          </div>
+        </div>
+      </div>
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--blue-lt);color:var(--blue);">Week 7</div>
+          <div class="iweek-line"></div>
+        </div>
+        <div class="iweek-right">
+          <div class="iweek-title">Stakeholder mapping</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--blue-lt);color:var(--blue);">Winning team + Sponsor</span>
+            <span style="color:var(--muted);">60 min session</span>
+          </div>
+          <div class="iweek-desc">Who needs to say yes for this to happen? Who might block it? What objections will they raise? A structured stakeholder map that identifies the key decision-makers, their likely position, and what each one needs to hear. The sponsor joins this session — they know the political landscape the team doesn't.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Output</div>
+            A stakeholder map — names, positions, objections, and the communication approach for each person.
+          </div>
+        </div>
+      </div>
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--blue-lt);color:var(--blue);">Week 8</div>
+          <div class="iweek-line"></div>
+        </div>
+        <div class="iweek-right">
+          <div class="iweek-title">Business case draft</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--blue-lt);color:var(--blue);">Winning team</span>
+            <span style="color:var(--muted);">Self-directed + Keithan async review</span>
+          </div>
+          <div class="iweek-desc">The team writes the first draft of the full business case using a structured template — problem, opportunity, proposed solution, investment required, expected return, risks, and next steps. Keithan reviews and gives structured feedback using the pyramid principle — conclusion first, then evidence, then detail.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Output</div>
+            First draft business case — 3–5 pages or equivalent slide deck. Ready for sponsor review.
+          </div>
+        </div>
+      </div>
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--blue-lt);color:var(--blue);">Week 9</div>
+          <div class="iweek-line"></div>
+        </div>
+        <div class="iweek-right">
+          <div class="iweek-title">Sponsor review and refinement</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--blue-lt);color:var(--blue);">Winning team + Sponsor + Keithan</span>
+            <span style="color:var(--muted);">60 min session</span>
+          </div>
+          <div class="iweek-desc">The sponsor reviews the draft business case and gives structured feedback — what will fly with leadership, what needs strengthening, what to leave out. Keithan facilitates the session to ensure the feedback is actionable rather than directional. Team refines based on the session.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Output</div>
+            Revised business case — ready for the final presentation. Sponsor has pre-read and pre-agreed the recommendation.
+          </div>
+        </div>
+      </div>
+
+      <div class="iweek">
+        <div class="iweek-left">
+          <div class="iweek-badge" style="background:var(--ink);color:#fff;">Week 10</div>
+        </div>
+        <div class="iweek-right" style="border-color:var(--ink);">
+          <div class="iweek-title">Leadership investment presentation</div>
+          <div class="iweek-who">
+            <span class="who-tag" style="background:var(--ink);color:#fff;">Winning team + Leadership</span>
+            <span style="color:var(--muted);">30 min formal presentation</span>
+          </div>
+          <div class="iweek-desc">The winning team presents their business case to the leadership panel who holds the budget and authority to act. Not a pitch day — a formal investment decision session. The case has been reviewed by the sponsor and refined over six weeks. The team is ready. The decision-maker has been pre-briefed. This is the moment the Revenue Cup was designed for.</div>
+          <div class="iweek-output">
+            <div class="iweek-output-label">Outcome</div>
+            A decision — yes, no, or proceed to further scoping. Whatever the outcome, the team has a board-level conversation that would not have happened without the Revenue Cup.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="incubation-outcome">
+      <div class="io-label">Why this design matters</div>
+      <div class="io-title">The incubation is the proof that the environment changed.</div>
+      <div class="io-text">A programme that produces a pitch is an event. A programme that produces a leadership investment decision is a system change. The six-week incubation arc is what separates the Revenue Cup from every other innovation challenge — it guarantees that the best idea gets a real hearing, not just a certificate and a handshake.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── MANAGER BRIEF ── -->
+<div id="panel-manager" class="panel">
+  <div class="content">
+    <div class="section-eyebrow">Gap 8 — fixed</div>
+    <div class="section-title">Manager brief</div>
+    <div class="section-sub">What the manager needs to know, do, and say across the four weeks. Without this, team participation varies randomly based on which managers are engaged and which are not. With it, every team gets the same environmental signal.</div>
+
+    <div class="manager-intro">
+      <strong>The most important design decision in the Revenue Cup is not the scoreboard.</strong> It is whether the manager of each participating team signals — clearly, specifically, and more than once — that this matters and that they are watching. Teams whose managers do this submit stronger briefs, participate more actively in peer voting, and are more likely to reach the pitch day.
+    </div>
+
+    <!-- PASSPORT -->
+    <div class="passport-card">
+      <div class="passport-header">
+        <div class="passport-title">Manager passport — Revenue Cup</div>
+        <div class="passport-badge" style="background:var(--amber-lt);color:var(--amber);">For managers only</div>
+      </div>
+      <div class="passport-body">
+        <div>
+          <div class="pp-section-label">Your role in the Revenue Cup</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--amber);"></div>You are not a judge. You are not a facilitator. Your role is to signal that this programme matters and to remove the obstacles that stop your team from participating fully.</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--amber);"></div>You will be asked to do three specific things across four weeks. Each takes less than 15 minutes. All three are essential.</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--amber);"></div>Your team's submission quality is directly correlated with how clearly you signal that you read and valued what they submitted. Even one sentence of specific feedback in a team meeting changes participation.</div>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--rule);">
+        <div>
+          <div class="pp-section-label">What you should not do</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--red);"></div>Do not tell your team which idea to submit or what data to use. The programme surfaces what they already know — your job is to open the channel, not to direct the content.</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--red);"></div>Do not make participation feel mandatory through pressure. Make it feel worthwhile through genuine interest. There is a significant difference between "you should do this" and "I'm genuinely curious what you'll come up with."</div>
+          <div class="pp-item"><div class="pp-dot" style="background:var(--red);"></div>Do not skip the week 3 check-in. It is the moment most likely to determine whether your team submits a strong data-backed brief or a weak one.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOUCHPOINTS -->
+    <div class="section-eyebrow" style="margin-bottom:12px;">Three touchpoints — what to do and when</div>
+    <div class="touchpoint-list">
+
+      <div class="touchpoint">
+        <div class="tp-when" style="background:var(--amber-lt);color:var(--amber);">Week 1 — Day 1</div>
+        <div class="tp-body">
+          <div class="tp-action">Launch signal — say this in your next team meeting</div>
+          <div class="tp-how">"We're running the Revenue Cup over the next four weeks. I want you to treat the time you put into this as real work — not extra work. The ideas I've seen from this team in day-to-day conversations are genuinely good. This is the programme that gives them somewhere to go. I'm going to be reading every submission personally."<br><br>That last sentence is the most important one. Say it and mean it.</div>
+        </div>
+      </div>
+
+      <div class="touchpoint">
+        <div class="tp-when" style="background:var(--amber-lt);color:var(--amber);">Week 3 — Day 15</div>
+        <div class="tp-body">
+          <div class="tp-action">Mid-point check-in — one conversation with each team member</div>
+          <div class="tp-how">Ask each person one question in a 1:1 or informal setting: "What data did you use to back up your idea — and did you need anything from me to get access to it?" This does two things. It signals you've read their brief. It removes the most common week 3 barrier — people who can't find the right data and give up quietly rather than asking for help.</div>
+        </div>
+      </div>
+
+      <div class="touchpoint">
+        <div class="tp-when" style="background:var(--amber-lt);color:var(--amber);">Week 4 — Day 22</div>
+        <div class="tp-body">
+          <div class="tp-action">Pre-pitch day signal — acknowledge effort publicly</div>
+          <div class="tp-how">In your team meeting before pitch day: "I've read all the submissions. I want to say publicly that the quality of thinking in this team is genuinely impressive. Regardless of who wins, what you've produced over four weeks is the kind of work that should be visible to leadership — and it will be."<br><br>This is especially important for teams who won't win. It keeps them engaged and reduces the post-programme drop-off in morale.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OBJECTIONS -->
+    <div class="section-eyebrow" style="margin-bottom:12px;">How to handle the four most common objections from your team</div>
+    <div class="objection-list">
+
+      <div class="objection">
+        <div class="obj-q">💬 "I don't have time for this on top of everything else."</div>
+        <div class="obj-a"><strong>Don't defend the programme. Acknowledge the pressure.</strong> "I know. The workload is real and I'm not pretending otherwise. What I can tell you is that the time you put into this is time I'm counting as part of your core work this month — not something extra. If something needs to move to make space, come and talk to me about it."</div>
+      </div>
+
+      <div class="objection">
+        <div class="obj-q">💬 "My ideas never go anywhere anyway. What's different this time?"</div>
+        <div class="obj-a"><strong>This is the most important objection to handle well.</strong> "That frustration is fair and I've heard it before. What's different this time is that there's a structured pathway — the winning idea goes in front of [name the senior sponsor] with a six-week business case development process behind it. That's not the same as dropping an idea into a suggestion box. I can't guarantee yours will win but I can guarantee it will be read and evaluated properly."</div>
+      </div>
+
+      <div class="objection">
+        <div class="obj-q">💬 "I don't know how to use Power BI."</div>
+        <div class="obj-a"><strong>Don't send them to training.</strong> "You don't need to be a Power BI expert. In week 3 there's a one-page job aid that shows exactly which three views to use to build the commercial argument. It takes about 20 minutes. If you get stuck, come to me or ask Keithan directly — that's what the office hours in week 3 are for."</div>
+      </div>
+
+      <div class="objection">
+        <div class="obj-q">💬 "What if my idea isn't good enough?"</div>
+        <div class="obj-a"><strong>Reframe what good enough means.</strong> "The scoreboard measures four things — not just whether the idea is revolutionary. An idea that's well-anchored to real work, backed by data, and clearly written will score well even if it's incremental. Some of the most valuable commercial insights are obvious in hindsight. Submit what you have and let the process refine it."</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+function show(id) {
+  ['baseline','incubation','manager'].forEach(p => {
+    document.getElementById('panel-'+p).className = 'panel' + (p === id ? ' visible' : '');
+  });
+  document.querySelectorAll('.tab').forEach((btn, i) => {
+    btn.className = 'tab' + (['baseline','incubation','manager'][i] === id ? ' active' : '');
+  });
+}
+
+function selectOpt(el) {
+  const parent = el.closest('.q-scale');
+  parent.querySelectorAll('.scale-opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+}
+</script>
+</body>
+</html>

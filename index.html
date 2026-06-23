@@ -3,811 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keithan Cokbilir — Learning Experience Design</title>
+<title>Keithan Cokbilir — Learning Experience Design Portfolio</title>
 <meta name="description" content="LXD portfolio by Keithan Cokbilir — performance-centred learning design, interactive prototypes, and corporate capability programmes.">
 <style>
-
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* ── TOKENS ── */
-:root {
-  --bg:        #F8F7F3;
-  --surface:   #FFFFFF;
-  --ink:       #111110;
-  --ink-mid:   #3A3A38;
-  --muted:     #6B6A64;
-  --light:     #A8A79F;
-  --rule:      #E2E0D8;
-  --accent:    #1A5C38;
-  --accent-m:  #2A7A4E;
-  --accent-lt: #E6EFE9;
-  --tag-blue:  #0E2D6B;
-  --tag-blue-lt: #E8EDF8;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ── NAV ── */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  height: 56px;
-  background: rgba(248,247,243,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--rule);
-}
-
-.nav-name {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-
-.nav-link {
-  font-size: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.15s;
-}
-
-.nav-link:hover { color: var(--ink); }
-
-.nav-cta {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--surface);
-  background: var(--ink);
-  padding: 7px 16px;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: background 0.15s;
-  letter-spacing: 0.01em;
-}
-
-.nav-cta:hover { background: var(--ink-mid); }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;min-height:100vh;-webkit-font-smoothing:antialiased;}
 
 /* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px 40px 80px;
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-}
+.hero{background:#1C1C1E;padding:72px 32px 56px;}
+.hero-inner{max-width:900px;margin:0 auto;}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#666;margin-bottom:14px;}
+.hero-name{font-size:40px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-0.02em;}
+.hero-title{font-size:15px;color:#6B6B68;line-height:1.5;margin-bottom:28px;max-width:520px;}
+.hero-links{display:flex;gap:10px;flex-wrap:wrap;}
+.hero-link{font-size:12px;font-weight:500;color:#ADADAB;text-decoration:none;padding:7px 16px;border:0.5px solid #333;border-radius:20px;transition:all 0.15s;}
+.hero-link:hover{color:#fff;border-color:#666;}
+.hero-link.primary{background:#fff;color:#1C1C1E;border-color:#fff;}
+.hero-link.primary:hover{background:#E8E8E6;}
 
-.hero-kicker {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 32px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+/* ── MANIFESTO ── */
+.manifesto{background:#F1EFF8;padding:24px 32px;border-bottom:1px solid #E5E3DE;}
+.manifesto-inner{max-width:900px;margin:0 auto;font-size:15px;font-style:italic;color:#3A3A38;line-height:1.6;}
+.manifesto-inner strong{font-style:normal;color:#1C1C1E;}
 
-.hero-kicker::before {
-  content: '';
-  display: block;
-  width: 32px;
-  height: 1px;
-  background: var(--accent);
-}
+/* ── PAGE ── */
+.page{max-width:900px;margin:0 auto;padding:48px 32px 80px;}
 
-.hero-statement {
-  font-size: clamp(38px, 6vw, 72px);
-  font-weight: 300;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  max-width: 820px;
-  margin-bottom: 40px;
-}
+/* ── SECTION ── */
+.section-lbl{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:6px;}
+.section-title{font-size:22px;font-weight:700;color:#1C1C1E;margin-bottom:6px;letter-spacing:-0.01em;}
+.section-sub{font-size:14px;color:#888;line-height:1.6;margin-bottom:28px;max-width:560px;}
+.section-rule{border:none;border-top:0.5px solid #E8E8E6;margin:48px 0;}
 
-.hero-statement strong {
-  font-weight: 700;
-}
-
-.hero-statement em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.hero-sub {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.65;
-  max-width: 520px;
-  margin-bottom: 48px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
-}
-
-.btn-primary {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--surface);
-  background: var(--ink);
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.15s;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.btn-primary:hover { background: var(--accent); }
-
-.btn-secondary {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink);
-  border: 1px solid var(--rule);
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.15s;
-  background: var(--surface);
-}
-
-.btn-secondary:hover { border-color: var(--ink); }
-
-.hero-scroll {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  color: var(--light);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.hero-scroll-line {
-  width: 40px;
-  height: 1px;
-  background: var(--light);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-scroll-line::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: var(--accent);
-  animation: slide 2s ease-in-out infinite;
-}
-
-@keyframes slide {
-  0% { left: -100%; }
-  50% { left: 0%; }
-  100% { left: 100%; }
-}
-
-/* ── PHILOSOPHY STRIP ── */
-.strip {
-  background: var(--ink);
-  padding: 28px 40px;
-  overflow: hidden;
-}
-
-.strip-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  gap: 48px;
-  align-items: center;
-}
-
-.strip-quote {
-  font-size: 18px;
-  font-weight: 300;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.5;
-  font-style: italic;
-  flex: 1;
-  letter-spacing: -0.01em;
-}
-
-.strip-quote strong {
-  font-weight: 600;
-  color: #fff;
-  font-style: normal;
-}
-
-.strip-divider {
-  width: 1px;
-  height: 48px;
-  background: rgba(255,255,255,0.15);
-  flex-shrink: 0;
-}
-
-.strip-meta {
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  line-height: 1.6;
-  flex-shrink: 0;
-  max-width: 180px;
-}
-
-/* ── SECTION SHARED ── */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 96px 40px;
-}
-
-.section-header {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: end;
-  margin-bottom: 48px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.section-eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-.section-title {
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  line-height: 1.15;
-}
-
-.section-count {
-  font-size: 11px;
-  color: var(--light);
-  letter-spacing: 0.06em;
-}
-
-/* ── CASE STUDIES ── */
-.case-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.case-card {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-  position: relative;
-}
-
-.case-card:hover {
-  border-color: var(--ink);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
-}
-
-.case-card-accent {
-  height: 3px;
-  width: 100%;
-}
-
-.case-card-body {
-  padding: 28px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.case-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 16px;
-  align-self: flex-start;
-}
-
-.case-number {
-  font-size: 11px;
-  color: var(--light);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  margin-bottom: 8px;
-}
-
-.case-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-.case-desc {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 24px;
-  flex: 1;
-}
-
-.case-artefacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 24px;
-}
-
-.artefact {
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--bg);
-  border: 1px solid var(--rule);
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.case-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 28px;
-  border-top: 1px solid var(--rule);
-  background: var(--bg);
-}
-
-.case-footer-meta {
-  font-size: 11px;
-  color: var(--light);
-  letter-spacing: 0.04em;
-}
-
-.case-cta {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: gap 0.15s;
-}
-
-.case-card:hover .case-cta { gap: 10px; }
-
-.cta-arrow {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  flex-shrink: 0;
-  transition: background 0.15s;
-}
-
-.case-card:hover .cta-arrow { background: var(--accent); }
+/* ── CASE CARDS ── */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;}
+.case-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;}
+.case-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.case-accent{height:3px;width:100%;}
+.case-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.case-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:8px;}
+.case-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;align-self:flex-start;}
+.case-title{font-size:18px;font-weight:700;color:#1C1C1E;letter-spacing:-0.02em;line-height:1.2;margin-bottom:10px;}
+.case-desc{font-size:13px;color:#888;line-height:1.6;margin-bottom:16px;flex:1;}
+.case-artefacts{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+.artefact{font-size:10px;color:#888;background:#F7F7F5;border:0.5px solid #E8E8E6;padding:3px 9px;border-radius:20px;}
+.case-cta{font-size:12px;font-weight:600;color:#1C1C1E;display:flex;align-items:center;gap:6px;}
+.cta-arrow{width:18px;height:18px;border-radius:50%;background:#1C1C1E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:background 0.15s;}
+.case-card:hover .cta-arrow{background:#1A5C38;}
+.case-footer{padding:12px 20px;border-top:0.5px solid #E8E8E6;background:#FAFAF8;font-size:11px;color:#999;line-height:1.4;}
 
 /* ── APPROACH ── */
-.approach-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  overflow: hidden;
-}
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E8E8E6;border:0.5px solid #E8E8E6;border-radius:12px;overflow:hidden;margin-bottom:8px;}
+.approach-cell{background:#fff;padding:20px 18px;}
+.approach-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1A5C38;margin-bottom:10px;}
+.approach-title{font-size:14px;font-weight:700;color:#1C1C1E;margin-bottom:6px;letter-spacing:-0.01em;}
+.approach-desc{font-size:12px;color:#888;line-height:1.55;}
 
-.approach-cell {
-  background: var(--surface);
-  padding: 28px 24px;
-  position: relative;
-}
-
-.approach-num {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-  margin-bottom: 14px;
-}
-
-.approach-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-}
-
-.approach-desc {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* ── CREDENTIALS STRIP ── */
-.cred-strip {
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  background: var(--surface);
-  padding: 24px 40px;
-}
-
-.cred-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  gap: 48px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.cred-item {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.cred-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--light);
-}
-
-.cred-value {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink);
-  line-height: 1.4;
-}
-
-.cred-sep {
-  width: 1px;
-  height: 32px;
-  background: var(--rule);
-  flex-shrink: 0;
-}
-
-/* ── CONTACT ── */
-.contact-section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 96px 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.contact-left .eyebrow {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-
-.contact-title {
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.contact-sub {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 32px;
-}
-
-.contact-right {
-  background: var(--ink);
-  border-radius: 16px;
-  padding: 36px;
-}
-
-.contact-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.contact-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.contact-row-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-}
-
-.contact-row-value {
-  font-size: 14px;
-  color: rgba(255,255,255,0.9);
-  line-height: 1.4;
-}
-
-.contact-row-value a {
-  color: #6FCF97;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.contact-row-value a:hover { color: #fff; }
+/* ── CTA ── */
+.cta-strip{background:#1C1C1E;border-radius:14px;padding:28px 32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:48px;}
+.cta-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px;}
+.cta-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-0.01em;}
+.cta-sub{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;}
+.cta-btns{display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
+.cta-btn{font-size:12px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;white-space:nowrap;text-align:center;}
+.cta-btn.primary{background:#fff;color:#1C1C1E;}
+.cta-btn.secondary{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:0.5px solid rgba(255,255,255,0.15);}
+.cta-btn:hover{opacity:0.85;}
 
 /* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--rule);
-  padding: 24px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.footer-name {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.footer-copy {
-  font-size: 11px;
-  color: var(--light);
-}
+footer{font-size:12px;color:#999;text-align:center;padding:28px 32px;border-top:0.5px solid #E8E8E6;margin-top:0;}
 
 /* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .nav { padding: 0 20px; }
-  .nav-links { gap: 16px; }
-  .nav-link { display: none; }
-  .hero { padding: 100px 20px 60px; }
-  .hero-statement { font-size: 34px; }
-  .strip { padding: 24px 20px; }
-  .strip-inner { flex-direction: column; gap: 20px; }
-  .strip-divider { display: none; }
-  .section { padding: 64px 20px; }
-  .section-header { grid-template-columns: 1fr; }
-  .case-grid { grid-template-columns: 1fr; }
-  .approach-grid { grid-template-columns: 1fr; }
-  .cred-strip { padding: 20px; }
-  .cred-inner { gap: 24px; }
-  .cred-sep { display: none; }
-  .contact-section { grid-template-columns: 1fr; gap: 40px; padding: 64px 20px; }
-  footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+@media(max-width:860px){.case-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){
+  .hero{padding:48px 20px 40px;}
+  .page{padding:32px 20px 60px;}
+  .case-grid{grid-template-columns:1fr;}
+  .approach-grid{grid-template-columns:1fr;}
+  .cta-strip{grid-template-columns:1fr;}
+  .cta-btns{flex-direction:row;}
+  .manifesto{padding:18px 20px;}
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-scroll-line::after { animation: none; }
-  .case-card { transition: none; }
-}
-
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a class="nav-name" href="#">Keithan Cokbilir</a>
-  <div class="nav-links">
-    <a class="nav-link" href="#work">Work</a>
-    <a class="nav-link" href="#approach">Approach</a>
-    <a class="nav-link" href="#contact">Contact</a>
-    <a class="nav-cta" href="mailto:hello@keithan.eu">Get in touch</a>
-  </div>
-</nav>
-
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-kicker">Learning Experience Design · Ingolstadt, Germany</div>
-  <h1 class="hero-statement">
-    The gap is never<br>
-    <strong>knowledge alone.</strong><br>
-    It's always <em>environment,</em><br>
-    confidence, and a<br>
-    reason to act.
-  </h1>
-  <p class="hero-sub">
-    I design learning experiences that change behaviour — not just knowledge. Every project starts with a performance gap, not a content list.
-  </p>
-  <div class="hero-actions">
-    <a class="btn-primary" href="#work">View case studies →</a>
-    <a class="btn-secondary" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
-    <a class="btn-secondary" href="https://keithan-c.github.io/scorecard" target="_blank">AI Readiness Scorecard</a>
-  </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    Scroll to explore
-  </div>
-</section>
-
-<!-- PHILOSOPHY STRIP -->
-<div class="strip">
-  <div class="strip-inner">
-    <div class="strip-quote">
-      <strong>If they don't use it</strong> — I've failed. This isn't about completion rates. It's about what people do differently on day 31.
-    </div>
-    <div class="strip-divider"></div>
-    <div class="strip-meta">
-      LXD · AI Enablement<br>
-      Performance Consulting<br>
-      Ingolstadt · Remote
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Learning Experience Design · Ingolstadt, Germany</div>
+    <div class="hero-name">Keithan Cokbilir</div>
+    <div class="hero-title">LXD · AI Enablement · Performance Consulting · Ingolstadt, Germany</div>
+    <div class="hero-links">
+      <a class="hero-link primary" href="mailto:hello@keithan.eu">hello@keithan.eu</a>
+      <a class="hero-link" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
+      <a class="hero-link" href="https://keithan-c.github.io/scorecard" target="_blank">AI Readiness Scorecard</a>
     </div>
   </div>
 </div>
 
-<!-- CREDENTIALS -->
-<div class="cred-strip">
-  <div class="cred-inner">
-    <div class="cred-item">
-      <div class="cred-label">Qualification</div>
-      <div class="cred-value">LXD Certificate · York University</div>
-    </div>
-    <div class="cred-sep"></div>
-    <div class="cred-item">
-      <div class="cred-label">Qualification</div>
-      <div class="cred-value">Adult Learning · University of Calgary</div>
-    </div>
-    <div class="cred-sep"></div>
-    <div class="cred-item">
-      <div class="cred-label">Languages</div>
-      <div class="cred-value">English · German B1 </div>
-    </div>
-    <div class="cred-sep"></div>
-    <div class="cred-item">
-      <div class="cred-label">Specialisms</div>
-      <div class="cred-value">Data literacy · AI enablement · Corporate L&D</div>
-    </div>
-    <div class="cred-sep"></div>
-    <div class="cred-item">
-      <div class="cred-label">Based</div>
-      <div class="cred-value">Ingolstadt, Bavaria · Open to remote</div>
-    </div>
-  </div>
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-inner">The gap is never knowledge alone. It's always <strong>environment, confidence, and a reason to act.</strong> I design learning experiences that change behaviour — not just what people know.</div>
 </div>
 
-<!-- CASE STUDIES -->
-<section class="section" id="work">
-  <div class="section-header">
-    <div>
-      <div class="section-eyebrow">Selected work</div>
-      <h2 class="section-title">Two complete LXD case studies</h2>
-    </div>
-    <div class="section-count">02 projects</div>
-  </div>
+<div class="page">
+
+  <!-- CASE STUDIES -->
+  <div class="section-lbl">Selected work</div>
+  <div class="section-title">Three LXD case studies</div>
+  <div class="section-sub">Each designed from a real performance problem — with interactive artefacts, measurement frameworks, baseline questions, and facilitator materials included.</div>
 
   <div class="case-grid">
 
-    <!-- Governance -->
+    <!-- VeriTech -->
     <a class="case-card" href="governance1/index.html">
-      <div class="case-card-accent" style="background: var(--accent);"></div>
-      <div class="case-card-body">
-        <div class="case-number">01</div>
-        <div class="case-tag" style="background:var(--accent-lt);color:var(--accent);">Data governance · Corporate L&D</div>
-        <h3 class="case-title">VeriTech Group Data Governance Programme</h3>
-        <p class="case-desc">Three interconnected role-based learning journeys for Data Owners, Data Stewards, and Use Case Owners — built around what people need to do on day one, not what they need to know. With a cross-role simulation, measurement framework, and manager alignment strategy.</p>
+      <div class="case-accent" style="background:#1A5C38;"></div>
+      <div class="case-body">
+        <div class="case-num">01</div>
+        <div class="case-tag" style="background:#E6EFE9;color:#1A5C38;">Data governance · Corporate L&D</div>
+        <div class="case-title">VeriTech Group Data Governance Programme</div>
+        <p class="case-desc">Three interconnected role-based learning journeys for Data Owners, Data Stewards, and Use Case Owners — built around what people need to do on day one, not what they need to know.</p>
         <div class="case-artefacts">
           <span class="artefact">3 learning journeys</span>
           <span class="artefact">Cross-role simulation</span>
           <span class="artefact">Card sort</span>
           <span class="artefact">Measurement arc</span>
           <span class="artefact">Manager strategy</span>
-          <span class="artefact">Two-track design</span>
         </div>
         <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
       </div>
-      <div class="case-footer">
-        <div class="case-footer-meta">Role clarity · Decision confidence · Day-30 behaviour change</div>
-      </div>
+      <div class="case-footer">Role clarity · Decision confidence · Behaviour change metrics</div>
     </a>
 
     <!-- Revenue Cup -->
     <a class="case-card" href="revenue-cup/index.html">
-      <div class="case-card-accent" style="background: #1A4DA8;"></div>
-      <div class="case-card-body">
-        <div class="case-number">02</div>
-        <div class="case-tag" style="background:var(--tag-blue-lt);color:var(--tag-blue);">Innovation · Gamification · Data literacy</div>
-        <h3 class="case-title">The Revenue Cup</h3>
-        <p class="case-desc">A 4-week gamified innovation challenge designed to surface commercial ideas from teams who already have them — and drive Power BI adoption in the process. Grounded in performance gap analysis and environment redesign, not content delivery.</p>
+      <div class="case-accent" style="background:#0E2D6B;"></div>
+      <div class="case-body">
+        <div class="case-num">02</div>
+        <div class="case-tag" style="background:#E8EDF8;color:#0E2D6B;">Innovation · Gamification · Data literacy</div>
+        <div class="case-title">The Revenue Cup</div>
+        <p class="case-desc">A 4-week gamified innovation challenge designed to surface commercial ideas from teams who already have them — and drive Power BI adoption in the process. Grounded in performance gap analysis and environment redesign.</p>
         <div class="case-artefacts">
           <span class="artefact">Live scoreboard</span>
-          <span class="artefact">Before & after</span>
+          <span class="artefact">Before &amp; after</span>
           <span class="artefact">4-week timeline</span>
           <span class="artefact">Gap analysis</span>
-          <span class="artefact">Community dashboard</span>
+          <span class="artefact">LXD completion pack</span>
         </div>
         <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
       </div>
-      <div class="case-footer">
-        <div class="case-footer-meta">Environment design · Social proof · Behaviour-change metrics</div>
+      <div class="case-footer">Environment design · Social proof · Behaviour-change metrics</div>
+    </a>
+
+    <!-- Intelligence Sprint -->
+    <a class="case-card" href="intelligence-sprint/index.html">
+      <div class="case-accent" style="background:#1A4DA8;"></div>
+      <div class="case-body">
+        <div class="case-num">03</div>
+        <div class="case-tag" style="background:#E8EDF8;color:#1A4DA8;">ADAS · SDV · Engineering intelligence</div>
+        <div class="case-title">The Intelligence Sprint</div>
+        <p class="case-desc">A 4-week structured pilot that surfaces technical insights with commercial value from ADAS and SDV engineering teams. Includes EU AI Act Article 4 compliance evidence as a secondary output.</p>
+        <div class="case-artefacts">
+          <span class="artefact">Insight brief template</span>
+          <span class="artefact">Sprint structure</span>
+          <span class="artefact">Baseline measurement</span>
+          <span class="artefact">EU AI Act angle</span>
+          <span class="artefact">LXD completion pack</span>
+        </div>
+        <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
       </div>
+      <div class="case-footer">Engineering-to-commercial translation · AI literacy · Article 4 compliance</div>
     </a>
 
   </div>
-</section>
 
-<!-- APPROACH -->
-<section class="section" id="approach" style="padding-top:0;">
-  <div class="section-header">
-    <div>
-      <div class="section-eyebrow">How I work</div>
-      <h2 class="section-title">Six principles, applied to every project</h2>
-    </div>
-  </div>
+  <hr class="section-rule">
+
+  <!-- APPROACH -->
+  <div class="section-lbl">How I work</div>
+  <div class="section-title">Six principles, applied to every project</div>
+  <div class="section-sub" style="margin-bottom:20px;">Every engagement starts with a performance problem. The design follows the gap — not a content list, not the stakeholder's first suggestion.</div>
+
   <div class="approach-grid">
     <div class="approach-cell">
       <div class="approach-num">01</div>
@@ -822,7 +199,7 @@ footer {
     <div class="approach-cell">
       <div class="approach-num">03</div>
       <div class="approach-title">Simulation design</div>
-      <div class="approach-desc">Decision-based scenarios with designed failure states. Learning happens when people make real choices with real consequences in a safe environment.</div>
+      <div class="approach-desc">Decision-based scenarios with designed failure states. Learning happens when people make real choices in a safe environment.</div>
     </div>
     <div class="approach-cell">
       <div class="approach-num">04</div>
@@ -832,7 +209,7 @@ footer {
     <div class="approach-cell">
       <div class="approach-num">05</div>
       <div class="approach-title">Scalability built in</div>
-      <div class="approach-desc">Facilitator guides, async modules, train-the-trainer — designed from the start, not bolted on when the client asks for it.</div>
+      <div class="approach-desc">Facilitator guides, async modules, train-the-trainer — designed from the start, not added later when the client asks.</div>
     </div>
     <div class="approach-cell">
       <div class="approach-num">06</div>
@@ -840,52 +217,23 @@ footer {
       <div class="approach-desc">Claude and other AI tools used throughout — for rapid prototyping, scenario generation, and interactive artefact development.</div>
     </div>
   </div>
-</section>
 
-<!-- CONTACT -->
-<div style="background: var(--surface); border-top: 1px solid var(--rule);">
-  <div class="contact-section" id="contact">
-    <div class="contact-left">
-      <div class="eyebrow">Open to new opportunities</div>
-      <h2 class="contact-title">Let's work together</h2>
-      <p class="contact-sub">I'm actively looking for L&D Specialist, Instructional Designer, AI Enablement, and Sales Enablement roles — based in Ingolstadt and open to remote or Munich-commutable positions.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a class="btn-primary" href="mailto:hello@keithan.eu">hello@keithan.eu →</a>
-        <a class="btn-secondary" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
-      </div>
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div>
+      <div class="cta-label">Open to new opportunities</div>
+      <div class="cta-title">L&D Specialist · Instructional Designer · AI Enablement · Sales Enablement</div>
+      <div class="cta-sub">Based in Ingolstadt · Open to remote or Munich-commutable positions</div>
     </div>
-    <div class="contact-right">
-      <div class="contact-detail">
-        <div class="contact-row">
-          <div class="contact-row-label">Email</div>
-          <div class="contact-row-value"><a href="mailto:hello@keithan.eu">hello@keithan.eu</a></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-row-label">LinkedIn</div>
-          <div class="contact-row-value"><a href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">keithan-cokbilir-b929a830</a></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-row-label">Portfolio</div>
-          <div class="contact-row-value"><a href="https://keithan-c.github.io/Keithan-s_lxd_portfolio" target="_blank">GitHub Pages</a></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-row-label">AI Readiness Scorecard</div>
-          <div class="contact-row-value"><a href="https://keithan-c.github.io/scorecard" target="_blank">keithan-c.github.io/scorecard</a></div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-row-label">Location</div>
-          <div class="contact-row-value" style="color:rgba(255,255,255,0.5);">Ingolstadt, Bavaria, Germany</div>
-        </div>
-      </div>
+    <div class="cta-btns">
+      <a class="cta-btn primary" href="mailto:hello@keithan.eu">Get in touch</a>
+      <a class="cta-btn secondary" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
     </div>
   </div>
+
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-name">Keithan Cokbilir</div>
-  <div class="footer-copy">Learning Experience Designer · Ingolstadt, Germany</div>
-</footer>
+<footer>Keithan Cokbilir &nbsp;·&nbsp; Learning Experience Designer &nbsp;·&nbsp; Ingolstadt, Germany</footer>
 
 </body>
 </html>

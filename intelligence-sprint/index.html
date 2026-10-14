@@ -44,6 +44,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .lxd-gap-card{background:#E6EFE9;border:0.5px solid #9FD4B8;border-radius:10px;padding:14px 16px;margin-bottom:1.25rem;}
 .lxd-gap-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A5C38;margin-bottom:5px;}
 .lxd-gap-text{font-size:13px;color:#1A5C38;line-height:1.55;}
+.decision-list{list-style:none;counter-reset:d;margin-bottom:1.5rem;}
+.decision-list li{counter-increment:d;background:#fff;border:0.5px solid #D0D4E4;border-radius:10px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;font-size:13px;color:#2E3650;line-height:1.6;}
+.decision-list li::before{content:counter(d);position:absolute;left:16px;top:14px;width:22px;height:22px;border-radius:50%;background:#0E2D6B;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.decision-list strong{color:#0A0F1E;display:block;margin-bottom:2px;}
+.role-line{font-size:14px;color:#2E3650;line-height:1.65;margin-bottom:1.5rem;}
+.role-line strong{color:#0A0F1E;}
 .footer{font-size:12px;color:#6B7494;text-align:center;padding:2rem 0;border-top:0.5px solid #D0D4E4;margin-top:1rem;}
 .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#6B7494;text-decoration:none;margin-bottom:2rem;}
 .back-link:hover{color:#0A0F1E;}
@@ -56,31 +62,35 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <a class="back-link" href="../index.html">Back to portfolio</a>
 
-<div class="eyebrow">Learning design case study · ADAS · SDV · Technical teams</div>
+<div class="eyebrow">Learning design case study · Concept project · Technical audience</div>
 <h1 class="page-title">The Intelligence Sprint</h1>
-<div class="byline">Engineering intelligence programme · Keithan Cokbilir · LXD Advisory</div>
+<div class="byline">Programme design · Keithan Cokbilir</div>
 
 <div class="callout">
-  <p>ADAS and SDV engineering teams sit on technically and commercially valuable intelligence — about sensor performance, platform architecture trade-offs, supplier capability gaps, and regulatory risk. Right now that intelligence reaches product management through formal reviews that are too slow, too filtered, and too late to drive real decisions.</p>
-  <p>The Intelligence Sprint is not a training programme. It is a structured 4-week pilot that surfaces those insights and creates a documented pathway from engineering observation to product management action — with baseline measurement built in from day one and a 6-week development arc for the winning insight.</p>
+  <p><strong>Brief.</strong> Engineers on driver-assistance and vehicle-software teams know things about how their systems behave in real conditions that product management never hears — or hears too late, filtered through formal reviews.</p>
+  <p>I designed a 4-week structured sprint that helps engineers turn a technical observation into a brief product management can act on, with a 6-week follow-up arc for the strongest insight.</p>
 </div>
+
+<div class="role-line"><strong>My role:</strong> audience analysis, sprint architecture, insight-brief template, engineering-to-commercial job aid, baseline and day-30 measurement design.</div>
 
 <div class="honest-bar">
-  <div class="honest-label">Design note</div>
-  <div class="honest-text">This is a pilot programme — designed in full, not yet run. The artefacts below show the complete design: the insight brief template participants complete in week 2, how measurement works, and what happens to the winning insight afterwards. The case study framework is built and ready. What comes next is a real engineering team, real data, and a real outcome.</div>
+  <div class="honest-label">Status</div>
+  <div class="honest-text">Concept project — fully designed, not yet delivered. Everything below is the complete design and its working artefacts.</div>
 </div>
 
-<div class="eu-badge">
-  <div class="eu-badge-label">EU AI Act</div>
-  <div class="eu-badge-text">ADAS systems are listed as high-risk under Annex III. The insight briefs produced by this programme are <strong>Article 4 compliance evidence</strong> — a structured, auditable record of AI literacy across your engineering team. Enforcement deadline: August 2026.</div>
-</div>
+<div class="eyebrow" style="margin-bottom:8px;">Key design decisions</div>
+<ol class="decision-list">
+  <li><strong>A five-part template instead of free-form submissions</strong>Without structure, week-2 submissions vary too much for non-engineers to compare. The template forces each insight to link an observation to a live programme, an implication and supporting data.</li>
+  <li><strong>The data job aid arrives in week 3, not week 1</strong>Engineers get the one-page "technical metric → business argument" aid only once they have a real insight that needs it — learning at the point of need.</li>
+  <li><strong>A story-based baseline question</strong>Alongside two confidence scales, I ask "When did a technical observation last change a product decision?" — a qualitative baseline that is harder to game than self-ratings.</li>
+</ol>
 
 <div class="context-grid">
   <div class="context-card"><div class="cc-label">Duration</div><div class="cc-value">4-week sprint + 6-week development arc</div></div>
   <div class="context-card"><div class="cc-label">Format</div><div class="cc-value">Live challenge + insight scoreboard</div></div>
   <div class="context-card"><div class="cc-label">Primary gap</div><div class="cc-value">Engineering-to-commercial translation</div></div>
   <div class="context-card"><div class="cc-label">Tool introduced</div><div class="cc-value">Engineering data views — week 3</div></div>
-  <div class="context-card"><div class="cc-label">Prize</div><div class="cc-value">6-week PM development pathway → roadmap decision</div></div>
+  <div class="context-card"><div class="cc-label">Constraint</div><div class="cc-value">Regulated AI context</div></div>
   <div class="context-card"><div class="cc-label">Measurement</div><div class="cc-value">3 baseline questions · day-30 delta</div></div>
 </div>
 
@@ -117,7 +127,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div class="section">
   <div class="section-num">03</div>
   <h2 class="section-title">Baseline measurement — engineering version</h2>
-  <div class="section-desc">Three questions specific to an engineering audience. Question 1 measures commercial translation confidence — the primary skill gap. Question 2 measures belief that insights reach product management — the environment gap. Question 3 is the most powerful: "when was the last time a technical observation led to a commercial decision?" Most engineers will answer "I can't think of one." That answer is your case study's most compelling opening line.</div>
+  <div class="section-desc">Three questions specific to an engineering audience. Question 1 measures commercial translation confidence — the primary skill gap. Question 2 measures belief that insights reach product management — the environment gap. Question 3 is the most powerful: "when was the last time a technical observation led to a commercial decision?" Most engineers will answer "I can't think of one." That answer becomes the qualitative baseline the day-30 result is compared against.</div>
   <a class="open-btn" href="is-05-lxd-completion.html#baseline" target="_blank">Open baseline questions →</a>
 </div>
 
@@ -125,33 +135,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div class="section">
   <div class="section-num">04</div>
-  <h2 class="section-title">EU AI Act compliance angle</h2>
-  <div class="section-desc">The Intelligence Sprint was designed as an innovation programme. It is also — without any design changes — an Article 4 compliance tool. This section shows the legal connection, the exact paragraph to add to any brief, and how the EU AI Act angle opens a second budget source in legal and compliance functions with non-discretionary budgets and a hard August 2026 deadline.</div>
-  <a class="open-btn" href="is-05-lxd-completion.html#euai" target="_blank">Open EU AI Act angle →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">05</div>
-  <h2 class="section-title">LXD completion pack</h2>
+  <h2 class="section-title">Measurement &amp; completion pack</h2>
   <div class="lxd-gap-card">
-    <div class="lxd-gap-label">Three LXD gaps addressed</div>
-    <div class="lxd-gap-text">Insight brief template — the structured format that makes week 2 submissions evaluable by product management. Baseline questions specific to engineering teams — commercial translation confidence, belief that insights reach PM, and pre-programme stories of when it last happened. EU AI Act Article 4 compliance addendum — how the Sprint produces compliance evidence alongside commercial intelligence.</div>
+    <div class="lxd-gap-label">What this pack closes</div>
+    <div class="lxd-gap-text">Insight brief template — the structured format that makes week 2 submissions evaluable by product management. Baseline questions specific to engineering teams — commercial translation confidence, belief that insights reach PM, and pre-programme stories of when it last happened. A short note on how the briefs can also serve as AI-literacy documentation in regulated teams.</div>
   </div>
-  <div class="section-desc">The three artefacts most likely to determine whether the programme produces a real case study — not what participants experience during four weeks, but what was measured before it started, how submissions are structured, and what additional compliance value the programme creates for regulated engineering environments.</div>
+  <div class="section-desc">The three artefacts most likely to determine whether the programme produces a real case study — not what participants experience during four weeks, but what was measured before it started and how submissions are structured.</div>
   <a class="open-btn" href="is-05-lxd-completion.html" target="_blank">Open completion pack →</a>
 </div>
 
 <div class="divider"></div>
 
 <div class="callout-dark">
-  <p>"The intelligence already exists inside your engineering teams. The Sprint builds the pathway to surface it."</p>
+  <p>"The knowledge already exists. The design builds the pathway to surface it."</p>
   <p>The Intelligence Sprint is not designed to teach engineers about commercial thinking. It is designed to surface what they already know and create a structured pathway for the best insights to reach product management with a brief they can act on. If no insights enter the development pathway, the design goes back to the action map.</p>
 </div>
 
 <div class="footer">
-  Keithan Cokbilir · LXD Advisory · hello@keithan.eu
+  Keithan Cokbilir · Learning Experience Designer · hello@keithan.eu
 </div>
 
 </div>

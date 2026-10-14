@@ -40,6 +40,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .lxd-gap-card{background:#E6EFE9;border:0.5px solid #9FD4B8;border-radius:10px;padding:14px 16px;margin-bottom:1.25rem;}
 .lxd-gap-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A5C38;margin-bottom:5px;}
 .lxd-gap-text{font-size:13px;color:#1A5C38;line-height:1.55;}
+.decision-list{list-style:none;counter-reset:d;margin-bottom:1.5rem;}
+.decision-list li{counter-increment:d;background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;font-size:13px;color:#3A3A38;line-height:1.6;}
+.decision-list li::before{content:counter(d);position:absolute;left:16px;top:14px;width:22px;height:22px;border-radius:50%;background:#1A1A18;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.decision-list strong{color:#1A1A18;display:block;margin-bottom:2px;}
+.role-line{font-size:14px;color:#3A3A38;line-height:1.65;margin-bottom:1.5rem;}
+.role-line strong{color:#1A1A18;}
 .footer{font-size:12px;color:#888;text-align:center;padding:2rem 0;border-top:0.5px solid #E8E8E6;margin-top:1rem;}
 .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#888;text-decoration:none;margin-bottom:2rem;}
 .back-link:hover{color:#1C1C1E;}
@@ -52,19 +58,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <a class="back-link" href="../index.html">Back to portfolio</a>
 
-<div class="eyebrow">Learning design case study</div>
+<div class="eyebrow">Learning design case study · Concept project · Gamification · Data literacy</div>
 <h1 class="page-title">The Revenue Cup</h1>
-<div class="byline">Performance-centred innovation challenge · Keithan Cokbilir</div>
+<div class="byline">Programme design · Keithan Cokbilir</div>
 
 <div class="callout">
-  <p>Ideas don't stay invisible because people lack creativity. They stay invisible because there's no structured pathway from idea to incubation — and no reason to believe that trying leads anywhere.</p>
-  <p>The Revenue Cup is not a training programme. It's an environment redesign. Four weeks, a live scoreboard, peer voting, a 6-week incubation arc, and baseline measurement built in from day one — designed to surface revenue ideas from teams who already have them but no channel to share them.</p>
+  <p><strong>Brief.</strong> Frontline experts hold commercial ideas about their clients but have no channel to raise them — and the organisation has a Power BI licence that barely gets used.</p>
+  <p>I treated this as an environment problem, not a training problem, and designed a 4-week gamified challenge with a live scoreboard, peer voting and a 6-week incubation arc for the winning idea.</p>
 </div>
 
+<div class="role-line"><strong>My role:</strong> performance gap analysis, programme design, gamification mechanics, Power BI job aid, manager brief, measurement design.</div>
+
 <div class="honest-bar">
-  <div class="honest-label">Design note</div>
-  <div class="honest-text">This is a pilot programme — designed in full, not yet run. The artefacts below show the complete design: what participants experience, how measurement works, and what happens to the winning idea across the incubation arc. The case study framework is built and ready. What comes next is a real team, real data, and a real outcome.</div>
+  <div class="honest-label">Status</div>
+  <div class="honest-text">Concept project — fully designed, not yet delivered. Everything below is the complete design and its working artefacts.</div>
 </div>
+
+<div class="eyebrow" style="margin-bottom:8px;">Key design decisions</div>
+<ol class="decision-list">
+  <li><strong>Visibility over points</strong>The scoreboard shows the idea behind every score. The motivation comes from colleagues seeing your thinking, not from badges.</li>
+  <li><strong>Power BI only in week 3</strong>Teams meet the tool once they already have an idea and a question to answer — so the data skill is learned in context rather than in a standalone session.</li>
+  <li><strong>A designed week-2 intervention</strong>Week 2 is the most likely dropout point, so it gets a planned mid-point nudge and manager touchpoint instead of hoping momentum holds.</li>
+</ol>
 
 <div class="context-grid">
   <div class="context-card"><div class="cc-label">Duration</div><div class="cc-value">4-week challenge + 6-week incubation</div></div>
@@ -125,9 +140,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div class="section">
   <div class="section-num">05</div>
-  <h2 class="section-title">LXD completion pack — measurement, incubation & manager brief</h2>
+  <h2 class="section-title">Measurement, incubation &amp; manager brief</h2>
   <div class="lxd-gap-card">
-    <div class="lxd-gap-label">Three LXD gaps addressed</div>
+    <div class="lxd-gap-label">What this pack closes</div>
     <div class="lxd-gap-text">Baseline questions before week 1 and repeated after week 4. A 6-week incubation arc from pitch day to leadership investment decision. A manager brief with three touchpoints, specific language for each, and designed responses to the four most common team objections.</div>
   </div>
   <div class="section-desc">The artefacts most likely to determine whether the programme actually changes behaviour — not what participants experience during four weeks, but what was measured before it started, what happens to the winning idea afterwards, and whether managers created the conditions for participation to be real.</div>
@@ -138,7 +153,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div class="callout-dark">
   <p>If they don't use it — I've failed.</p>
-  <p>The Revenue Cup is not designed to produce completion rates or participation numbers. It is designed to produce one data-backed idea that reaches a leadership investment decision — and a team that knows how to surface commercial intelligence in a way they didn't before. If those two things don't happen, the design goes back to the action map.</p>
+  <p>The design is not measured by completion rates or participation numbers. It is meant to produce one data-backed idea that reaches a leadership investment decision — and a team that knows how to surface commercial intelligence in a way they didn't before. If those two things don't happen, the design goes back to the action map.</p>
 </div>
 
 <div class="footer">

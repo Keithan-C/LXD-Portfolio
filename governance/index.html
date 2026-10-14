@@ -38,6 +38,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sc-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#1C1C1E;background:transparent;border:0.5px solid #D8D8D6;border-radius:7px;padding:5px 12px;cursor:pointer;text-decoration:none;transition:all 0.15s;}
 .sc-btn:hover{background:#F7F7F5;border-color:#ADADAB;}
 .sc-btn i{font-size:13px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#888;text-decoration:none;margin-bottom:2rem;}
+.back-link:hover{color:#1C1C1E;}
+.back-link::before{content:'←';}
+.role-line{font-size:14px;color:#444441;line-height:1.65;margin-bottom:1.5rem;}
+.role-line strong{color:#1C1C1E;font-weight:600;}
+.status-bar{background:#FDF5E6;border-left:3px solid #7A4500;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:2rem;font-size:13px;color:#3A3A38;line-height:1.6;}
+.status-bar strong{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#7A4500;margin-right:8px;}
+.decision-list{list-style:none;counter-reset:d;margin-bottom:2.5rem;}
+.decision-list li{counter-increment:d;background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;font-size:13px;color:#444441;line-height:1.6;}
+.decision-list li::before{content:counter(d);position:absolute;left:16px;top:14px;width:22px;height:22px;border-radius:50%;background:#1C1C1E;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
+.decision-list strong{color:#1C1C1E;display:block;margin-bottom:2px;font-weight:600;}
 .footer{font-size:12px;color:#888;text-align:center;padding:2rem 0 1rem;border-top:0.5px solid #E8E8E6;margin-top:1rem;}
 .tip{background:#E6F1FB;border-radius:8px;padding:8px 14px;font-size:12px;color:#0C447C;margin-bottom:1.5rem;display:flex;gap:8px;align-items:flex-start;}
 .tip i{font-size:14px;margin-top:1px;flex-shrink:0;}
@@ -46,20 +57,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <body>
 <div class="page">
 
-<div class="eyebrow">VeriTech Group · Data governance programme</div>
-<h1 class="page-title">A learning design case study</h1>
-<div class="byline">Keithan Cokbilir &nbsp;·&nbsp; hello@keithan.eu &nbsp;·&nbsp; linkedin.com/in/keithan-cokbilir</div>
+<a class="back-link" href="../index.html">Back to portfolio</a>
 
-<div class="tip">
-  <i class="ti ti-info-circle" aria-hidden="true"></i>
-  All materials on this page work offline. Click any button to open an artefact in a new tab — no internet connection required.
-</div>
+<div class="eyebrow">Learning design case study · Concept project · Data governance</div>
+<h1 class="page-title">VeriTech Group Data Governance Programme</h1>
+<div class="byline">Programme design · Keithan Cokbilir</div>
 
 <div class="callout">
   <p>The gap is never knowledge alone. It's always environment, confidence, and a reason to act.</p>
-  <p>Most data literacy programmes miss this. They deliver content and measure completion. What they don't do is design for the moment someone sits in their first governance meeting, or opens Power BI with a real business question, or has to make a decision that used to go to IT. That's the moment that matters. That's what this programme is designed for.</p>
-  <p>Data literacy is where I see the capability-without-structure problem at its most consequential. And VeriTech Group is where I want to solve it — because an organisation built on rigour and standards gives a learning programme credibility before the first session runs.</p>
+  <p><strong>Brief.</strong> VeriTech Group, a fictional standards-driven organisation, is rolling out data governance. Three new roles — Data Owner, Data Steward and Use Case Owner — must start making decisions that used to go to IT, but nobody is clear who decides what.</p>
+  <p>Most data literacy programmes deliver content and measure completion. I designed for the moments that matter instead: the first governance meeting, the first real business question in Power BI, the first decision that no longer goes to IT.</p>
 </div>
+
+<div class="role-line"><strong>My role:</strong> needs analysis, learning journey architecture, simulation and activity design, facilitator materials, manager alignment strategy, measurement framework.</div>
+
+<div class="status-bar"><strong>Status</strong>Concept project — fully designed, not yet delivered. All artefacts below are working and open offline in a new tab.</div>
+
+<div class="eyebrow" style="margin-bottom:8px;">Key design decisions</div>
+<ol class="decision-list">
+  <li><strong>Journeys built around day-one tasks</strong>Each role's journey starts from what that person has to do in their first week, not from a governance curriculum.</li>
+  <li><strong>An 8-minute card sort replaces a cold start</strong>Learners assign 12 real scenarios to a role before session 1, so the session opens with genuine disagreement to work through.</li>
+  <li><strong>Information asymmetry in the simulation</strong>Each role gets a different brief, so the cross-role scenario can only be solved by negotiating — the same skill the roles need on the job.</li>
+</ol>
 
 <div class="section">
   <div class="section-num">01</div>
@@ -99,14 +118,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 <div class="callout-dark">
   <p>If they don't use it — I've failed.</p>
-  <p>This programme is not designed to produce completion rates. It is designed to produce Data Owners who make decisions, Data Stewards who resolve conflicts, and Use Case Owners who submit briefs that technical teams can act on. If those behaviours don't change at day 30, the design goes back to the action map.</p>
+  <p>The design is not measured by completion rates. It is meant to produce Data Owners who make decisions, Data Stewards who resolve conflicts, and Use Case Owners who submit briefs that technical teams can act on. If those behaviours don't change at day 30, the design goes back to the action map.</p>
 </div>
 
 <div class="divider"></div>
 
 <div>
   <div class="support-title">Supporting materials</div>
-  <div class="support-desc">Available on request — pull these up if the conversation goes deeper on any specific aspect of the design.</div>
+  <div class="support-desc">Deeper detail on ownership, delivery tracks and manager alignment.</div>
   <div class="support-grid">
 
     <div class="support-card">

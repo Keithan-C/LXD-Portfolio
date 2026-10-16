@@ -3,158 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Intelligence Sprint — Learning Design Case Study</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F4F5F9;color:#0A0F1E;min-height:100vh;}
-.page{max-width:860px;margin:0 auto;padding:48px 32px;}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#6B7494;margin-bottom:6px;}
-.page-title{font-size:28px;font-weight:700;color:#0A0F1E;margin-bottom:4px;letter-spacing:-0.02em;}
-.byline{font-size:13px;color:#6B7494;margin-bottom:2rem;padding-bottom:2rem;border-bottom:0.5px solid #D0D4E4;}
-.callout{background:#E8EDF8;border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
-.callout p{font-size:14px;line-height:1.7;color:#2E3650;margin-bottom:0.75rem;}
-.callout p:last-child{margin-bottom:0;}
-.callout-dark{background:#0E2D6B;border-radius:12px;padding:1.5rem 1.75rem;margin:2.5rem 0;}
-.callout-dark p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.7;margin-bottom:0.75rem;}
-.callout-dark p:last-child{margin-bottom:0;}
-.callout-dark p:first-child{font-size:18px;font-weight:600;color:#fff;font-style:italic;}
-.honest-bar{background:#FDF5E6;border-left:3px solid #7A4500;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:2rem;display:flex;gap:10px;align-items:flex-start;}
-.honest-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7A4500;white-space:nowrap;padding-top:2px;flex-shrink:0;}
-.honest-text{font-size:13px;color:#3A3A38;line-height:1.6;}
-.eu-badge{background:#F0EAFB;border:0.5px solid #C8B8F4;border-radius:8px;padding:10px 14px;margin-bottom:1.5rem;display:flex;gap:10px;align-items:flex-start;}
-.eu-badge-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#4A2D8A;white-space:nowrap;padding-top:2px;flex-shrink:0;}
-.eu-badge-text{font-size:13px;color:#2E3650;line-height:1.55;}
-.eu-badge-text strong{color:#4A2D8A;}
-.section{margin-bottom:3rem;}
-.section-num{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#6B7494;margin-bottom:6px;}
-.section-title{font-size:18px;font-weight:600;color:#0A0F1E;margin-bottom:8px;letter-spacing:-0.01em;}
-.section-desc{font-size:14px;color:#6B7494;line-height:1.65;margin-bottom:1.25rem;}
-.open-btn{display:inline-flex;align-items:center;gap:8px;background:#0E2D6B;color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;transition:background 0.15s;}
-.open-btn:hover{background:#1A4DA8;}
-.divider{border:none;border-top:0.5px solid #D0D4E4;margin:2.5rem 0;}
-.context-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.5rem;}
-.context-card{background:#fff;border:0.5px solid #D0D4E4;border-radius:10px;padding:14px;}
-.cc-label{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#6B7494;margin-bottom:5px;}
-.cc-value{font-size:13px;font-weight:500;color:#0A0F1E;line-height:1.4;}
-.persona-card{background:#fff;border:0.5px solid #D0D4E4;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;}
-.p-avatar{width:44px;height:44px;border-radius:50%;background:#E8EDF8;color:#0E2D6B;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;}
-.p-name{font-size:15px;font-weight:600;color:#0A0F1E;margin-bottom:2px;}
-.p-role{font-size:12px;color:#6B7494;margin-bottom:8px;}
-.p-quote{font-size:13px;color:#6B7494;line-height:1.6;font-style:italic;border-left:2px solid #D0D4E4;padding-left:10px;}
-.lxd-gap-card{background:#E6EFE9;border:0.5px solid #9FD4B8;border-radius:10px;padding:14px 16px;margin-bottom:1.25rem;}
-.lxd-gap-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A5C38;margin-bottom:5px;}
-.lxd-gap-text{font-size:13px;color:#1A5C38;line-height:1.55;}
-.decision-list{list-style:none;counter-reset:d;margin-bottom:1.5rem;}
-.decision-list li{counter-increment:d;background:#fff;border:0.5px solid #D0D4E4;border-radius:10px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;font-size:13px;color:#2E3650;line-height:1.6;}
-.decision-list li::before{content:counter(d);position:absolute;left:16px;top:14px;width:22px;height:22px;border-radius:50%;background:#0E2D6B;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
-.decision-list strong{color:#0A0F1E;display:block;margin-bottom:2px;}
-.role-line{font-size:14px;color:#2E3650;line-height:1.65;margin-bottom:1.5rem;}
-.role-line strong{color:#0A0F1E;}
-.footer{font-size:12px;color:#6B7494;text-align:center;padding:2rem 0;border-top:0.5px solid #D0D4E4;margin-top:1rem;}
-.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#6B7494;text-decoration:none;margin-bottom:2rem;}
-.back-link:hover{color:#0A0F1E;}
-.back-link::before{content:'←';}
-@media(max-width:600px){.persona-card{grid-template-columns:1fr;}.page{padding:32px 20px;}}
-</style>
+<title>The Intelligence Sprint — Case study by Keithan Cokbilir</title>
+<meta name="description" content="A structured sprint that helps engineers turn what they see in testing into briefs product managers can act on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
 </head>
 <body>
-<div class="page">
-
-<a class="back-link" href="../index.html">Back to portfolio</a>
-
-<div class="eyebrow">Learning design case study · Concept project · Technical audience</div>
-<h1 class="page-title">The Intelligence Sprint</h1>
-<div class="byline">Programme design · Keithan Cokbilir</div>
-
-<div class="callout">
-  <p><strong>Brief.</strong> Engineers on driver-assistance and vehicle-software teams know things about how their systems behave in real conditions that product management never hears — or hears too late, filtered through formal reviews.</p>
-  <p>I designed a 4-week structured sprint that helps engineers turn a technical observation into a brief product management can act on, with a 6-week follow-up arc for the strongest insight.</p>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html">Keithan Cokbilir</a>
+    <ul>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
 </div>
-
-<div class="role-line"><strong>My role:</strong> audience analysis, sprint architecture, insight-brief template, engineering-to-commercial job aid, baseline and day-30 measurement design.</div>
-
-<div class="honest-bar">
-  <div class="honest-label">Status</div>
-  <div class="honest-text">Concept project — fully designed, not yet delivered. Everything below is the complete design and its working artefacts.</div>
-</div>
-
-<div class="eyebrow" style="margin-bottom:8px;">Key design decisions</div>
-<ol class="decision-list">
-  <li><strong>A five-part template instead of free-form submissions</strong>Without structure, week-2 submissions vary too much for non-engineers to compare. The template forces each insight to link an observation to a live programme, an implication and supporting data.</li>
-  <li><strong>The data job aid arrives in week 3, not week 1</strong>Engineers get the one-page "technical metric → business argument" aid only once they have a real insight that needs it — learning at the point of need.</li>
-  <li><strong>A story-based baseline question</strong>Alongside two confidence scales, I ask "When did a technical observation last change a product decision?" — a qualitative baseline that is harder to game than self-ratings.</li>
-</ol>
-
-<div class="context-grid">
-  <div class="context-card"><div class="cc-label">Duration</div><div class="cc-value">4-week sprint + 6-week development arc</div></div>
-  <div class="context-card"><div class="cc-label">Format</div><div class="cc-value">Live challenge + insight scoreboard</div></div>
-  <div class="context-card"><div class="cc-label">Primary gap</div><div class="cc-value">Engineering-to-commercial translation</div></div>
-  <div class="context-card"><div class="cc-label">Tool introduced</div><div class="cc-value">Engineering data views — week 3</div></div>
-  <div class="context-card"><div class="cc-label">Constraint</div><div class="cc-value">Regulated AI context</div></div>
-  <div class="context-card"><div class="cc-label">Measurement</div><div class="cc-value">3 baseline questions · day-30 delta</div></div>
-</div>
-
-<div class="eyebrow" style="margin-bottom:8px;">Persona</div>
-<div class="persona-card">
-  <div class="p-avatar">SK</div>
-  <div>
-    <div class="p-name">Stefan Kovač, 38</div>
-    <div class="p-role">Senior Systems Engineer · ADAS Domain Controller · Tier-1 Supplier</div>
-    <div class="p-quote">"I know things about how this system behaves in real conditions that nobody else in this building knows. But I have no idea how to make that useful to the people making the product decisions."</div>
+<div class="wrap">
+  <header class="cs-head">
+    <a class="back" href="../index.html#work">Back to all work</a>
+    <h1 style="margin-top:28px">The Intelligence Sprint</h1>
+    <p class="lede">A structured sprint that helps engineers turn what they see in testing into briefs product managers can act on.</p>
+    <dl class="meta"><div><dt>Client</dt><dd>A fictional Tier-1 automotive supplier</dd></div><div><dt>Audience</dt><dd>Systems and software engineers on driver-assistance programmes</dd></div><div><dt>My role</dt><dd>Audience analysis, sprint design, insight-brief template, job aid, measurement</dd></div><div><dt>Tools</dt><dd>HTML, CSS and JavaScript for working prototypes. Claude for first drafts of scenarios — every draft reviewed and rewritten by me.</dd></div></dl>
+  </header>
+  <div class="cs-hero">
+    <a class="frame" href="is-05-lxd-completion.html" target="_blank" rel="noopener" aria-label="Open Insight brief template"><img src="../img/is-05-lxd-completion.webp" alt="Insight brief template" width="1280" height="800"></a>
+    <p class="caption">The insight brief template: five sections that take an engineer from programme context to the decision they want product management to make.</p>
   </div>
+
+  <section class="cs-section">
+    <div class="narrow">
+      <h2>The problem</h2>
+      <p>Engineers see how their systems behave in real conditions long before anyone else does. That knowledge reaches product management through formal reviews that are slow, filtered and often too late to change a decision.</p>
+      <p>The engineers don't lack technical knowledge. What's missing is a way to translate an observation into something a non-specialist can evaluate, and a channel that makes it worth the effort.</p>
+      <div class="persona">
+        <blockquote>“I know things about how this system behaves in real conditions that nobody else in this building knows. But I have no idea how to make that useful to the people making product decisions.”</blockquote>
+        <cite>Stefan Kovač, Senior Systems Engineer (persona)</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>How I approached it</h2>
+    <ol class="process"><li><strong>Understand the audience</strong>What engineers know, what product managers need, and where the two lose each other.</li><li><strong>Structure the sprint</strong>Four weeks: anchor, submit, add data, review with product management.</li><li><strong>Prototype the key tool</strong>A working insight-brief template with scoring criteria.</li><li><strong>Plan the measurement</strong>Two confidence scales and one story question, before and after.</li></ol>
+  </section>
+
+  <section class="cs-section">
+    <h2>Key design decisions</h2>
+    <div class="decision">
+      <div class="decision-text">
+        <h3>A five-part template instead of free-form submissions</h3>
+        <p>Without structure, submissions vary too much for product managers to compare. The template's order is deliberate: context before observation, observation before implication, implication before the ask. Product managers score every brief against the same criteria.</p>
+        <a class="textlink" href="../intelligence-sprint/is-05-lxd-completion.html" target="_blank" rel="noopener">Open the template</a>
+      </div>
+      <a class="frame" href="../intelligence-sprint/is-05-lxd-completion.html" target="_blank" rel="noopener" aria-label="Open Insight brief template"><img src="../img/is-05-lxd-completion.webp" alt="Insight brief template" width="1280" height="800" loading="lazy"></a>
+    </div>
+    <div class="decision">
+      <div class="decision-text">
+        <h3>A story question alongside the confidence scales</h3>
+        <p>Besides two 1–5 scales, the baseline asks: “When did a technical observation last lead to a commercial decision?” Most engineers will say they can't think of one. That answer is a qualitative baseline that self-ratings can't fake.</p>
+        <a class="textlink" href="../intelligence-sprint/is-05-lxd-completion.html" target="_blank" rel="noopener">See the baseline questions</a>
+      </div>
+      <a class="frame" href="../intelligence-sprint/is-05-lxd-completion.html" target="_blank" rel="noopener" aria-label="Open Baseline questions for engineers"><img src="../img/is-05-baseline.webp" alt="Baseline questions for engineers" width="1280" height="800" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Everything I built</h2>
+    <p class="muted" style="margin:-8px 0 28px;max-width:60ch">Each artefact is a working page — open it and click through it as a learner or facilitator would.</p>
+    <ul class="artefacts"><li><a href="is-05-lxd-completion.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/is-05-lxd-completion.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Insight brief template</strong><span>The five-section template, how to use it and how briefs are scored.</span></a></li><li><a href="is-05-lxd-completion.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/is-05-baseline.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Baseline questions</strong><span>Three engineering-specific questions asked before and after the sprint.</span></a></li></ul>
+  </section>
+
+  <section class="cs-section">
+    <h2>Results and next steps</h2>
+    <p class="muted" style="margin:-8px 0 28px;max-width:62ch">This is a concept project for a fictional client — fully designed, not yet delivered. These are the measures built into the design, so a real pilot would produce evidence from day one.</p>
+    <div class="results">
+      <div><h3>How I'll measure it</h3><ul><li>Translation confidence: how confident engineers are explaining an observation in commercial terms (1–5)</li><li>Channel belief: whether they believe insights reach product management (1–5)</li><li>Story question: when a technical observation last changed a product decision</li><li>Asked before the sprint and again at day 30</li></ul></div>
+      <div><h3>What success looks like</h3><ul><li>At least one insight enters a six-week development path with product management</li><li>Product management can compare and rank briefs using the same criteria</li><li>Engineers can name a recent example of an observation changing a decision</li></ul></div>
+    </div>
+  </section>
+
+  <nav class="next" aria-label="More case studies">
+    <a href="../revenue-cup/index.html"><small>Previous</small><strong>The Revenue Cup</strong></a>
+    <a href="../governance/index.html" style="text-align:right"><small>Next</small><strong>VeriTech data governance</strong></a>
+  </nav>
 </div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">01</div>
-  <h2 class="section-title">Insight brief template</h2>
-  <div class="section-desc">The most important single artefact in the Intelligence Sprint. A five-section structured template that engineers complete in week 2 — anchoring their insight to a live programme, describing the technical observation, translating it into a commercial or regulatory implication, and supporting it with real data. Without this template, week 2 produces inconsistent submissions that product management cannot evaluate.</div>
-  <a class="open-btn" href="is-05-lxd-completion.html" target="_blank">Open insight brief template →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">02</div>
-  <h2 class="section-title">4-week sprint structure</h2>
-  <div class="section-desc">Week 1 anchors each insight to a live engineering programme. Week 2 is the submission and peer review moment. Week 3 releases a one-page engineering data job aid — three views that translate technical metrics into a commercial argument — at the moment when teams have a real question to answer. Week 4 is the review day with product management.</div>
-  <a class="open-btn" href="is-brief.html" target="_blank">Open sprint brief →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">03</div>
-  <h2 class="section-title">Baseline measurement — engineering version</h2>
-  <div class="section-desc">Three questions specific to an engineering audience. Question 1 measures commercial translation confidence — the primary skill gap. Question 2 measures belief that insights reach product management — the environment gap. Question 3 is the most powerful: "when was the last time a technical observation led to a commercial decision?" Most engineers will answer "I can't think of one." That answer becomes the qualitative baseline the day-30 result is compared against.</div>
-  <a class="open-btn" href="is-05-lxd-completion.html#baseline" target="_blank">Open baseline questions →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">04</div>
-  <h2 class="section-title">Measurement &amp; completion pack</h2>
-  <div class="lxd-gap-card">
-    <div class="lxd-gap-label">What this pack closes</div>
-    <div class="lxd-gap-text">Insight brief template — the structured format that makes week 2 submissions evaluable by product management. Baseline questions specific to engineering teams — commercial translation confidence, belief that insights reach PM, and pre-programme stories of when it last happened. A short note on how the briefs can also serve as AI-literacy documentation in regulated teams.</div>
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Need a learning designer for your next project?</h2>
+    <p class="lede">I work with L&amp;D teams, e-learning agencies and training providers — on site in Ingolstadt and Munich, or remotely. Tell me about your audience and what people should be able to do afterwards.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:hello@keithan.eu?subject=Project%20enquiry">Email hello@keithan.eu</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/keithan-cokbilir-b929a830" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
   </div>
-  <div class="section-desc">The three artefacts most likely to determine whether the programme produces a real case study — not what participants experience during four weeks, but what was measured before it started and how submissions are structured.</div>
-  <a class="open-btn" href="is-05-lxd-completion.html" target="_blank">Open completion pack →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="callout-dark">
-  <p>"The knowledge already exists. The design builds the pathway to surface it."</p>
-  <p>The Intelligence Sprint is not designed to teach engineers about commercial thinking. It is designed to surface what they already know and create a structured pathway for the best insights to reach product management with a brief they can act on. If no insights enter the development pathway, the design goes back to the action map.</p>
-</div>
-
-<div class="footer">
-  Keithan Cokbilir · Learning Experience Designer · hello@keithan.eu
-</div>
-
-</div>
+</section>
+<footer>
+  <div class="wrap"><div>
+    <span>© 2026 Keithan Cokbilir, Ingolstadt</span>
+    <a href="https://www.lxdadvisory.de">lxdadvisory.de</a>
+  </div></div>
+</footer>
 </body>
 </html>

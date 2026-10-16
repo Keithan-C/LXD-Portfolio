@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intelligence Sprint — LXD Completion Pack</title>
+<title>Intelligence Sprint — Measurement &amp; design artefacts</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -771,9 +771,9 @@ body {
 <div class="header">
   <div class="header-title">
     Intelligence Sprint
-    <span class="header-tag">LXD Completion Pack</span>
+    <span class="header-tag">Design artefacts</span>
   </div>
-  <div style="font-size:11px;color:rgba(255,255,255,0.35);">3 gaps fixed</div>
+  
 </div>
 
 <div class="tabs">
@@ -785,17 +785,13 @@ body {
     <div class="tab-dot" style="background:var(--green);"></div>
     Baseline questions
   </button>
-  <button class="tab" onclick="show('euai')">
-    <div class="tab-dot" style="background:var(--purple);"></div>
-    EU AI Act angle
-  </button>
+
 </div>
 
 <!-- ── INSIGHT BRIEF TEMPLATE ── -->
 <div id="panel-template" class="panel visible">
   <div class="content">
-    <div class="section-eyebrow">Gap 2 — fixed</div>
-    <div class="section-title">Insight brief template</div>
+        <div class="section-title">Insight brief template</div>
     <div class="section-sub">The single most important artefact in the Intelligence Sprint. Without it, week 2 produces inconsistent submissions that product management cannot evaluate. With it, every engineering insight arrives in a format that is immediately legible to a commercial audience.</div>
 
     <div class="info-card" style="background:var(--signal-lt);border:1px solid var(--signal-rule);">
@@ -906,8 +902,7 @@ body {
 <!-- ── BASELINE QUESTIONS ── -->
 <div id="panel-baseline" class="panel">
   <div class="content">
-    <div class="section-eyebrow">Gap 7 — fixed</div>
-    <div class="section-title">Baseline questions — engineering version</div>
+        <div class="section-title">Baseline questions — engineering version</div>
     <div class="section-sub">Three questions administered before week 1 begins. Repeated after week 4. Without them the case study has no proof of change. These are different from the Revenue Cup baseline — they are written specifically for an engineering mindset and an engineering-to-commercial translation gap.</div>
 
     <div class="info-card" style="background:var(--green-lt);border:1px solid var(--green-rule);">
@@ -995,101 +990,14 @@ body {
   </div>
 </div>
 
-<!-- ── EU AI ACT ── -->
-<div id="panel-euai" class="panel">
-  <div class="content">
-    <div class="section-eyebrow">Gap 9 — fixed</div>
-    <div class="section-title">EU AI Act compliance angle</div>
-    <div class="section-sub">The Intelligence Sprint was designed as an innovation programme. It is also — without any design changes — a compliance tool. This tab shows how to present that angle, who the second buyer is, and the exact paragraph to add to your brief.</div>
-
-    <div class="eu-hero">
-      <div class="eu-hero-label">EU AI Act · High-risk systems · Article 4</div>
-      <div class="eu-hero-title">ADAS engineering teams are legally required to have AI literacy by August 2026.</div>
-      <div class="eu-hero-sub">The Intelligence Sprint surfaces technical insights about AI system performance and limitations — which is precisely what Article 4 compliance documentation requires. You built a compliance tool without knowing it.</div>
-    </div>
-
-    <div class="deadline-banner">
-      <div class="deadline-icon">⚠️</div>
-      <div>
-        <div class="deadline-label">Enforcement deadline</div>
-        <div class="deadline-text">EU AI Act Article 4 AI literacy requirements apply to organisations deploying high-risk AI systems from <strong>August 2, 2026</strong>. ADAS systems are explicitly listed as high-risk under Annex III. Engineering teams working on these systems must demonstrate AI literacy — including the ability to identify and communicate AI system limitations.</div>
-      </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-header">
-        <div class="article-num">Article 4</div>
-        <div class="article-title">AI literacy requirement — what it actually requires</div>
-      </div>
-      <div class="article-body">
-        <div class="article-text">Article 4 requires that providers and deployers of high-risk AI systems ensure their staff have sufficient AI literacy to understand the capabilities and limitations of the AI systems they work with — including the ability to identify when AI system outputs may be unreliable, incomplete, or require human oversight.</div>
-        <div class="article-connection">
-          <div class="article-connection-label">How the Intelligence Sprint addresses this</div>
-          When an ADAS engineer submits an insight brief describing a sensor fusion degradation pattern, a classification failure mode, or a validation gap — they are demonstrating exactly the AI literacy Article 4 requires. The Intelligence Sprint creates a structured, documented record of this capability across an engineering team. That record is Article 4 compliance evidence.
-        </div>
-      </div>
-    </div>
-
-    <div class="article-card">
-      <div class="article-header">
-        <div class="article-num">Annex III</div>
-        <div class="article-title">High-risk AI systems — ADAS explicitly listed</div>
-      </div>
-      <div class="article-body">
-        <div class="article-text">Annex III of the EU AI Act lists AI systems used in safety components of road traffic management and autonomous vehicles as high-risk. This includes ADAS systems, domain controllers, perception systems, and any AI model used in safety-critical driving functions.</div>
-        <div class="article-connection">
-          <div class="article-connection-label">What this means for your pilot conversation</div>
-          Every ADAS engineering team at an OEM or Tier-1 in Europe is legally required to demonstrate AI literacy by August 2026. The Intelligence Sprint is a structured programme that produces documented evidence of that literacy. It is not just a nice-to-have innovation initiative — it is a compliance deliverable with a legal deadline.
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="section-eyebrow" style="margin-bottom:10px;">The paragraph to add to your brief</div>
-    <div class="addendum-box">
-      <div class="addendum-label">Add to the Intelligence Sprint brief — after the "What the pilot produces" section</div>
-      <div class="addendum-title">EU AI Act compliance addendum</div>
-      <div class="addendum-text">
-        For ADAS and SDV engineering teams operating under the EU AI Act, the Intelligence Sprint produces more than commercial intelligence. <strong>Each insight brief submitted by an engineering team is a structured, documented demonstration of AI literacy</strong> — the ability to identify AI system capabilities and limitations and communicate their commercial or regulatory implications.<br><br>
-        Under Article 4 of the EU AI Act, organisations deploying high-risk AI systems (which includes ADAS systems under Annex III) must ensure their technical staff have demonstrable AI literacy by <strong>August 2, 2026</strong>. The Intelligence Sprint creates an auditable record of that literacy across your engineering team — aligned with the regulation's requirements and produced in the context of real work, not a training course.<br><br>
-        The pilot case study will include a compliance documentation summary showing how participant submissions map to Article 4 literacy requirements — ready to share with your legal or compliance function.
-      </div>
-      <button class="copy-btn" id="copyBtn" onclick="copyAddendum()">📋 Copy this paragraph</button>
-    </div>
-
-    <hr class="divider">
-
-    <div class="section-eyebrow" style="margin-bottom:10px;">How this changes your buyer and budget source</div>
-    <div class="buyer-shift">
-      <div class="buyer-card" style="background:var(--signal-lt);border:1px solid var(--signal-rule);">
-        <div class="buyer-label" style="color:var(--signal-mid);">Original buyer</div>
-        <div class="buyer-role">Head of Engineering Efficiency</div>
-        <div class="buyer-budget" style="color:var(--signal-mid);">Innovation and capability budget. Discretionary. Committee approval required above ~€5,000.</div>
-      </div>
-      <div class="buyer-arrow">→</div>
-      <div class="buyer-card" style="background:var(--purple-lt);border:1px solid var(--purple-rule);">
-        <div class="buyer-label" style="color:var(--purple);">Second buyer — new</div>
-        <div class="buyer-role">Head of Legal, Compliance, or Data Governance</div>
-        <div class="buyer-budget" style="color:var(--purple);">Compliance budget. Non-discretionary. Easier to approve because it has a legal deadline attached. Often higher budget authority.</div>
-      </div>
-    </div>
-
-    <div class="info-card" style="background:var(--amber-lt);border:1px solid var(--amber-rule);margin-top:16px;">
-      <div class="info-label" style="color:var(--amber);">How to use this in a conversation</div>
-      <div style="color:var(--ink);font-size:13px;line-height:1.6;">Don't lead with the compliance angle in your first message — it can feel threatening rather than helpful. Lead with the commercial intelligence problem. When the conversation opens, mention the compliance angle as a secondary benefit: "One thing I should mention — because you're working on ADAS systems, the insight briefs your team produces are also Article 4 compliance evidence. Your legal team might find that useful given the August deadline."</div>
-    </div>
-
-  </div>
-</div>
 
 <script>
 function show(id) {
-  ['template','baseline','euai'].forEach(p => {
+  ['template','baseline'].forEach(p => {
     document.getElementById('panel-'+p).className = 'panel' + (p === id ? ' visible' : '');
   });
   document.querySelectorAll('.tab').forEach((btn, i) => {
-    btn.className = 'tab' + (['template','baseline','euai'][i] === id ? ' active' : '');
+    btn.className = 'tab' + (['template','baseline'][i] === id ? ' active' : '');
   });
 }
 
@@ -1099,23 +1007,6 @@ function selectOpt(el, group) {
   el.classList.add('sel');
 }
 
-function copyAddendum() {
-  const text = `For ADAS and SDV engineering teams operating under the EU AI Act, the Intelligence Sprint produces more than commercial intelligence. Each insight brief submitted by an engineering team is a structured, documented demonstration of AI literacy — the ability to identify AI system capabilities and limitations and communicate their commercial or regulatory implications.
-
-Under Article 4 of the EU AI Act, organisations deploying high-risk AI systems (which includes ADAS systems under Annex III) must ensure their technical staff have demonstrable AI literacy by August 2, 2026. The Intelligence Sprint creates an auditable record of that literacy across your engineering team — aligned with the regulation's requirements and produced in the context of real work, not a training course.
-
-The pilot case study will include a compliance documentation summary showing how participant submissions map to Article 4 literacy requirements — ready to share with your legal or compliance function.`;
-
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById('copyBtn');
-    btn.textContent = '✓ Copied';
-    btn.className = 'copy-btn copied';
-    setTimeout(() => {
-      btn.textContent = '📋 Copy this paragraph';
-      btn.className = 'copy-btn';
-    }, 2500);
-  });
-}
 </script>
 </body>
 </html>

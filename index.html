@@ -3,236 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keithan Cokbilir — Learning Experience Design Portfolio</title>
-<meta name="description" content="LXD portfolio by Keithan Cokbilir — performance-centred learning design, interactive prototypes, and corporate capability programmes.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;min-height:100vh;-webkit-font-smoothing:antialiased;}
-
-/* ── HERO ── */
-.hero{background:#1C1C1E;padding:72px 32px 56px;}
-.hero-inner{max-width:900px;margin:0 auto;}
-.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#666;margin-bottom:14px;}
-.hero-name{font-size:40px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-0.02em;}
-.hero-title{font-size:15px;color:#6B6B68;line-height:1.5;margin-bottom:28px;max-width:520px;}
-.hero-links{display:flex;gap:10px;flex-wrap:wrap;}
-.hero-link{font-size:12px;font-weight:500;color:#ADADAB;text-decoration:none;padding:7px 16px;border:0.5px solid #333;border-radius:20px;transition:all 0.15s;}
-.hero-link:hover{color:#fff;border-color:#666;}
-.hero-link.primary{background:#fff;color:#1C1C1E;border-color:#fff;}
-.hero-link.primary:hover{background:#E8E8E6;}
-
-/* ── MANIFESTO ── */
-.manifesto{background:#F1EFF8;padding:24px 32px;border-bottom:1px solid #E5E3DE;}
-.manifesto-inner{max-width:900px;margin:0 auto;font-size:15px;font-style:italic;color:#3A3A38;line-height:1.6;}
-.manifesto-inner strong{font-style:normal;color:#1C1C1E;}
-
-/* ── PAGE ── */
-.page{max-width:900px;margin:0 auto;padding:48px 32px 80px;}
-
-/* ── SECTION ── */
-.section-lbl{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:6px;}
-.section-title{font-size:22px;font-weight:700;color:#1C1C1E;margin-bottom:6px;letter-spacing:-0.01em;}
-.section-sub{font-size:14px;color:#888;line-height:1.6;margin-bottom:28px;max-width:560px;}
-.section-rule{border:none;border-top:0.5px solid #E8E8E6;margin:48px 0;}
-
-/* ── CASE CARDS ── */
-.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:12px;}
-.case-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;}
-.case-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-2px);}
-.case-accent{height:3px;width:100%;}
-.case-body{padding:20px;flex:1;display:flex;flex-direction:column;}
-.case-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#999;margin-bottom:8px;}
-.case-tag{font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:4px 10px;border-radius:4px;display:inline-block;margin-bottom:12px;align-self:flex-start;}
-.case-title{font-size:18px;font-weight:700;color:#1C1C1E;letter-spacing:-0.02em;line-height:1.2;margin-bottom:10px;}
-.case-desc{font-size:13px;color:#888;line-height:1.6;margin-bottom:16px;flex:1;}
-.case-artefacts{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
-.artefact{font-size:10px;color:#888;background:#F7F7F5;border:0.5px solid #E8E8E6;padding:3px 9px;border-radius:20px;}
-.case-cta{font-size:12px;font-weight:600;color:#1C1C1E;display:flex;align-items:center;gap:6px;}
-.cta-arrow{width:18px;height:18px;border-radius:50%;background:#1C1C1E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;transition:background 0.15s;}
-.case-card:hover .cta-arrow{background:#1A5C38;}
-.case-footer{padding:12px 20px;border-top:0.5px solid #E8E8E6;background:#FAFAF8;font-size:11px;color:#999;line-height:1.4;}
-
-/* ── APPROACH ── */
-.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E8E8E6;border:0.5px solid #E8E8E6;border-radius:12px;overflow:hidden;margin-bottom:8px;}
-.approach-cell{background:#fff;padding:20px 18px;}
-.approach-num{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1A5C38;margin-bottom:10px;}
-.approach-title{font-size:14px;font-weight:700;color:#1C1C1E;margin-bottom:6px;letter-spacing:-0.01em;}
-.approach-desc{font-size:12px;color:#888;line-height:1.55;}
-
-/* ── CTA ── */
-.cta-strip{background:#1C1C1E;border-radius:14px;padding:28px 32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;margin-top:48px;}
-.cta-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:6px;}
-.cta-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;letter-spacing:-0.01em;}
-.cta-sub{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;}
-.cta-btns{display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
-.cta-btn{font-size:12px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none;white-space:nowrap;text-align:center;}
-.cta-btn.primary{background:#fff;color:#1C1C1E;}
-.cta-btn.secondary{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);border:0.5px solid rgba(255,255,255,0.15);}
-.cta-btn:hover{opacity:0.85;}
-
-/* ── FOOTER ── */
-footer{font-size:12px;color:#999;text-align:center;padding:28px 32px;border-top:0.5px solid #E8E8E6;margin-top:0;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:860px){.case-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){
-  .hero{padding:48px 20px 40px;}
-  .page{padding:32px 20px 60px;}
-  .case-grid{grid-template-columns:1fr;}
-  .approach-grid{grid-template-columns:1fr;}
-  .cta-strip{grid-template-columns:1fr;}
-  .cta-btns{flex-direction:row;}
-  .manifesto{padding:18px 20px;}
-}
-</style>
+<title>Keithan Cokbilir — Learning experience designer</title>
+<meta name="description" content="Portfolio of Keithan Cokbilir, learning experience designer in Ingolstadt: scenario-based programmes, simulations, job aids and measurement plans.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">Learning Experience Design · Ingolstadt, Germany</div>
-    <div class="hero-name">Keithan Cokbilir</div>
-    <div class="hero-title">LXD · AI Enablement · Performance Consulting · Ingolstadt, Germany</div>
-    <div class="hero-links">
-      <a class="hero-link primary" href="mailto:hello@keithan.eu">hello@keithan.eu</a>
-      <a class="hero-link" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
-      <a class="hero-link" href="https://keithan-c.github.io/scorecard" target="_blank">AI Readiness Scorecard</a>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html">Keithan Cokbilir</a>
+    <ul>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="wrap">
+  <header class="hero">
+    <h1>I design learning that changes what people do at work.</h1>
+    <p class="lede">I'm Keithan Cokbilir, a learning experience designer in Ingolstadt. I start from the performance problem, map the decisions people actually face, and build working prototypes you can click through before anyone sits in a session.</p>
+    <div class="actions">
+      <a class="btn primary" href="#work">See my work</a>
+      <a class="btn ghost" href="mailto:hello@keithan.eu?subject=Project%20enquiry">Email me</a>
     </div>
-  </div>
+  </header>
 </div>
 
-<!-- MANIFESTO -->
-<div class="manifesto">
-  <div class="manifesto-inner">The gap is never knowledge alone. It's always <strong>environment, confidence, and a reason to act.</strong> I design learning experiences that change behaviour — not just what people know.</div>
-</div>
-
-<div class="page">
-
-  <!-- CASE STUDIES -->
-  <div class="section-lbl">Selected work</div>
-  <div class="section-title">Three LXD case studies</div>
-  <div class="section-sub">Concept projects, each designed from a realistic performance problem — showing my process, key design decisions and working interactive artefacts.</div>
-
-  <div class="case-grid">
-
-    <!-- VeriTech -->
-    <a class="case-card" href="governance/index.html">
-      <div class="case-accent" style="background:#1A5C38;"></div>
-      <div class="case-body">
-        <div class="case-num">01</div>
-        <div class="case-tag" style="background:#E6EFE9;color:#1A5C38;">Data governance · Corporate L&D</div>
-        <div class="case-title">VeriTech Group Data Governance Programme</div>
-        <p class="case-desc">Three interconnected role-based learning journeys for Data Owners, Data Stewards, and Use Case Owners — built around what people need to do on day one, not what they need to know.</p>
-        <div class="case-artefacts">
-          <span class="artefact">3 learning journeys</span>
-          <span class="artefact">Cross-role simulation</span>
-          <span class="artefact">Card sort</span>
-          <span class="artefact">Measurement arc</span>
-          <span class="artefact">Manager strategy</span>
-        </div>
-        <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
+<section id="work">
+  <div class="wrap">
+    <h2>Featured project</h2>
+    <div class="featured">
+      <a class="frame" href="governance/index.html" target="_blank" rel="noopener" aria-label="Open Cross-role simulation brief from the VeriTech programme"><img src="img/gov-02-simulation.webp" alt="Cross-role simulation brief from the VeriTech programme" width="1280" height="800"></a>
+      <div>
+        <p class="kicker">Corporate L&amp;D, data governance</p>
+        <h3>VeriTech Group data governance programme</h3>
+        <p>Three people get new data roles and a title — but no idea which decisions are now theirs. I designed role-based learning journeys that prepare them for their first month on the job.</p>
+        <ul>
+          <li>Three role-based learning journeys</li>
+          <li>Cross-role simulation with hidden information</li>
+          <li>8-minute pre-session card sort</li>
+          <li>Manager alignment plan and day-30 measurement</li>
+        </ul>
+        <a class="textlink" href="governance/index.html">Read the case study</a>
       </div>
-      <div class="case-footer">Role clarity · Decision confidence · Behaviour change metrics</div>
-    </a>
+    </div>
 
-    <!-- Revenue Cup -->
-    <a class="case-card" href="revenue-cup/index.html">
-      <div class="case-accent" style="background:#0E2D6B;"></div>
-      <div class="case-body">
-        <div class="case-num">02</div>
-        <div class="case-tag" style="background:#E8EDF8;color:#0E2D6B;">Innovation · Gamification · Data literacy</div>
-        <div class="case-title">The Revenue Cup</div>
-        <p class="case-desc">A 4-week gamified innovation challenge designed to surface commercial ideas from teams who already have them — and drive Power BI adoption in the process. Designed from a performance gap analysis.</p>
-        <div class="case-artefacts">
-          <span class="artefact">Live scoreboard</span>
-          <span class="artefact">Before &amp; after</span>
-          <span class="artefact">4-week timeline</span>
-          <span class="artefact">Gap analysis</span>
-          <span class="artefact">Manager brief</span>
-        </div>
-        <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
+    <div class="more">
+      <div>
+        <a class="frame" href="revenue-cup/index.html" target="_blank" rel="noopener" aria-label="Open Live scoreboard from the Revenue Cup"><img src="img/rc-01-scoreboard.webp" alt="Live scoreboard from the Revenue Cup" width="1280" height="800" loading="lazy"></a>
+        <h3>The Revenue Cup</h3>
+        <p>A four-week team challenge that gets technical specialists to share commercial ideas — and to use Power BI to back them up.</p>
+        <a class="textlink" href="revenue-cup/index.html">Read the case study</a>
       </div>
-      <div class="case-footer">Environment design · Social proof · Behaviour-change metrics</div>
-    </a>
-
-    <!-- Intelligence Sprint -->
-    <a class="case-card" href="intelligence-sprint/index.html">
-      <div class="case-accent" style="background:#1A4DA8;"></div>
-      <div class="case-body">
-        <div class="case-num">03</div>
-        <div class="case-tag" style="background:#E8EDF8;color:#1A4DA8;">Technical teams · Knowledge transfer</div>
-        <div class="case-title">The Intelligence Sprint</div>
-        <p class="case-desc">A 4-week structured sprint that helps engineers turn technical observations into briefs product management can act on — with a point-of-need job aid and story-based baseline measurement.</p>
-        <div class="case-artefacts">
-          <span class="artefact">Insight brief template</span>
-          <span class="artefact">Sprint structure</span>
-          <span class="artefact">Baseline measurement</span>
-          <span class="artefact">Data job aid</span>
-        </div>
-        <div class="case-cta">View case study <span class="cta-arrow">→</span></div>
+      <div>
+        <a class="frame" href="intelligence-sprint/index.html" target="_blank" rel="noopener" aria-label="Open Insight brief template from the Intelligence Sprint"><img src="img/is-05-lxd-completion.webp" alt="Insight brief template from the Intelligence Sprint" width="1280" height="800" loading="lazy"></a>
+        <h3>The Intelligence Sprint</h3>
+        <p>A structured sprint that helps engineers turn field observations into briefs product managers can act on.</p>
+        <a class="textlink" href="intelligence-sprint/index.html">Read the case study</a>
       </div>
-      <div class="case-footer">Engineering-to-commercial translation · Point-of-need learning</div>
-    </a>
-
+    </div>
+    <p class="status">All three are concept projects for fictional clients: fully designed with working artefacts, not yet delivered. Each case study says what I would measure to prove it worked.</p>
   </div>
+</section>
 
-  <hr class="section-rule">
-
-  <!-- APPROACH -->
-  <div class="section-lbl">How I work</div>
-  <div class="section-title">Six principles, applied to every project</div>
-  <div class="section-sub" style="margin-bottom:20px;">Every engagement starts with a performance problem. The design follows the gap — not a content list, not the stakeholder's first suggestion.</div>
-
-  <div class="approach-grid">
-    <div class="approach-cell">
-      <div class="approach-num">01</div>
-      <div class="approach-title">Performance consulting first</div>
-      <div class="approach-desc">Gap analysis before design. Environment, motivation, and skill gaps treated separately. Training is rarely the first answer.</div>
-    </div>
-    <div class="approach-cell">
-      <div class="approach-num">02</div>
-      <div class="approach-title">Interactive prototyping</div>
-      <div class="approach-desc">Working HTML artefacts — not mockups. Stakeholders see and feel the experience before a single session runs.</div>
-    </div>
-    <div class="approach-cell">
-      <div class="approach-num">03</div>
-      <div class="approach-title">Simulation design</div>
-      <div class="approach-desc">Decision-based scenarios with designed failure states. Learning happens when people make real choices in a safe environment.</div>
-    </div>
-    <div class="approach-cell">
-      <div class="approach-num">04</div>
-      <div class="approach-title">Behaviour change metrics</div>
-      <div class="approach-desc">Baseline before day one. Delta at day 30. The design is accountable for the outcome — not for completion rates.</div>
-    </div>
-    <div class="approach-cell">
-      <div class="approach-num">05</div>
-      <div class="approach-title">Scalability built in</div>
-      <div class="approach-desc">Facilitator guides, async modules, train-the-trainer — designed from the start, not added later when the client asks.</div>
-    </div>
-    <div class="approach-cell">
-      <div class="approach-num">06</div>
-      <div class="approach-title">AI-assisted design</div>
-      <div class="approach-desc">Claude and other AI tools used throughout — for rapid prototyping, scenario generation, and interactive artefact development.</div>
+<section id="about">
+  <div class="wrap">
+    <h2>About me</h2>
+    <div class="about">
+      <div>
+        <p>I've spent more than ten years helping adults learn at work — teaching Business English at Inlingua in Ingolstadt, then coaching executives on communication in China from 2022 to 2025.</p>
+        <p>That work taught me that the gap is rarely knowledge alone. It's usually confidence, the environment, and a reason to act. So I design for the moment people have to use what they've learned, and I measure whether their behaviour changed — not whether they finished a course.</p>
+      </div>
+      <ul class="facts">
+        <li><strong>What I design</strong>Scenario-based e-learning, blended programmes, simulations, job aids, facilitator guides, AI workshops for teams</li>
+        <li><strong>Tools</strong>HTML, CSS and JavaScript for working prototypes. Claude for first drafts of scenarios — every draft reviewed and rewritten by me.</li>
+        <li><strong>Languages</strong>English (native), German (B1)</li>
+      </ul>
     </div>
   </div>
-
-  <!-- CTA -->
-  <div class="cta-strip">
-    <div>
-      <div class="cta-label">Available for freelance projects</div>
-      <div class="cta-title">E-learning &amp; blended programme design · AI workshops for teams · English-language training</div>
-      <div class="cta-sub">Based in Ingolstadt · Munich, Ingolstadt or remote</div>
-    </div>
-    <div class="cta-btns">
-      <a class="cta-btn primary" href="mailto:hello@keithan.eu">Get in touch</a>
-      <a class="cta-btn secondary" href="https://linkedin.com/in/keithan-cokbilir-b929a830" target="_blank">LinkedIn</a>
+</section>
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Need a learning designer for your next project?</h2>
+    <p class="lede">I work with L&amp;D teams, e-learning agencies and training providers — on site in Ingolstadt and Munich, or remotely. Tell me about your audience and what people should be able to do afterwards.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:hello@keithan.eu?subject=Project%20enquiry">Email hello@keithan.eu</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/keithan-cokbilir-b929a830" target="_blank" rel="noopener">Connect on LinkedIn</a>
     </div>
   </div>
-
-</div>
-
-<footer>Keithan Cokbilir &nbsp;·&nbsp; Learning Experience Designer &nbsp;·&nbsp; Ingolstadt, Germany</footer>
-
+</section>
+<footer>
+  <div class="wrap"><div>
+    <span>© 2026 Keithan Cokbilir, Ingolstadt</span>
+    <a href="https://www.lxdadvisory.de">lxdadvisory.de</a>
+  </div></div>
+</footer>
 </body>
 </html>

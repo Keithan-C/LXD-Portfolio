@@ -3,163 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Revenue Cup — Learning Design Case Study</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F7F5;color:#1C1C1E;min-height:100vh;}
-.page{max-width:860px;margin:0 auto;padding:48px 32px;}
-.eyebrow{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
-.page-title{font-size:28px;font-weight:500;color:#1C1C1E;margin-bottom:4px;}
-.byline{font-size:13px;color:#888;margin-bottom:2rem;padding-bottom:2rem;border-bottom:0.5px solid #E8E8E6;}
-.callout{background:#F1EFE8;border-radius:12px;padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
-.callout p{font-size:14px;line-height:1.7;color:#444441;margin-bottom:0.75rem;}
-.callout p:last-child{margin-bottom:0;}
-.callout-dark{background:#1C1C1E;border-radius:12px;padding:1.5rem 1.75rem;margin:2.5rem 0;}
-.callout-dark p{color:#ADADAB;font-size:14px;line-height:1.7;margin-bottom:0.75rem;}
-.callout-dark p:last-child{margin-bottom:0;}
-.callout-dark p:first-child{font-size:18px;font-weight:500;color:#fff;font-style:italic;}
-.honest-bar{background:#FDF5E6;border-left:3px solid #7A4500;border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:2rem;display:flex;gap:10px;align-items:flex-start;}
-.honest-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7A4500;white-space:nowrap;padding-top:2px;flex-shrink:0;}
-.honest-text{font-size:13px;color:#3A3A38;line-height:1.6;}
-.section{margin-bottom:3rem;}
-.section-num{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:6px;}
-.section-title{font-size:18px;font-weight:500;color:#1C1C1E;margin-bottom:8px;}
-.section-desc{font-size:14px;color:#666;line-height:1.6;margin-bottom:1.25rem;}
-.open-btn{display:inline-flex;align-items:center;gap:8px;background:#1C1C1E;color:#fff;font-size:13px;font-weight:500;padding:10px 20px;border-radius:8px;text-decoration:none;transition:background 0.15s;}
-.open-btn:hover{background:#1A5C38;}
-.divider{border:none;border-top:0.5px solid #E8E8E6;margin:2.5rem 0;}
-.context-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.5rem;}
-.context-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:14px;}
-.cc-label{font-size:10px;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:#888;margin-bottom:5px;}
-.cc-value{font-size:13px;font-weight:500;color:#1C1C1E;line-height:1.4;}
-.persona-card{background:#fff;border:0.5px solid #E8E8E6;border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;}
-.p-avatar{width:44px;height:44px;border-radius:50%;background:#EEEDFE;color:#3C3489;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0;}
-.p-name{font-size:15px;font-weight:500;color:#1C1C1E;margin-bottom:2px;}
-.p-role{font-size:12px;color:#888;margin-bottom:8px;}
-.p-quote{font-size:13px;color:#666;line-height:1.6;font-style:italic;border-left:2px solid #E8E8E6;padding-left:10px;}
-.lxd-gap-card{background:#E6EFE9;border:0.5px solid #9FD4B8;border-radius:10px;padding:14px 16px;margin-bottom:1.25rem;}
-.lxd-gap-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1A5C38;margin-bottom:5px;}
-.lxd-gap-text{font-size:13px;color:#1A5C38;line-height:1.55;}
-.decision-list{list-style:none;counter-reset:d;margin-bottom:1.5rem;}
-.decision-list li{counter-increment:d;background:#fff;border:0.5px solid #E8E8E6;border-radius:10px;padding:14px 16px 14px 48px;margin-bottom:10px;position:relative;font-size:13px;color:#3A3A38;line-height:1.6;}
-.decision-list li::before{content:counter(d);position:absolute;left:16px;top:14px;width:22px;height:22px;border-radius:50%;background:#1A1A18;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;}
-.decision-list strong{color:#1A1A18;display:block;margin-bottom:2px;}
-.role-line{font-size:14px;color:#3A3A38;line-height:1.65;margin-bottom:1.5rem;}
-.role-line strong{color:#1A1A18;}
-.footer{font-size:12px;color:#888;text-align:center;padding:2rem 0;border-top:0.5px solid #E8E8E6;margin-top:1rem;}
-.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#888;text-decoration:none;margin-bottom:2rem;}
-.back-link:hover{color:#1C1C1E;}
-.back-link::before{content:'←';}
-@media(max-width:600px){.persona-card{grid-template-columns:1fr;}.page{padding:32px 20px;}}
-</style>
+<title>The Revenue Cup — Case study by Keithan Cokbilir</title>
+<meta name="description" content="A four-week team challenge that gets technical specialists to share commercial ideas — and to use Power BI to back them up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
 </head>
 <body>
-<div class="page">
-
-<a class="back-link" href="../index.html">Back to portfolio</a>
-
-<div class="eyebrow">Learning design case study · Concept project · Gamification · Data literacy</div>
-<h1 class="page-title">The Revenue Cup</h1>
-<div class="byline">Programme design · Keithan Cokbilir</div>
-
-<div class="callout">
-  <p><strong>Brief.</strong> Frontline experts hold commercial ideas about their clients but have no channel to raise them — and the organisation has a Power BI licence that barely gets used.</p>
-  <p>I treated this as an environment problem, not a training problem, and designed a 4-week gamified challenge with a live scoreboard, peer voting and a 6-week incubation arc for the winning idea.</p>
+<div class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="../index.html">Keithan Cokbilir</a>
+    <ul>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
 </div>
-
-<div class="role-line"><strong>My role:</strong> performance gap analysis, programme design, gamification mechanics, Power BI job aid, manager brief, measurement design.</div>
-
-<div class="honest-bar">
-  <div class="honest-label">Status</div>
-  <div class="honest-text">Concept project — fully designed, not yet delivered. Everything below is the complete design and its working artefacts.</div>
-</div>
-
-<div class="eyebrow" style="margin-bottom:8px;">Key design decisions</div>
-<ol class="decision-list">
-  <li><strong>Visibility over points</strong>The scoreboard shows the idea behind every score. The motivation comes from colleagues seeing your thinking, not from badges.</li>
-  <li><strong>Power BI only in week 3</strong>Teams meet the tool once they already have an idea and a question to answer — so the data skill is learned in context rather than in a standalone session.</li>
-  <li><strong>A designed week-2 intervention</strong>Week 2 is the most likely dropout point, so it gets a planned mid-point nudge and manager touchpoint instead of hoping momentum holds.</li>
-</ol>
-
-<div class="context-grid">
-  <div class="context-card"><div class="cc-label">Duration</div><div class="cc-value">4-week challenge + 6-week incubation</div></div>
-  <div class="context-card"><div class="cc-label">Format</div><div class="cc-value">Live challenge + scoreboard</div></div>
-  <div class="context-card"><div class="cc-label">Primary gap</div><div class="cc-value">Environment + motivation</div></div>
-  <div class="context-card"><div class="cc-label">Skill introduced</div><div class="cc-value">Power BI — week 3 only</div></div>
-  <div class="context-card"><div class="cc-label">Prize</div><div class="cc-value">6-week incubation → leadership investment decision</div></div>
-  <div class="context-card"><div class="cc-label">Measurement</div><div class="cc-value">3 baseline questions · day-30 delta</div></div>
-</div>
-
-<div class="eyebrow" style="margin-bottom:8px;">Persona</div>
-<div class="persona-card">
-  <div class="p-avatar">MB</div>
-  <div>
-    <div class="p-name">Marcus Bauer, 34</div>
-    <div class="p-role">Senior Hazard Assessment Engineer · Industrial Safety</div>
-    <div class="p-quote">"We know things about our clients that nobody else does. I just don't know how to make that visible."</div>
+<div class="wrap">
+  <header class="cs-head">
+    <a class="back" href="../index.html#work">Back to all work</a>
+    <h1 style="margin-top:28px">The Revenue Cup</h1>
+    <p class="lede">A four-week team challenge that gets technical specialists to share commercial ideas — and to use Power BI to back them up.</p>
+    <dl class="meta"><div><dt>Client</dt><dd>A fictional testing and certification company with six service teams</dd></div><div><dt>Audience</dt><dd>Engineers and specialists who know clients well but rarely pitch ideas</dd></div><div><dt>My role</dt><dd>Performance gap analysis, programme and game design, job aid, manager brief, measurement</dd></div><div><dt>Tools</dt><dd>HTML, CSS and JavaScript for working prototypes. Claude for first drafts of scenarios — every draft reviewed and rewritten by me.</dd></div></dl>
+  </header>
+  <div class="cs-hero">
+    <a class="frame" href="rc-01-scoreboard.html" target="_blank" rel="noopener" aria-label="Open Revenue Cup live scoreboard"><img src="../img/rc-01-scoreboard.webp" alt="Revenue Cup live scoreboard" width="1280" height="800"></a>
+    <p class="caption">The live scoreboard shows the idea behind every score. Visibility, not points, is what motivates teams.</p>
   </div>
+
+  <section class="cs-section">
+    <div class="narrow">
+      <h2>The problem</h2>
+      <p>Leadership wants new revenue ideas from its specialist teams, and it wants more value from a Power BI licence that hardly anyone uses. The first idea was a Power BI course.</p>
+      <p>A gap analysis showed four problems, and only one was skill. Specialists already had ideas about their clients, but there was no channel for them, no habit of using data to make a case, and no reason to believe an idea would go anywhere. A course alone would fix the smallest of the four.</p>
+      <div class="persona">
+        <blockquote>“We know things about our clients that nobody else does. I just don't know how to make that visible.”</blockquote>
+        <cite>Marcus Bauer, Senior Hazard Assessment Engineer (persona)</cite>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>How I approached it</h2>
+    <ol class="process"><li><strong>Analyse the gaps</strong>Skill, motivation, habit and environment — each with its own designed response.</li><li><strong>Change the environment</strong>A visible challenge, peer voting and a real prize: six weeks of incubation.</li><li><strong>Prototype early</strong>Scoreboard, timeline and examples built as clickable pages.</li><li><strong>Plan the measurement</strong>Baseline before week 1, repeated after week 4.</li></ol>
+  </section>
+
+  <section class="cs-section">
+    <h2>Key design decisions</h2>
+    <div class="decision">
+      <div class="decision-text">
+        <h3>Anchor every idea to live work</h3>
+        <p>In week 1, teams name a real client engagement before they're asked for any idea. That removes the biggest barrier — “I don't know what to submit” — and keeps ideas concrete enough to evaluate.</p>
+        <a class="textlink" href="../revenue-cup/rc-02-beforeafter.html" target="_blank" rel="noopener">Compare week 1 and week 3</a>
+      </div>
+      <a class="frame" href="../revenue-cup/rc-02-beforeafter.html" target="_blank" rel="noopener" aria-label="Open Before and after submission comparison"><img src="../img/rc-02-beforeafter.webp" alt="Before and after submission comparison" width="1280" height="800" loading="lazy"></a>
+    </div>
+    <div class="decision">
+      <div class="decision-text">
+        <h3>Introduce Power BI in week 3, not week 1</h3>
+        <p>Teams meet the tool only when they already have an idea and a question to answer. A one-page job aid shows the three views they need. Week 2, the most likely dropout point, gets a planned mid-point nudge.</p>
+        <a class="textlink" href="../revenue-cup/rc-03-timeline.html" target="_blank" rel="noopener">Open the timeline</a>
+      </div>
+      <a class="frame" href="../revenue-cup/rc-03-timeline.html" target="_blank" rel="noopener" aria-label="Open Four-week challenge timeline"><img src="../img/rc-03-timeline.webp" alt="Four-week challenge timeline" width="1280" height="800" loading="lazy"></a>
+    </div>
+    <div class="decision">
+      <div class="decision-text">
+        <h3>Make managers part of the design</h3>
+        <p>Managers get a short brief with three touchpoints, the exact words to use at each, and answers to the four objections their teams are most likely to raise.</p>
+        <a class="textlink" href="../revenue-cup/rc-05-lxd-completion.html" target="_blank" rel="noopener">Read the manager brief</a>
+      </div>
+      <a class="frame" href="../revenue-cup/rc-05-lxd-completion.html" target="_blank" rel="noopener" aria-label="Open Manager brief"><img src="../img/rc-05-manager.webp" alt="Manager brief" width="1280" height="800" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section class="cs-section">
+    <h2>Everything I built</h2>
+    <p class="muted" style="margin:-8px 0 28px;max-width:60ch">Each artefact is a working page — open it and click through it as a learner or facilitator would.</p>
+    <ul class="artefacts"><li><a href="rc-01-scoreboard.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/rc-01-scoreboard.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Live scoreboard</strong><span>Four scoring dimensions, peer voting and expandable team cards.</span></a></li><li><a href="rc-02-beforeafter.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/rc-02-beforeafter.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Before and after</strong><span>The same idea in week 1 and week 3 — what good looks like.</span></a></li><li><a href="rc-03-timeline.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/rc-03-timeline.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Four-week timeline</strong><span>Week by week, including the week-2 nudge.</span></a></li><li><a href="rc-04-gapdashboard.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/rc-04-gapdashboard.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Gap analysis</strong><span>The four performance gaps and the response to each.</span></a></li><li><a href="rc-05-lxd-completion.html" target="_blank" rel="noopener"><div class="frame"><img src="../img/rc-05-lxd-completion.webp" alt="" width="1280" height="800" loading="lazy"></div><strong>Measurement and incubation</strong><span>Baseline questions, the six-week incubation arc and the manager brief.</span></a></li></ul>
+  </section>
+
+  <section class="cs-section">
+    <h2>Results and next steps</h2>
+    <p class="muted" style="margin:-8px 0 28px;max-width:62ch">This is a concept project for a fictional client — fully designed, not yet delivered. These are the measures built into the design, so a real pilot would produce evidence from day one.</p>
+    <div class="results">
+      <div><h3>How I'll measure it</h3><ul><li>Data confidence: “How confident are you that you could use a data tool to build a commercial argument for an idea?” (1–5)</li><li>Idea belief: “How much do you believe a good idea from your team could reach leadership and be acted on?” (1–5)</li><li>Motivation profile: why each person is taking part, asked before week 1</li><li>Scores taken before week 1 and again after week 4</li></ul></div>
+      <div><h3>What success looks like</h3><ul><li>At least one data-backed idea reaches a leadership investment decision</li><li>Data confidence rises by 1.5 points or more on average</li><li>Belief that ideas reach leadership goes up — the clearest sign the environment changed</li></ul></div>
+    </div>
+  </section>
+
+  <nav class="next" aria-label="More case studies">
+    <a href="../governance/index.html"><small>Previous</small><strong>VeriTech data governance</strong></a>
+    <a href="../intelligence-sprint/index.html" style="text-align:right"><small>Next</small><strong>The Intelligence Sprint</strong></a>
+  </nav>
 </div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">01</div>
-  <h2 class="section-title">Live scoreboard</h2>
-  <div class="section-desc">The scoreboard makes effort visible from day one — four dimensions, peer voting, and expandable team cards showing the idea behind each score. The motivation mechanism is visibility, not gamification.</div>
-  <a class="open-btn" href="rc-01-scoreboard.html" target="_blank">Open scoreboard →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">02</div>
-  <h2 class="section-title">Before & after — what a good submission looks like</h2>
-  <div class="section-desc">Week 1 versus week 3. The same idea, before and after the work anchor and Power BI data are added. Shows exactly what the job aid in week 3 is designed to produce — and why the anchor is the most important design decision in week 1.</div>
-  <a class="open-btn" href="rc-02-beforeafter.html" target="_blank">Open before & after →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">03</div>
-  <h2 class="section-title">4-week challenge structure</h2>
-  <div class="section-desc">Each week builds on the last. Power BI arrives in week 3 — after ideas are formed and motivation is high, not before. The work anchor nomination happens in week 1 before any idea is required. Week 2 is the highest-risk dropout moment — the mid-point nudge is a designed intervention, not an afterthought.</div>
-  <a class="open-btn" href="rc-03-timeline.html" target="_blank">Open timeline →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">04</div>
-  <h2 class="section-title">Gap analysis & community dashboard</h2>
-  <div class="section-desc">The four performance gaps behind the design — skill, motivation, habit, and environment — with designed responses to each. Plus a live community space for tips, hidden Power BI features, and participant feedback that feeds the next cohort.</div>
-  <a class="open-btn" href="rc-04-gapdashboard.html" target="_blank">Open gap analysis →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="section">
-  <div class="section-num">05</div>
-  <h2 class="section-title">Measurement, incubation &amp; manager brief</h2>
-  <div class="lxd-gap-card">
-    <div class="lxd-gap-label">What this pack closes</div>
-    <div class="lxd-gap-text">Baseline questions before week 1 and repeated after week 4. A 6-week incubation arc from pitch day to leadership investment decision. A manager brief with three touchpoints, specific language for each, and designed responses to the four most common team objections.</div>
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Need a learning designer for your next project?</h2>
+    <p class="lede">I work with L&amp;D teams, e-learning agencies and training providers — on site in Ingolstadt and Munich, or remotely. Tell me about your audience and what people should be able to do afterwards.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:hello@keithan.eu?subject=Project%20enquiry">Email hello@keithan.eu</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/keithan-cokbilir-b929a830" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
   </div>
-  <div class="section-desc">The artefacts most likely to determine whether the programme actually changes behaviour — not what participants experience during four weeks, but what was measured before it started, what happens to the winning idea afterwards, and whether managers created the conditions for participation to be real.</div>
-  <a class="open-btn" href="rc-05-lxd-completion.html" target="_blank">Open completion pack →</a>
-</div>
-
-<div class="divider"></div>
-
-<div class="callout-dark">
-  <p>If they don't use it — I've failed.</p>
-  <p>The design is not measured by completion rates or participation numbers. It is meant to produce one data-backed idea that reaches a leadership investment decision — and a team that knows how to surface commercial intelligence in a way they didn't before. If those two things don't happen, the design goes back to the action map.</p>
-</div>
-
-<div class="footer">
-  Keithan Cokbilir · Learning Experience Designer · hello@keithan.eu
-</div>
-
-</div>
+</section>
+<footer>
+  <div class="wrap"><div>
+    <span>© 2026 Keithan Cokbilir, Ingolstadt</span>
+    <a href="https://www.lxdadvisory.de">lxdadvisory.de</a>
+  </div></div>
+</footer>
 </body>
 </html>
